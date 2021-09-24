@@ -1,4 +1,4 @@
-<header class="sticky top-0 bg-gradient-to-r from-blue-700 via-blue-500 to-blue-700" x-data="dropdown()">
+<header class="sticky top-0 z-50 bg-gradient-to-r from-blue-700 via-blue-500 to-blue-700" x-data="dropdown()">
 
     <div class="container flex items-center justify-between h-16 md:justify-start">
 
@@ -98,7 +98,7 @@
                 <ul class="bg-white">
                     @foreach ($categories as $category)
                         <li class="navigation-link text-trueGray-500 hover:bg-gold hover:text-white">
-                            <a href="" class="flex items-center px-4 py-2 text-sm">
+                            <a href="{{route('categories.show', $category)}}" class="flex items-center px-4 py-2 text-sm">
 
                                 <span class="flex justify-center w-9">
                                     {!! $category->icon !!}
@@ -130,7 +130,7 @@
             <ul>
                 @foreach ($categories as $category)
                     <li class="text-trueGray-500 hover:bg-gold hover:text-white">
-                        <a href="" class="flex items-center px-4 py-2 text-sm">
+                        <a href="{{route('categories.show', $category)}}" class="flex items-center px-4 py-2 text-sm">
 
                             <span class="flex justify-center w-9">
                                 {!! $category->icon !!}

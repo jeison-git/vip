@@ -32,5 +32,11 @@ class Category extends Model
 
     }
 
+    //url slug
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     
 }
