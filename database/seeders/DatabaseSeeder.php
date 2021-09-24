@@ -16,13 +16,13 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        Storage::deleteDirectory('public/categories');
-        Storage::deleteDirectory('public/subcategories');
-        Storage::deleteDirectory('public/products');
+        Storage::deleteDirectory('categories');
+        Storage::deleteDirectory('subcategories');
+        Storage::deleteDirectory('products');
 
-        Storage::makeDirectory('public/categories');
-        Storage::makeDirectory('public/subcategories');
-        Storage::makeDirectory('public/products');
+        Storage::makeDirectory('categories');
+        Storage::makeDirectory('subcategories');
+        Storage::makeDirectory('products');
 
         $this->call(UserSeeder::class);
 

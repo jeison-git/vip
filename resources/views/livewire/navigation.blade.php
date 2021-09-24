@@ -1,11 +1,9 @@
 <header class="sticky top-0 bg-gradient-to-r from-blue-700 via-blue-500 to-blue-700" x-data="dropdown()">
 
-    <div class="container flex items-center h-16">
-        <a {{--:class="{'bg-opacity-100' 'text-gold' : open}"--}}
+    <div class="container flex items-center justify-between h-16 md:justify-start">
 
-            x-on:click="show()"
-
-            class="flex flex-col items-center justify-center h-full px-4 font-semibold bg-white bg-opacity-25 cursor-pointer text-gold">
+        <a {{-- :class="{'bg-opacity-100' 'text-gold' : open}" --}} x-on:click="show()"
+            class="flex flex-col items-center justify-center order-last h-full px-6 font-semibold bg-white bg-opacity-25 cursor-pointer md:px-4 md:order-first text-gold">
 
             <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
 
@@ -14,7 +12,7 @@
 
             </svg>
 
-            <span class="text-sm">Categorías</span>
+            <span class="hidden text-sm md:block">Categorías</span>
 
         </a>
 
@@ -22,12 +20,12 @@
             <x-jet-application-mark class="block w-auto h-9" />
         </a>
 
-        <div class="flex-1">
+        <div class="flex-1 hidden md:block">
             @livewire('search')
         </div>
 
         <!-- Settings Dropdown -->
-        <div class="relative mx-6">
+        <div class="relative hidden mx-6 md:block">
             @auth
 
                 <x-jet-dropdown align="right" width="48">
@@ -58,7 +56,7 @@
                             @csrf
 
                             <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                                                    this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-jet-dropdown-link>
                         </form>
@@ -86,17 +84,17 @@
             @endauth
         </div>
 
-        @livewire('dropdown-cart')
+        <div class="hidden md:block">
+            @livewire('dropdown-cart')
+        </div>
+
     </div>
 
-    <nav id="navigation-menu"
-     {{----}}
-     x-show="open"
-     :class="{'block': open, 'hidden': !open}"
-     class="absolute hidden w-full bg-opacity-25 bg-trueGray-700">
-        <div class="container h-full">
-            <div
-            x-on:click.away="close()" class="relative grid h-full grid-cols-4">
+    <nav id="navigation-menu" {{--  --}} x-show="open" :class="{'block': open, 'hidden': !open}"
+        class="absolute hidden w-full bg-opacity-25 bg-trueGray-700">
+        {{-- menu pc --}}
+        <div class="container hidden h-full md:block">
+            <div x-on:click.away="close()" class="relative grid h-full grid-cols-4">
                 <ul class="bg-white">
                     @foreach ($categories as $category)
                         <li class="navigation-link text-trueGray-500 hover:bg-gold hover:text-white">
@@ -119,8 +117,88 @@
 
                 <div class="col-span-3 bg-gray-100">
                     <x-components.navigation-subcategories :category="$categories->first()" />
+                </div>
             </div>
         </div>
+        {{-- menu phone --}}
+        <div class="h-full overflow-y-auto bg-white">
+
+            <div class="container py-2 pt-2 mb-2 bg-gray-200">
+                @livewire('search')
+            </div>
+
+            <ul>
+                @foreach ($categories as $category)
+                    <li class="text-trueGray-500 hover:bg-gold hover:text-white">
+                        <a href="" class="flex items-center px-4 py-2 text-sm">
+
+                            <span class="flex justify-center w-9">
+                                {!! $category->icon !!}
+                            </span>
+
+                            {{ $category->name }}
+
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+
+            <p class="px-6 my-2 text-trueGray-500">USUARIOS</p>
+
+            @livewire('cart-phone')
+
+            @auth
+
+                <a href="{{ route('profile.show') }}"
+                    class="flex items-center px-4 py-2 text-sm text-trueGray-500 hover:bg-gold hover:text-white">
+
+                    <span class="flex justify-center w-9">
+                        <i class="fa fa-address-card" aria-hidden="true"></i>
+                    </span>
+
+                    Perfil
+                </a>
+
+                <a href="" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit()"
+                    class="flex items-center px-4 py-2 text-sm text-trueGray-500 hover:bg-gold hover:text-white">
+
+                    <span class="flex justify-center w-9">
+                        <img src="https://img.icons8.com/ios/15/000000/exit.png" />
+                    </span>
+
+                    Cerrar sesíon
+                </a>
+                <form class="hidden" id="logout-form" method="POST" action="{{ route('logout') }}">
+                    @csrf
+                </form>
+
+            @else
+
+                <a href="{{ route('login') }}"
+                    class="flex items-center px-4 py-2 text-sm text-trueGray-500 hover:bg-gold hover:text-white">
+
+                    <span class="flex justify-center w-9">
+                        <i class="fa fa-user-circle"></i>
+                    </span>
+
+                    Iniciar sesíon
+                </a>
+
+                <a href="{{ route('register') }}"
+                    class="flex items-center px-4 py-2 text-sm text-trueGray-500 hover:bg-gold hover:text-white">
+
+                    <span class="flex justify-center w-9">
+                        <i class="fa fa-newspaper" aria-hidden="true"></i>
+                    </span>
+
+                    Registrate
+                </a>
+
+            @endauth
+
+        </div>
+
     </nav>
 
 </header>
