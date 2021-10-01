@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Database\Eloquent\Builder;
+
 class Product extends Model
 {
     use HasFactory;
@@ -14,6 +16,25 @@ class Product extends Model
 
 
     public $guarded =  ['id', 'created_at', 'updated_at'];
+
+    //accesores
+
+    public function getStockAttribute(){
+        if ($this->subcategory->size) {
+            return  ColorSize::whereHas('size.product', function(Builder $query){
+                        $query->where('id', $this->id);
+                    })->sum('quantity');
+        } elseif($this->subcategory->color) {
+            return  ColorProduct::whereHas('product', function(Builder $query){
+                        $query->where('id', $this->id);
+                    })->sum('quantity');
+        }else{
+
+            return $this->quantity;
+
+        }
+        
+    }
 
     //Relacion uno a muchos
     public function sizes(){
@@ -45,7 +66,7 @@ class Product extends Model
     //Relacion muchos a muchos
     public function colors(){
 
-        return $this->belongsToMany(Color::class);
+        return $this->belongsToMany(Color::class)->withPivot('quantity');
 
     }
 
@@ -54,6 +75,12 @@ class Product extends Model
 
         return $this->morphMany(Image::class, "imageable");
 
+    }
+
+    //url slug
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 
 
