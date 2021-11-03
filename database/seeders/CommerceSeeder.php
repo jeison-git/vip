@@ -29,7 +29,7 @@ class CommerceSeeder extends Seeder
             'slug' => Str::slug('Comercios Vip'),
             'description' => 'Todo lo que necesitas aquí lo consigues',
 
-        ]);
+        ]); 
 
     }
 

@@ -24,6 +24,9 @@ class CreateProductsTable extends Migration
             $table->float('pricevip');
             $table->float('price');
 
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories');
+
             $table->unsignedBigInteger('subcategory_id');
             $table->foreign('subcategory_id')->references('id')->on('subcategories');
 

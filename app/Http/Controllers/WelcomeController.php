@@ -2,26 +2,54 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use Illuminate\Http\Request;
 use App\Models\Category;
-use App\Models\Commerce;
+use App\Models\Claim;
 use App\Models\Product;
-
+use App\Models\Order;
+ 
 class WelcomeController extends Controller
 {
-    
-
     public function __invoke()
     {
-        $categories   = Category::all();
-        $commerces    = Commerce::all();
 
-        /*$products = Product::where('status', 2)
-                        ->with( 'category', 'commerce')
-                        ->commerce($this->commerce_id)
-                        ->latest('id')
-                        ->get();*/
+        if (auth()->user()) { /* si el usuario no ha cancelado un pedido mostrar este mensaje  */
 
-        return view('welcome', compact('categories', 'commerces'));
+            $pendiente = Order::where('status', 1)->where('user_id', auth()->user()->id)->count();
+
+            if ($pendiente) {
+
+                $mensaje = "Usted tiene $pendiente ordenes pendientes";
+
+                session()->flash('flash.banner', $mensaje);
+            }
+        }
+
+        $categories = Category::all();
+
+        $claims = Claim::where('commerce_id', 1)->get();
+
+        $banners = Banner::all();
+
+        $homes = Product::where('status', 2) /* mostrar 2 productos aleatorios en el layout izquierdo */
+            ->inRandomOrder()
+            ->take(2)
+            ->get();
+
+
+        $twohomes = Product::where('status', 2) /* Mostrar productos donde el precio este entre 0 y 50, en el layout derecho  */
+            ->whereBetween('price', [0, 100])
+            ->inRandomOrder()
+            ->take(8)
+            ->get();
+
+        $products = Product::where('status', 2) /* mostrar los productos recien agregados */
+            ->latest('id')
+            ->take(20)
+            ->get();
+
+        
+        return view('welcome', compact('categories', 'products', 'homes', 'twohomes', 'claims', 'banners'));
     }
 }

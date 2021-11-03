@@ -18,15 +18,23 @@ class CreateClaimsTable extends Migration
 
             $table->string('name');
             $table->string('slug');
-
+            $table->string('image');
+            $table->string('icon');
+            $table->string('manager')->nullable();
+            $table->string('document')->nullable();
+            $table->string('number_phone')->nullable();
+            $table->string('email')->nullable();
+            $table->string('target')->nullable();
+            
             $table->text('description');
-            $table->string('directions');
+            $table->string('address');
+            $table->string('observation')->nullable(); 
 
             $table->unsignedBigInteger('commerce_id');
             $table->foreign('commerce_id')->references('id')->on('commerces');
 
             $table->timestamps();
-        });
+        }); 
     }
 
     /**

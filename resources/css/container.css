@@ -1,3 +1,13 @@
 .container {
     @apply px-4 mx-auto max-w-7xl sm:px-6 lg:px-8;
 }
+
+.card{
+    @apply overflow-hidden bg-white rounded shadow-lg;
+}
+.card-body{
+    @apply px-4 py-4;
+}
+.card-title{
+    @apply mb-2 text-xl leading-6 text-black;
+}

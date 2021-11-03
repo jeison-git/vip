@@ -18,17 +18,28 @@ class DatabaseSeeder extends Seeder
 
         Storage::deleteDirectory('categories');
         Storage::deleteDirectory('subcategories');
+        Storage::deleteDirectory('banners');
+        Storage::deleteDirectory('allies');
         Storage::deleteDirectory('products');
+        
 
         Storage::makeDirectory('categories');
-        Storage::makeDirectory('subcategories');
+        Storage::makeDirectory('subcategories');  
+        Storage::makeDirectory('banners');      
+        Storage::makeDirectory('allies');
         Storage::makeDirectory('products');
 
+        $this->call(PermissionSeeder::class);
+        
+        $this->call(RoleSeeder::class);
+        
         $this->call(UserSeeder::class);
 
         $this->call(CategorySeeder::class);
 
         $this->call(SubcategorySeeder::class);
+
+        $this->call(BannerSeeder::class);
 
         $this->call(CommerceSeeder::class);
 
@@ -42,6 +53,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(ColorSizeSeeder::class);
 
-
+        $this->call(DepartmentSeeder::class);
+        
     }
 }

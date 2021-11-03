@@ -22,7 +22,7 @@ class CreateCategoriesTable extends Migration
             $table->string('icon');
 
             $table->timestamps();
-        });
+        }); 
     }
 
 

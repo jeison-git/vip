@@ -9,7 +9,7 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'slug', 'image', 'icon'];
+    protected $guarded= ['id'];
 
     //Relacion uno a muchos
     public function subcategories(){
@@ -24,6 +24,11 @@ class Category extends Model
         return $this->belongsToMany(Brand::class);
 
     }
+
+    //relacion uno a muchos
+    public function product(){
+        return $this->hasMany(Product::class);
+    }
     
     //Relacion atraves de 
     public function products(){ 
@@ -35,7 +40,7 @@ class Category extends Model
     //url slug
     public function getRouteKeyName()
     {
-        return 'slug';
+        return 'slug'; 
     }
 
     

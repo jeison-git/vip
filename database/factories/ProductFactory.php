@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Claim;
 use App\Models\Product;
 use App\Models\Subcategory;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 use Illuminate\Support\Str;
@@ -27,8 +28,11 @@ class ProductFactory extends Factory
     {
         $name = $this->faker->sentence(2);
 
+        //$category = Category::all()->random();
+
         $subcategory = Subcategory::all()->random();
         $category = $subcategory->category;
+       //$category = Category::all()->random();
 
         $claim = Claim::all()->random();
 
@@ -44,8 +48,9 @@ class ProductFactory extends Factory
             'name' => $name,
             'slug' => Str::slug($name),
             'description' => $this->faker->text(),
-            'pricevip' => $this->faker->randomElement([19.99, 49.99, 99.99]),
+            'pricevip' => $this->faker->randomElement([19.99, 49.99, 99.99, 0.99, 9.99, 1.00, 0.01, 2.15]),
             'price' => $this->faker->randomElement([29.99, 69.99, 129.99]),
+            'category_id' => $category->id,
             'subcategory_id' => $subcategory->id,
             'claim_id' => $claim->id,
             'brand_id' => $brand->id,

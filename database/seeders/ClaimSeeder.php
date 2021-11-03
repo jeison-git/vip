@@ -14,39 +14,50 @@ class ClaimSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        {
-            $claims= [
+    { {
+            $claims = [
                 /*'Aliados Comerciales Vip'*/
 
                 [
-                    'commerce_id' => 1,
-                    'name'        => 'Meganegocios Vip',
-                    'slug'        => Str::slug('Meganegocios Vip'),
-                    'description' => 'Todo lo que quieres y necesitas aquí lo consigues',
-                    'directions'  => 'Sabanagrande, Caracas',
+                    'commerce_id'  => 1,
+                    'name'         => 'Aliados Meganegocios Vip',
+                    'slug'         => Str::slug('Meganegocios Vip'),
+                    'icon'         => '<img src="https://img.icons8.com/external-itim2101-flat-itim2101/64/000000/external-payment-digital-marketing-itim2101-flat-itim2101.png"/>',
+                    'manager'      => 'Marcos Rodriguez',
+                    'document'     => '10.002.123',
+                    'number_phone' => '0424.002.123',
+                    'email'        => 'meganegocios@meganegociosvip.com',
+                    'target'       => 'de todo',
+                    'description'  => 'Todo lo que quieres y necesitas aquí lo consigues',
+                    'address'      => 'Sabanagrande, Caracas',
+                    'observation'  => 'local muy angosto',
                 ],
 
 
                 /*Comercios Vip*/
                 [
                     'commerce_id' => 2,
-                    'name'        => 'Meganegocios Vip',
-                    'slug'        => Str::slug('Meganegocios Vip'),
-                    'description' => 'Todo lo que quieres y necesitas aquí lo consigues',
-                    'directions'  => 'Sabanagrande, Caracas',
+                    'name'        => 'Comercio Meganegocios Vip',
+                    'slug'         => Str::slug('Meganegocios Vip'),
+                    'icon'         => '<img src="https://img.icons8.com/external-itim2101-flat-itim2101/64/000000/external-payment-digital-marketing-itim2101-flat-itim2101.png"/>',
+                    'manager'      => 'Marcos Rodriguez',
+                    'document'     => '10.002.123',
+                    'number_phone' => '0424.002.123',
+                    'email'        => 'meganegocios@meganegociosvip.com',
+                    'target'       => 'de todo',
+                    'description'  => 'Todo lo que quieres y necesitas aquí lo consigues',
+                    'address'      => 'Sabanagrande, Caracas',
+                    'observation'  => 'local muy angosto',
                 ],
 
 
 
             ];
 
-            foreach ($claims as $claim){
+            foreach ($claims as $claim) {
 
-                Claim::create($claim);
-
+                $claim = Claim::factory(1)->create($claim)->first();
             }
-
         }
     }
 }

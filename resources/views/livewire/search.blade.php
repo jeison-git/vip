@@ -10,7 +10,7 @@
 
     </form>
 
-    <div class="absolute hidden w-full mt-1" :class="{ 'hidden' : !$wire.open }" @click.away="$wire.open = false">
+    <div class="absolute z-50 hidden w-full mt-1" :class="{ 'hidden' : !$wire.open }" @click.away="$wire.open = false">
         <div class="bg-white rounded-lg shadow-lg">
             <div class="px-4 py-3 space-y-1">
                 @forelse ($products as $product)
@@ -30,3 +30,4 @@
         </div>
     </div>
 </div>
+

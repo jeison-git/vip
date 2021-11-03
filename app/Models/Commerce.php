@@ -32,5 +32,15 @@ class Commerce extends Model
 
     }
 
+    public function orders(){ 
+        return $this->hasMany(Order::class);
+    }
+
+    //url slug
+    public function getRouteKeyName()
+    {
+        return 'slug'; 
+    }
+
 
 }

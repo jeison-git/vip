@@ -23,6 +23,16 @@ class Claim extends Model
 
         return $this->belongsTo(Commerce::class);
 
+    } 
+
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
+
+    //url slug
+    public function getRouteKeyName()
+    {
+        return 'slug'; 
     }
 
 }
