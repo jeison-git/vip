@@ -50,6 +50,38 @@ class ClaimSeeder extends Seeder
                     'observation'  => 'local muy angosto',
                 ],
 
+                 /*Comercios otros*/
+                 [
+                    'commerce_id' => 2,
+                    'name'        => 'Comercio Aliado prueba 1',
+                    'slug'         => Str::slug('Comercio Aliado prueba 1'),
+                    'icon'         => '<img src="https://img.icons8.com/external-itim2101-flat-itim2101/64/000000/external-payment-digital-marketing-itim2101-flat-itim2101.png"/>',
+                    'manager'      => 'Marcos Rodriguez',
+                    'document'     => '10.002.123',
+                    'number_phone' => '0424.002.123',
+                    'email'        => 'meganegocios@meganegociosvip.com',
+                    'target'       => 'de todo',
+                    'description'  => 'Todo lo que quieres y necesitas aquí lo consigues',
+                    'address'      => 'Av. Casanova, Edif.  (Frente al Gran Café), El Recreo, Caracas',
+                    'observation'  => 'local muy angosto',
+                ],
+
+                 /*Comercios otros*/
+                 [
+                    'commerce_id' => 2,
+                    'name'        => 'Comercio Aliado prueba 2',
+                    'slug'         => Str::slug('Comercio Aliado prueba 2'),
+                    'icon'         => '<img src="https://img.icons8.com/external-itim2101-flat-itim2101/64/000000/external-payment-digital-marketing-itim2101-flat-itim2101.png"/>',
+                    'manager'      => 'Marcos Rodriguez',
+                    'document'     => '10.002.123',
+                    'number_phone' => '0424.002.123',
+                    'email'        => 'meganegocios@meganegociosvip.com',
+                    'target'       => 'de todo',
+                    'description'  => 'Todo lo que quieres y necesitas aquí lo consigues',
+                    'address'      => 'Av. Casanova, Edif. cochinitos food (Frente al Gran Café), El Recreo, Caracas',
+                    'observation'  => 'local muy angosto',
+                ],
+
 
 
             ];

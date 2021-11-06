@@ -15,6 +15,7 @@ use App\Models\User;
 
 class CreateOrder extends Component
 {
+    //Crear orden de compra 
 
     public $envio_type = 1;
 
@@ -35,7 +36,7 @@ class CreateOrder extends Component
         $this->departments = Department::all();
         $this->claims      = Claim::all();
     }
-
+    //Insertar datos de contacto del usuario
     public function updatedEnvioType($value){
         if ($value == 1) {
             $this->resetValidation([
@@ -50,13 +51,12 @@ class CreateOrder extends Component
         }
 
     } 
-
+    //direcion en caso de entrega a domicilio
     public function updatedDepartmentId($value){
         $this->cities = City::where('department_id', $value)->get();
 
         $this->reset(['city_id', 'district_id']);
     }
-
 
     public function updatedCityId($value){
 
@@ -68,8 +68,7 @@ class CreateOrder extends Component
 
         $this->reset('district_id');
     } 
-
-
+    // registrar orden de compra y generar orden de pago
     public function create_order(){
 
         $rules = $this->rules;

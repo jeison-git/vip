@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
 
 class CreateCategory extends Component
 {
+    //Crear, Editar, Actualizar y eliminar Categorias
 
     use WithFileUploads; 
 

@@ -13,6 +13,7 @@ use Livewire\WithPagination;
 
 class CommerceFilter extends Component
 {
+    //Componente Comercios Vip DEshabilitado por errores
 
     use WithPagination;
    

@@ -11,6 +11,8 @@ use App\Models\Commerce;
 
 class CreateCommerce extends Component
 {
+    //Crear, Editar, Actualizar y eliminar Comercios Aliado y comercio vip solamente
+
     use WithFileUploads; 
 
     public $commerces, $commerce, $rand;

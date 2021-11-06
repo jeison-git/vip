@@ -11,6 +11,8 @@ use Illuminate\Support\Str;
 
 class CreateBanner extends Component
 {
+    //Crear, Editar, Actualizar y eliminar Publicidad
+
     use WithFileUploads; 
 
     public $banners, $banner, $rand;

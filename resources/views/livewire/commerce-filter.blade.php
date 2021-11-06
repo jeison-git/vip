@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container">{{-- Componente y vista principal de lños productos de Comercios vip --}}
     
     <section class="py-16">
 

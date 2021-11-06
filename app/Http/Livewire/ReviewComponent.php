@@ -7,6 +7,8 @@ use Livewire\Component;
 
 class ReviewComponent extends Component
 {
+    //Review y calificacion del proceso compra
+    
     public $order;
     public $rating;
     public $comment;

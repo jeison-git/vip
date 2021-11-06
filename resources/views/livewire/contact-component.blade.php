@@ -1,5 +1,5 @@
 <div >
-
+    {{-- Componente Formulario de contacto --}}
     <x-jet-form-section submit="save" class="mb-6">
         <x-slot name="title">
             CONTÁCTANOS

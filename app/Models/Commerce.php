@@ -18,12 +18,6 @@ class Commerce extends Model
 
     }
 
-    /*//Relacion muchos a muchos
-    public function brands(){
-
-        return $this->belongsToMany(Brand::class);
-
-    }*/
 
     //Relacion atraves de
     public function products(){

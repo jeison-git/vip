@@ -125,7 +125,7 @@
                 <x-jet-input-error for="createForm.icon" />
             </div>
 
-            <div class="col-span-6  justify-items-stretch sm:col-span-4">
+            <div class="col-span-6 justify-items-stretch sm:col-span-4">
                 <x-jet-label>
                     Imagen
                 </x-jet-label>

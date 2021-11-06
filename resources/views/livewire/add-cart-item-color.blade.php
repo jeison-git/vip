@@ -1,4 +1,4 @@
-<div x-data>
+<div x-data>{{-- Añadir items al shopping-card --}}
     <p class="text-xl text-gray-700">Color:</p>
 
     <select wire:model="color_id" class="w-full form-control">

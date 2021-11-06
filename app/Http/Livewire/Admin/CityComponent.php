@@ -8,6 +8,8 @@ use App\Models\City;
 
 class CityComponent extends Component
 {
+    //Crear, Editar, Actualizar y eliminar Municipios
+
     protected $listeners = ['delete'];
 
     public $city, $districts, $district;

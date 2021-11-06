@@ -13,7 +13,7 @@
     </x-slot>
 
     <div class="container py-12">
-        {{-- Agregar departamento --}}
+        {{-- Agregar departamento  o Municipio--}}
         <x-jet-form-section submit="save" class="mb-6">
     
             <x-slot name="title">
@@ -58,7 +58,7 @@
             </x-slot>
         </x-jet-form-section>
     
-        {{-- Mostrar Departamentos --}}
+        {{-- Mostrar Municipios --}}
         <x-jet-action-section>
             <x-slot name="title">
                 Lista de municipios

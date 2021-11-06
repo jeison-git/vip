@@ -9,6 +9,7 @@ use App\Models\ColorSize as Pivot;
 
 class ColorSize extends Component
 {
+    // relacionar Crear, Editar, Actualizar y eliminar items de la tabla pivot Color-Zise
 
     public $size, $colors, $color_id, $quantity, $open = false;
 

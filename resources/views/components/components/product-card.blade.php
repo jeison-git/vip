@@ -1,4 +1,4 @@
-@props(['product'])
+@props(['product']){{-- Card Productos --}}
 
 
     <div class="flex flex-col items-center justify-center h-full bg-gray-100">{{-- tarjeta que muestra informacion del producto --}}
@@ -53,7 +53,7 @@
                 <div class="flex justify-between pl-4 pr-2 mt-4 mb-2">{{-- precio real del producto y boton que redirecciona a la vista del producto --}}
 
                     <button class="block text-xl font-semibold text-gray-700 cursor-auto">
-                        ${{ $product->pricevip }}{{-- cambiar variable por $realprice --}}
+                        ${{ $product->realprice }}{{-- cambiar variable por $realprice --}}
                     </button>
 
                     <button

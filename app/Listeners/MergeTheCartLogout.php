@@ -23,6 +23,8 @@ class MergeTheCartLogout
     /**
      * Handle the event.
      *
+     * Guardar los items del usuario en el dropdown cart una ves cerrado sesion refrescar 
+     * 
      * @param  Logout  $event
      * @return void
      */

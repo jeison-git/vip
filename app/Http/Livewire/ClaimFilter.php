@@ -13,6 +13,7 @@ use Livewire\WithPagination;
 
 class ClaimFilter extends Component
 {
+    //Buscar o filtrar productos por Aliados Comerciales vip
 
     use WithPagination;
    

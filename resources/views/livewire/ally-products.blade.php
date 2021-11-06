@@ -1,7 +1,7 @@
 <div wire:init="loadPosts">
-    @if (count($products)) 
+    @if (count($products)) {{-- loader sppiner --}}
 
-        <div class="glider-contain">
+        <div class="glider-contain">{{-- card de productos del crousel productos de los aliados comerciales vip --}}
 
             <ul class="glider-{{ $claim->id }}">{{-- ojo  claim por pruebas --}}
 

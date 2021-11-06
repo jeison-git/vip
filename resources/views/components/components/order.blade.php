@@ -1,4 +1,4 @@
-@props(['size'=> 30, 'color'=> 'white'])
+@props(['size'=> 30, 'color'=> 'white']){{-- es utilizado en Dropdown order,icono del nav --}}
 
 @php
     switch ($color) { 

@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Storage;
 
 class AddCartItem extends Component
 {
+    //Añadir items al shipping cart
+    
     public $product, $quantity;
     public $qty = 1;
     public $options = [

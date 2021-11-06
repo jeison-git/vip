@@ -9,6 +9,8 @@ use Livewire\WithPagination;
 
 class CategoryFilter extends Component
 {
+    //Filtrar Productos por Categoria
+    
     use WithPagination;
 
     public $category;

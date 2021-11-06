@@ -84,7 +84,7 @@
 
     <div class="grid grid-cols-2 gap-4 mb-4">{{-- ojo --}}
         
-        {{-- Precio --}}
+        {{-- Precio Vip--}}
         <div>
             <x-jet-label value="Precio Vip" />
             <x-jet-input 
@@ -94,15 +94,16 @@
                 step=".01" />
             <x-jet-input-error for="price" />
         </div>
-        {{-- Preciovip --}}
+
+        {{-- Precio real --}}
         <div>
             <x-jet-label value="Precio Real" />
             <x-jet-input 
-                wire:model="pricevip"
+                wire:model="realprice"
                 type="number" 
                 class="w-full" 
                 step=".01" />
-            <x-jet-input-error for="pricevip" />
+            <x-jet-input-error for="realprice" />
         </div>
     </div> 
 
@@ -137,6 +138,7 @@
         </div>
     </div>
 
+    {{-- si una subcategoria tiene Color o tallas, añadir datos adicionaless --}}
     @if ($subcategory_id)
         
         @if (!$this->subcategory->color && !$this->subcategory->size)

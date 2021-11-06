@@ -14,10 +14,11 @@ use Illuminate\Support\Str;
 
 class CreateProduct extends Component
 {
+    //Crear, Editar, Actualizar y eliminar Productos
 
     public $categories = [], $subcategories = [], $brands = [], $claims = [];//ojo aca
     public $category_id = "", $subcategory_id = "", $brand_id = "", $claim_id = "";
-    public $name, $slug, $description, $price, $pricevip, $quantity;
+    public $name, $slug, $description, $price, $realprice, $quantity;
 
 
     protected $rules = [
@@ -29,10 +30,11 @@ class CreateProduct extends Component
         'description'    => 'required',
         'brand_id'       => 'required',
         'price'          => 'required',
-        'pricevip'       => 'required',
+        'realprice'      => 'required',
         
     ]; 
 
+    //actualizar categoria
     public function updatedCategoryId($value){
 
 
@@ -49,6 +51,7 @@ class CreateProduct extends Component
         $this->slug = Str::slug($value);
     }
 
+    //Subcategoria
     public function getSubcategoryProperty(){
         return Subcategory::find($this->subcategory_id);
     }
@@ -60,6 +63,7 @@ class CreateProduct extends Component
 
     }
 
+    //guardar producto
     public function save(){        
 
         $rules = $this->rules;
@@ -78,12 +82,13 @@ class CreateProduct extends Component
         $product->slug        = $this->slug;
         $product->description = $this->description;
         $product->price       = $this->price;
-        $product->pricevip    = $this->pricevip;
+        $product->realprice   = $this->realprice;
         $product->category_id = $this->category_id;//ojo aca para posibles errores
         $product->subcategory_id = $this->subcategory_id;
         $product->claim_id    = $this->claim_id;
         $product->brand_id    = $this->brand_id;
 
+        //si una subcategoria posee color o tamaño solicitar, agregar datos adicionales al producto
         if ($this->subcategory_id) {
             if (!$this->subcategory->color && !$this->subcategory->size) {
                 $product->quantity = $this->quantity;
@@ -92,7 +97,9 @@ class CreateProduct extends Component
 
         $product->save();
 
-        return redirect()->route('admin.products.edit', $product)->with('message', 'Welcome to ItSolutionStuff Tutorials!');
+        return redirect()->route('admin.products.edit', $product);
+        
+        session()->flash('message', '¡Gracias usted a añadido un producto!');
     }
 
     public function render()

@@ -12,9 +12,12 @@ class OrderPolicy
 
     /**
      * Create a new policy instance.
+     * 
+     * Politicas para restringir los pagos 
      *
      * @return void
      */
+    
     public function author(User $user, Order $order){
         if ($order->user_id == $user->id) {
             return true;
@@ -23,17 +26,14 @@ class OrderPolicy
         }
     }
 
+    ///si el estatus es 1; puede canselar de lo contrario no error 403
     public function payment(User $user, Order $order){
         if ($order->status == 1) {
             return true;
         }else{
             return false; 
         }
-    }
-    
-    /*public function payment(User $user, Order $order){
-        return ($order->status == Order::PENDIENTE);
-    }*/   
+    }  
     
 
 }

@@ -9,6 +9,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
 class UpdateCartItemSize extends Component
 {
+    //Actualizar los detalles de talla de los items añadidos al Shopping Cart
 
     public $rowId, $qty, $quantity;
 

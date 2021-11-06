@@ -1,15 +1,17 @@
 <x-app-layout>
+
     <div class="container py-8">
-        <ul>
+
+        <ul>{{-- componente de busqueda --}}
             @forelse($products as $product)
-                <x-components.product-list :product="$product" />
+                <x-components.product-list :product="$product" />{{-- components/components/product-list --}}
 
             @empty
 
                 <li class="bg-white rounded-lg shadow-2xl">
                     <div class="p-4">
                         <p class="text-lg font-semibold text-gray-700">
-                            Ningún producto coinide con esos parametros
+                           Upps! Se completo la busqueda, sin resultados.
                         </p>
                     </div>
                 </li>
@@ -18,7 +20,8 @@
         </ul>
 
         <div class="mt-4">
-            {{ $products->links() }}
+            {{ $products->links() }}{{-- paginar --}}
         </div>
     </div>
+
 </x-app-layout>

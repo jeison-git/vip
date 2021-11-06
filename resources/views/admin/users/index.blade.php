@@ -1,7 +1,7 @@
 <x-admin-layout>
     
     <div class="container py-12">
-        @livewire('admin.user-component')
+        @livewire('admin.user-component'){{-- livewire componente /tabla de usuarios--}}
     </div>
 
     {{-- @push('script')

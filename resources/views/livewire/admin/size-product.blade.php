@@ -1,4 +1,4 @@
-<div>
+<div>{{-- Tallas del producto --}}
     
     <div class="p-6 mt-12 bg-white rounded-lg shadow-lg">
         <div>

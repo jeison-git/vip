@@ -10,9 +10,10 @@ use Illuminate\Support\Facades\Http;
 
 class OrderController extends Controller
 {
+    //
     public function index()
     {
-
+        //Validar el usuario que realiza una orden de pago
         $orders = Order::query()->where('user_id', auth()->user()->id);
 
         if (request('status')) {
@@ -20,7 +21,6 @@ class OrderController extends Controller
         }
 
         $orders = $orders->get();
-
 
         $pendiente = Order::where('status', 1)->where('user_id', auth()->user()->id)->count();
         $recibido  = Order::where('status', 2)->where('user_id', auth()->user()->id)->count();
@@ -32,10 +32,10 @@ class OrderController extends Controller
         return view('orders.index', compact('orders', 'pendiente', 'recibido', 'enviado', 'entregado', 'anulado'));
     }
 
+    //muestra los detalles de su orden
     public function show(Order $order)
     {
-
-       $this->authorize('author', $order);
+       $this->authorize('author', $order);//policies order
 
         $items = json_decode($order->content);
         $envio = json_decode($order->envio);
@@ -43,7 +43,7 @@ class OrderController extends Controller
         return view('orders.show', compact('order', 'items', 'envio'));
     }
 
-
+   //detalles para cancelar, api mercado pago deshabilitada se usa cdn paypal
     public function pay(Order $order, Request $request){
 
         $this->authorize('author', $order);

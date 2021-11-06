@@ -22,12 +22,6 @@ class Review extends Model
         return $this->belongsTo(User::class);
 
     }
-
-    /* public function order(){
-
-        return $this->belongsTo('App\Models\Order');
-
-    } */
      //function for setup relationship with orderItem table
      public function order()
      { 

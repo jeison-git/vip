@@ -10,7 +10,7 @@
             <div class="mx-2">
                 <div class="">
                     <a href="{{ route('products.show', $item) }}" class="px-2 my-2 text-xs text-red-600 border-2 border-gold">
-                        ${{ $item->pricevip }}
+                        ${{ $item->price }}
                     </a>
                 </div>
             </div>

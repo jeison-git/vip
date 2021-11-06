@@ -1,4 +1,4 @@
-<div class="p-6 mb-4 bg-white rounded-lg shadow-xl">
+<div class="p-6 mb-4 bg-white rounded-lg shadow-xl"> {{-- Componente estado del producto borrador o publicado --}}
     <p class="mb-2 text-2xl font-semibold text-center">Estado del producto</p>
 
     <div class="flex">

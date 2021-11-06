@@ -12,6 +12,7 @@ class AnswerContact extends Component
 {
     public $contact, $contacts;
 
+    //validar 
     protected $rules = [
         'contact.issue'   => 'required',
         'contact.name'    => 'required',
@@ -20,6 +21,7 @@ class AnswerContact extends Component
         'contact.comment' => 'required',
     ];
 
+    //limpiar el formulario 
     protected $listeners = ['refreshContact', 'delete'];
 
     public function mount(Contact $contact){
@@ -27,11 +29,12 @@ class AnswerContact extends Component
         $this->contact = $contact;
     }
 
-
+    //funcion limpiar filtro
     public function refreshContact(){
         $this->contact = $this->contact->fresh();
     }    
 
+    //guardar los datos del mensaje
     public function save(){
         $rules = $this->rules;        
 
@@ -43,6 +46,7 @@ class AnswerContact extends Component
 
     }    
 
+    //eliminar mensaje
     public function delete(){        
 
         $this->contact->delete();
@@ -50,7 +54,6 @@ class AnswerContact extends Component
         return redirect()->route('admin.contacts.index');
 
     }    
-
 
     public function render()
     {

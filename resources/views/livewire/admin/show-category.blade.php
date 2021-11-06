@@ -1,11 +1,12 @@
 <div class="container py-12">
 
-    <h1 class="flex mb-4 items-cente">                    
-        
-        <a href="{{ URL::previous() }}" class="mr-2"><img src="https://img.icons8.com/dusk/25/000000/circled-left-2.png"/></a>
+    <h1 class="flex mb-4 items-cente">
+
+        <a href="{{ URL::previous() }}" class="mr-2"><img
+                src="https://img.icons8.com/dusk/25/000000/circled-left-2.png" /></a>
     </h1>
-	
-    {{-- Formulario crear categoría --}} 
+
+    {{-- Formulario crear Subcategoría --}}
     <x-jet-form-section submit="save" class="mb-6">
         <x-slot name="title">
             Crear nueva subcategoría
@@ -14,7 +15,7 @@
         <x-slot name="description">
             Complete la información necesaria para poder crear una nueva subcategoría
         </x-slot>
-
+        {{-- Nombre --}}
         <x-slot name="form">
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label>
@@ -25,7 +26,7 @@
 
                 <x-jet-input-error for="createForm.name" />
             </div>
-
+            {{-- Slug --}}
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label>
                     Slug
@@ -34,7 +35,7 @@
                 <x-jet-input disabled wire:model="createForm.slug" type="text" class="w-full mt-1 bg-gray-100" />
                 <x-jet-input-error for="createForm.slug" />
             </div>
-
+            {{-- Especificar si dicha subcategoria pose colores u tallas --}}
             <div class="col-span-6 sm:col-span-4">
                 <div class="flex justify-center text-sm">
                     <p>¿Está subcategoría necesita que especifiquemos color?</p>
@@ -44,7 +45,7 @@
                             <input type="radio" value="1" name="color" wire:model.defer="createForm.color">
                             Si
                         </label>
-                        
+
                         <label class="ml-2">
                             <input type="radio" value="0" name="color" wire:model.defer="createForm.color">
                             No
@@ -64,7 +65,7 @@
                             <input type="radio" value="1" name="size" wire:model.defer="createForm.size">
                             Si
                         </label>
-                        
+
                         <label class="ml-2">
                             <input type="radio" value="0" name="size" wire:model.defer="createForm.size">
                             No
@@ -74,9 +75,9 @@
 
                 <x-jet-input-error for="createForm.size" />
             </div>
-            
-        </x-slot>
 
+        </x-slot>
+        {{-- Submit --}}
         <x-slot name="actions">
 
             <x-jet-action-message class="mr-3" on="saved">
@@ -114,14 +115,16 @@
                         <tr>
                             <td class="py-2">
 
-                                <a {{--href="{{route('admin.categories.show', $subcategory)}}"--}} class="text-xm">
-                                    {{$subcategory->name}}
+                                <a {{-- href="{{route('admin.categories.show', $subcategory)}}" --}} class="text-xm">
+                                    {{ $subcategory->name }}
                                 </a>
                             </td>
                             <td class="py-2">
                                 <div class="flex divide-x divide-gray-300">
-                                    <a class="pr-2 cursor-pointer hover:text-blue-600" wire:click="edit('{{$subcategory->id}}')">Editar</a>
-                                    <a class="pl-2 cursor-pointer hover:text-red-600" wire:click="$emit('deleteSubcategory', '{{$subcategory->id}}')">Eliminar</a>
+                                    <a class="pr-2 cursor-pointer hover:text-blue-600"
+                                        wire:click="edit('{{ $subcategory->id }}')">Editar</a>
+                                    <a class="pl-2 cursor-pointer hover:text-red-600"
+                                        wire:click="$emit('deleteSubcategory', '{{ $subcategory->id }}')">Eliminar</a>
                                 </div>
                             </td>
                         </tr>
@@ -142,7 +145,7 @@
         <x-slot name="content">
 
             <div class="space-y-3">
-                
+
                 <div>
                     <x-jet-label>
                         Nombre
@@ -165,44 +168,44 @@
                 <div>
                     <div class="flex">
                         <p>¿Está subcategoría necesita especifiquemos color?</p>
-    
+
                         <div class="ml-auto">
                             <label>
                                 <input type="radio" value="1" name="color" wire:model.defer="editForm.color">
                                 Si
                             </label>
-                            
+
                             <label class="ml-2">
                                 <input type="radio" value="0" name="color" wire:model.defer="editForm.color">
                                 No
                             </label>
                         </div>
                     </div>
-    
+
                     <x-jet-input-error for="createForm.color" />
                 </div>
-    
+
                 <div>
                     <div class="flex">
                         <p>¿Está subcategoría necesita especifiquemos talla?</p>
-    
+
                         <div class="ml-auto">
                             <label>
                                 <input type="radio" value="1" name="size" wire:model.defer="editForm.size">
                                 Si
                             </label>
-                            
+
                             <label class="ml-2">
                                 <input type="radio" value="0" name="size" wire:model.defer="editForm.size">
                                 No
                             </label>
                         </div>
                     </div>
-    
+
                     <x-jet-input-error for="createForm.size" />
                 </div>
 
-               
+
             </div>
         </x-slot>
 
@@ -217,7 +220,7 @@
     @push('script')
         <script>
             Livewire.on('deleteSubcategory', subcategoryId => {
-            
+
                 Swal.fire({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",

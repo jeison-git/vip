@@ -6,6 +6,8 @@ use Livewire\Component;
 
 class AllyProducts extends Component
 {
+    //Mostrar productos del Aliado Comercial Vip
+
     public $claim;
     public $view = "grid";
     public $products = [];

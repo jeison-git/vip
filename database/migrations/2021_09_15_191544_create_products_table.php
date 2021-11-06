@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->text('description');
-            $table->float('pricevip');
+            $table->float('realprice');
             $table->float('price');
 
             $table->unsignedBigInteger('category_id');

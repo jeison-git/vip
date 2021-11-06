@@ -1,13 +1,15 @@
 <div>
- 
-    <header class="bg-white shadow">
+
+    <header class="bg-white shadow"> {{-- Cabezera --}}
         <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between">                            
+            <div class="flex items-center justify-between">
 
                 <h1 class="flex items-center font-semibold leading-tight text-gray-800 md:text-2xl">
-                    
-                    <a href="{{ route('admin.index') }}" class="mr-2"><img src="https://img.icons8.com/dusk/25/000000/pancake.png"/> 
-                    <a href="{{ route('admin.products.create') }}" class="mr-2"><img src="https://img.icons8.com/dusk/25/000000/plus-2-math.png"/></a>Productos 
+
+                    <a href="{{ route('admin.index') }}" class="mr-2"><img
+                            src="https://img.icons8.com/dusk/25/000000/pancake.png" />
+                        <a href="{{ route('admin.products.create') }}" class="mr-2"><img
+                                src="https://img.icons8.com/dusk/25/000000/plus-2-math.png" /></a>Productos
                 </h1>
 
                 <x-jet-danger-button wire:click="$emit('deleteProduct')">
@@ -22,12 +24,12 @@
 
         <h1 class="mb-8 text-3xl font-semibold text-center">Complete esta información para crear un producto</h1>
 
-        <div class="mb-4" wire:ignore>
+        <div class="mb-4" wire:ignore>{{-- Script para  subir añadir imagenes --}}
             <form action="{{ route('admin.products.files', $product) }}" method="POST" class="dropzone"
                 id="my-awesome-dropzone"></form>
         </div>
 
-        @if ($product->images->count())
+        @if ($product->images->count()){{-- Imagenes del producto a actualizar --}}
 
             <section class="p-6 mb-4 bg-white rounded-lg shadow-xl">
                 <h1 class="mb-2 text-2xl font-semibold text-center">Imagenes del producto</h1>
@@ -51,7 +53,7 @@
 
         @endif
 
-
+        {{-- Componente Livewire/Status/ Estado del producto Borrador u Publicado --}}
         @livewire('admin.status-product', ['product' => $product], key('status-product-' . $product->id))
 
         {{-- <div class="p-6 bg-white rounded-lg shadow-xl">
@@ -68,7 +70,7 @@
                 <x-jet-input-error for="product.name" />
             </div>
 
-            <div class="grid grid-cols-2 gap-6 mb-4">               
+            <div class="grid grid-cols-2 gap-6 mb-4">
                 {{-- Categoría --}}
                 <div>
                     <x-jet-label value="Categorías" />
@@ -143,17 +145,17 @@
             <div class="grid grid-cols-2 gap-6 mb-4">
                 {{-- Precio --}}
                 <div>
-                    <x-jet-label value="Precio" />
+                    <x-jet-label value="Precio Vip" />
                     <x-jet-input wire:model="product.price" type="number" class="w-full" step=".01" />
                     <x-jet-input-error for="product.price" />
                 </div>
                 {{-- Precio vip --}}
                 <div>
-                    <x-jet-label value="Precio Vip" />
-                    <x-jet-input wire:model="product.pricevip" type="number" class="w-full" step=".01" />
-                    <x-jet-input-error for="product.pricevip" />
+                    <x-jet-label value="Precio Real" />
+                    <x-jet-input wire:model="product.realprice" type="number" class="w-full" step=".01" />
+                    <x-jet-input-error for="product.realprice" />
                 </div>
-            </div>           
+            </div>
 
             @if ($this->subcategory)
 
@@ -179,10 +181,10 @@
                 <x-jet-button wire:loading.attr="disabled" wire:target="save" wire:click="save">
                     Actualizar producto
                 </x-jet-button>
-            </div> 
+            </div>
         </div>
 
-
+        {{-- Si el producto tiene color o talla actualizar detalles --}}
         @if ($this->subcategory)
 
             @if ($this->subcategory->size)
@@ -200,7 +202,7 @@
 
     </div>
 
-
+    {{-- Scripts --}}
     @push('script')
         <script>
             Dropzone.options.myAwesomeDropzone = {

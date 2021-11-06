@@ -1,4 +1,4 @@
-<div>
+<div>{{-- Componentes lista de Usuarios --}}
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
             Usuarios
@@ -94,7 +94,7 @@
                 </div>
             @endif 
 
-             @if ($users->hasPages())
+             @if ($users->hasPages()){{-- Paginacion --}}
                     
                 <div class="px-6 py-4">
                     {{$users->links()}}

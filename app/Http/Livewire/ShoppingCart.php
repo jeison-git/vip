@@ -7,8 +7,11 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
 class ShoppingCart extends Component
 {
+    // Carrito de compras
+
     protected $listeners = ['render'];
 
+    //Una ves que se procede a crear la orden de compra eliminar producto del shopping cart
     public function destroy(){
         Cart::destroy();
 

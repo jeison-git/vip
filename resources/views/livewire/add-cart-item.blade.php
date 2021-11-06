@@ -1,4 +1,4 @@
-<div x-data>
+<div x-data>{{--  Añadir items al carrito de compra --}}
     <p class="mb-4 text-gray-700">
         <span class="text-lg font-semibold">Stock disponible:</span> {{$quantity}}
     </p>

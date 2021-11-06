@@ -1,4 +1,6 @@
 @props(['category'])
+{{-- componente filtros subcategorias --}}
+
 <div class="grid grid-cols-4 p-4 mt-4">
     <div>
         <p class="mb-3 text-lg font-bold text-center text-trueGray-500">Subcategorías</p>

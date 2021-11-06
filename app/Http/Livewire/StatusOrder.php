@@ -6,6 +6,7 @@ use Livewire\Component;
 
 class StatusOrder extends Component
 {
+    //Estado en el que se encuentra la orden o pedido de compra
     public $order, $status;
 
     public function mount(){

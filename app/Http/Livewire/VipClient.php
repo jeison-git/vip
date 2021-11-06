@@ -13,6 +13,8 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
 class VipClient extends Component
 {
+    //Componente Productos Clientes Vip Vista Principar
+
     use WithPagination;
     
     public $category_id = "", $subcategory_id = "", $brand_id = "", $claim_id = "";
@@ -58,7 +60,6 @@ class VipClient extends Component
 
         return view('livewire.vip-client', compact('products', 'categories', 'subcategories', 'brands'));
     }
-
     
     public function resetFilters()
     {

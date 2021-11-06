@@ -1,4 +1,4 @@
-<div class="relative flex-1" x-data>
+<div class="relative flex-1" x-data>{{-- Componente Busqueda de productos en tiempo real --}}
     
     <form action="{{ route('search') }}" autocomplete="off">
 

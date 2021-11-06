@@ -1,5 +1,5 @@
 <div wire:init="loadPosts">
-    @if (count($products))
+    @if (count($products)){{-- Carousel Comercios Vip --}}
 
         <div class="glider-contain">
 

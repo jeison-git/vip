@@ -7,6 +7,8 @@ use Livewire\Component;
 
 class DropdownOrder extends Component
 {
+    // iCono de Ordenes barra de navegacion
+    
     protected $listeners = ['render'];
 
     public function render()

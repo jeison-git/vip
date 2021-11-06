@@ -8,6 +8,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
 class UpdateCartItemColor extends Component
 {
+    //Actualizar detalles de los items añadidos al Shopping Cart
 
     public $rowId, $qty, $quantity;
 

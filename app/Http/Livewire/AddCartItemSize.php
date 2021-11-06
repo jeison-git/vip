@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 
 class AddCartItemSize extends Component
 {
+    //Añadir productos al Shopping cart
 
     public $product, $sizes;
     public $color_id = "";
@@ -43,7 +44,6 @@ class AddCartItemSize extends Component
         $this->options['color'] = $color->name;
         $this->options['color_id'] = $color->id;
     }
-
 
     public function decrement()
     {

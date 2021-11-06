@@ -8,6 +8,7 @@ use App\Models\Category;
 
 class Search extends Component
 {
+    //Componente de busqueda 
     public $search;
 
     public $open = false;

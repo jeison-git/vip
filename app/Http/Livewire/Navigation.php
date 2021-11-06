@@ -7,6 +7,7 @@ use App\Models\Category;
 
 class Navigation extends Component
 {
+    //Componente barra de navegacion
     public function render()
     {
         $categories = Category::all();

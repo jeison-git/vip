@@ -17,7 +17,7 @@ class CommerceSeeder extends Seeder
     {
         Commerce::create([
 
-                'name' => 'Aliados Comerciales Vip',
+                'name' => '1 Aliados Comerciales Vip',
                 'slug' => Str::slug('Aliados Comerciales Vip'),
                 'description' => 'Todo lo que necesitas aquí lo consigues',
 
@@ -25,7 +25,7 @@ class CommerceSeeder extends Seeder
 
         Commerce::create([
 
-            'name' => 'Comercios Vip',
+            'name' => ' 2 Comercios Vip',
             'slug' => Str::slug('Comercios Vip'),
             'description' => 'Todo lo que necesitas aquí lo consigues',
 

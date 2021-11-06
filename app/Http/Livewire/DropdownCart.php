@@ -6,6 +6,7 @@ use Livewire\Component;
 
 class DropdownCart extends Component
 {
+    //Componente Dropdown Cart icono del nav 
 
     protected $listeners = ['render'];
     

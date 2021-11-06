@@ -1,4 +1,4 @@
-@props(['size'=> 35, 'color'=> 'white'])
+@props(['size'=> 35, 'color'=> 'white']) {{-- componente utilisado para la busqueda; nav --}}
 
 @php
     switch ($color) {

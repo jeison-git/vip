@@ -11,6 +11,7 @@ use Illuminate\Queue\SerializesModels;
 
 class AnswerContacts extends Mailable
 {
+    //Mailable para respnder mensajes de contactos
     use Queueable, SerializesModels;
 
     public $subject = "¡Hemos respondido tu solicitud, gracias por escribirnos!";

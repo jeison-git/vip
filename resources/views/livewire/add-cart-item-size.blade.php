@@ -1,4 +1,4 @@
-<div x-data>
+<div x-data>{{-- Añadir detalles de la talla de los items al shopping-card --}}
     <div>
         <p class="text-xl text-gray-700">Talla:</p>
 

@@ -10,17 +10,18 @@ use App\Models\Answer;
 
 class ContactController extends Controller
 {
+    //lista de correos proveniente de conctato
     public function index(){
         return view('contacts.index');
     }
 
+    //visualisar los mensajes
     public function message(Contact $contact){
         return view('contacts.message', compact('contact'));
     }
 
-
+    //responder los mensajes
     public function answer(Request $request, Contact $contact){
-
         
         $request->validate([
             'body' => 'required'

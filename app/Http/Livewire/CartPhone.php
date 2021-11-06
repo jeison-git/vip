@@ -6,6 +6,7 @@ use Livewire\Component;
 
 class CartPhone extends Component
 {
+    //Componente dropdown cart responsive
     protected $listeners = ['render'];
     
     public function render()

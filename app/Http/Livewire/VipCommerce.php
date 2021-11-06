@@ -8,6 +8,8 @@ use App\Models\Product;
 
 class VipCommerce extends Component
 {
+    //Componente Productos Comercios Vip Vista Principar Solo Glider
+
     public $view = "grid";
 
     public function render()

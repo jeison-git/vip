@@ -12,7 +12,7 @@ class SearchController extends Controller
 
         $name = $request->name;
 
-        $products = Product::where('name', 'LIKE' ,'%' . $name . '%')
+        $products = Product::where('name', 'LIKE' ,'%' . $name . '%')/* componente de busqueda  */
                                 ->where('status', 2)
                                 ->paginate(6);
 

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 class AddCartItemColor extends Component
 {
+    //Añadir color o cantidad del producto al shopping cart
 
     public $product, $colors; 
     public $color_id = "";
@@ -54,8 +55,7 @@ class AddCartItemColor extends Component
         $this->reset('qty');
 
         $this->emitTo('dropdown-cart', 'render');
-    }
-    
+    }    
 
     public function render()
     {

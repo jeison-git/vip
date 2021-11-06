@@ -8,9 +8,10 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
 
+    //muestra los detalles del producto
     public function show(Product $product)
     {
-
+        //muestra productos similares
         $similares = Product::where('category_id', $product->category_id)
             ->where('id', '!=', $product->id)
             ->where('status', 2)

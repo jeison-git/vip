@@ -9,6 +9,8 @@ use App\Models\Contact;
 class ContactComponent extends Component
 {
 
+    //Registros de mensajes de contactos
+    
     public $contact, $contacts;
 
     protected $listeners = ['save'];
@@ -64,8 +66,7 @@ class ContactComponent extends Component
 
         $this->getContacts();
         $this->emit('saved');
-    } 
-
+    }
     
     public function render()
     {

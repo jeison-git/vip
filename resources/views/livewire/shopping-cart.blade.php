@@ -1,4 +1,5 @@
 <div class="container py-8">
+    {{--  Componente de Carrito de compra --}}
     <x-components.table-responsive>
         <div class="px-6 py-4 bg-white">
             <h1 class="text-lg font-semibold text-gray-700">CARRO DE COMPRAS</h1>

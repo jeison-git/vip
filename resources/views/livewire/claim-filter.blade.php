@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container">{{-- Componente filtro de productos de aliados comerciales vip --}}
 
     <section class="py-16">
 

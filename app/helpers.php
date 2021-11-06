@@ -4,6 +4,8 @@ use App\Models\Product;
 use App\Models\Size;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
+//Helpers que se encargan de Actualizar la catidad de productos en, colo u talla 
+
 function quantity($product_id, $color_id = null, $size_id = null){
     $product = Product::find($product_id);
 

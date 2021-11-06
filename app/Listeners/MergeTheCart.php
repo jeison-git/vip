@@ -22,6 +22,7 @@ class MergeTheCart
     /**
      * Handle the event.
      *
+     * Agregar items al componente dropdwon cart y recuperarlos al inicio de sesion
      * @param  Login  $event
      * @return void
      */

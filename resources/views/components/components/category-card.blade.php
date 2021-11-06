@@ -1,4 +1,4 @@
-@props(['category'])
+@props(['category']){{-- Card de categorias usado en el home --}}
 
 <div class="flex flex-col items-center justify-center h-full bg-gray-100">
 

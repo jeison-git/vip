@@ -1,4 +1,4 @@
-<div>
+<div>{{-- Componente carrito de compra para celulares nav  o menu de opciones --}}
     <a href="{{ route('shopping-cart') }}" class="flex items-center px-4 py-2 text-sm text-trueGray-500 hover:bg-gold hover:text-white">
 
         <span class="flex justify-center w-9">

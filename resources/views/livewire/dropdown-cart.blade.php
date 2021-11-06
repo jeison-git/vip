@@ -1,4 +1,4 @@
-<div> 
+<div> {{-- Muestra los productos añadido al carrito de compra en la barra de navegacion  --}}
     <x-jet-dropdown width="96">
         <x-slot name="trigger">
             <span class="relative inline-block cursor-pointer">

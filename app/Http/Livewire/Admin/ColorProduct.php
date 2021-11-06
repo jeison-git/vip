@@ -9,6 +9,8 @@ use App\Models\ColorProduct as Pivot;
 
 class ColorProduct extends Component
 {
+    //Crear, Editar, Actualizar y eliminar colores del producto
+
     public $product, $colors, $color_id, $quantity, $open = false;
 
     public $pivot, $pivot_color_id, $pivot_quantity;

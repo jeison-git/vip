@@ -7,6 +7,8 @@ use App\Models\Brand;
 
 class BrandComponent extends Component
 {
+
+    //Crear, Editar, Actualizar y eliminar Marcas
     public $brands, $brand;
 
     protected $listeners = ['delete'];

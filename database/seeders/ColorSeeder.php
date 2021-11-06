@@ -14,7 +14,7 @@ class ColorSeeder extends Seeder
      */
     public function run()
     {
-        $colors = ['Blanco', 'Negro', 'Azul', 'Rojo', 'Amarillo', 'Verde'];
+        $colors = ['Blanco', 'Negro', 'Azul', 'Rojo', 'Amarillo', 'Verde', 'Gris'];
 
         foreach ($colors as $color) {
             Color::create([

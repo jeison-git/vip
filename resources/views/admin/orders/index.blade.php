@@ -1,8 +1,8 @@
-<x-admin-layout>    
+<x-admin-layout>{{-- estado del orden de compra --}}    
 
     <div class="container py-12">
 
-        <section class="grid px-4 mx-auto mb-4 text-white sm:px-6 lg:px-8 sm:grid-cols-1 md:grid-cols-4 gap-x-4 gap-y-8">
+        <section class="grid px-4 mx-auto mb-4 text-white sm:px-6 lg:px-8 sm:grid-cols-1 md:grid-cols-4 gap-x-4 gap-y-8">{{-- card estados de orden compras  --}}
            
             <a href="{{ route('admin.orders.index') . "?status=2" }}" class="px-12 pt-8 pb-4 bg-gray-500 bg-opacity-75 rounded-lg">
                 <p class="text-2xl text-center">
@@ -45,7 +45,7 @@
             </a>
         </section>
 
-        @if ($orders->count())
+        @if ($orders->count()){{-- card detalles de pedidos recientes --}}
         
             <section class="py-8 text-gray-700 bg-white rounded-lg shadow-lg md:px-12 md:mt-12">
                 <h1 class="mb-4 ml-4 text-2xl">Pedidos recientes</h1>
@@ -119,7 +119,7 @@
                                     <br>
 
                                     <span class="text-sm">
-                                        {{$order->total}} USD
+                                        US ${{$order->total}}
                                     </span>
                                 </div>
 

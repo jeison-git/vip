@@ -6,6 +6,7 @@ use Livewire\Component;
 
 class CommerceProducts extends Component
 {
+    //Mostrar productos del Comercio Vip Solo en un carousel Glider
 
     public $item;
     public $view = "grid";

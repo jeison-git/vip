@@ -1,6 +1,6 @@
 @props(['product'])
 
-<li class="max-w-md mx-auto mb-4 overflow-hidden bg-white shadow-md rounded-xl md:max-w-2xl">
+<li class="max-w-md mx-auto mb-4 overflow-hidden bg-white shadow-md rounded-xl md:max-w-2xl">{{-- card de productos por lista --}}
 
     <article class="md:flex">
 
