@@ -19,7 +19,7 @@
 
     <div class="container">
 
-        <div class="max-w-5xl py-12 mx-auto lg:px-8">
+        <div class="max-w-5xl mx-auto mt-12 lg:px-8">
 
             <div class="flex items-center px-6 py-8 mb-6 bg-white rounded-lg shadow-lg md:px-12">{{-- Estado de la orden: recibido, pendiente, etc --}}
 
@@ -178,6 +178,12 @@
             </div>{{-- end resumen --}}
 
         </div>
+
+
+        @if ( $order->status >= 3 && $order->status != 5)  {{-- Si el status de la orden es 3 mostrar opcion de calificacion --}}                              
+            @livewire('review-component', ['order' => $order], key($order->id)){{-- componente review livewire /review-component --}}
+        @endif
+
 
     </div>
 

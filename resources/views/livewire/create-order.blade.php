@@ -5,17 +5,17 @@
             <div class="flex items-center justify-between">
 
                 <h1 class="flex items-center font-semibold leading-tight text-center text-gray-800 md:text-2xl">
-                      
-                    <a href="{{ Route('orders.index')}}" class="mr-2">
-                        <img src="https://img.icons8.com/dusk/25/000000/check.png"/>                      
+
+                    <a href="{{ Route('orders.index') }}" class="mr-2">
+                        <img src="https://img.icons8.com/dusk/25/000000/check.png" />
                     </a>
                     <a href="{{ URL::previous() }}" class="mr-2">
-                        <img src="https://img.icons8.com/dusk/25/000000/circled-left-2.png"/>
+                        <img src="https://img.icons8.com/dusk/25/000000/circled-left-2.png" />
                     </a>
                     <a href="{{ URL::previous() }}" class="mr-2">
-                        <img src="https://img.icons8.com/dusk/25/000000/circled-right-2.png"/>
+                        <img src="https://img.icons8.com/dusk/25/000000/circled-right-2.png" />
                     </a>
-                    
+
                     Si desea ordenar este producto haga su pedido
 
                 </h1>
@@ -59,8 +59,9 @@
 
                     </label>
 
-                    <div class="grid hidden grid-cols-1 gap-6 px-6 pb-6" :class="{ 'hidden': envio_type != 1 }">{{-- comercios aliados y comercios para retirar el producto --}}
-                        
+                    <div class="grid hidden grid-cols-1 gap-6 px-6 pb-6" :class="{ 'hidden': envio_type != 1 }">
+                        {{-- comercios aliados y comercios para retirar el producto --}}
+
 
                         <div>
                             <x-jet-label value="¿ Desea realizar el retiro personalmente ?" />
@@ -181,8 +182,8 @@
 
         </div>
 
-        <div class="order-1 lg:order-2 lg:col-span-1 xl:col-span-2">{{-- card de resumen --}}
-            <div class="p-6 bg-white rounded-lg shadow">
+        <div class="order-1 lg:order-2 lg:col-span-1 xl:col-span-2">{{-- card de resumen  y reseñas --}}
+            <div class="p-6 mb-4 bg-white rounded-lg shadow">{{-- card de resumen --}}
                 <ul>
                     @forelse (Cart::content() as $item)
                         <li class="flex items-center justify-between p-2 border-b border-gray-200">
@@ -244,10 +245,74 @@
                         @endif
                     </p>
                 </div>
-            </div>
-        </div>
+            </div>{{-- end card resumen --}}
 
-        
+
+            <div class="flex items-center px-6 py-4 mb-6 bg-white rounded-lg shadow-lg md:px-12">
+                {{-- card- respuesta o comentario del usuario --}}
+
+                <div class="w-full mt-8 md:mt-0" x-data="{ open: false }">
+
+                    <header
+                        class="flex items-center justify-between px-4 py-2 rounded shadow-lg cursor-pointer bg-gray-50"
+                        x-on:click="open= !open">{{-- etiqueta --}}
+
+                        <div class="text-xs font-semibold text-gray-800 uppercase md:text-sm">
+
+                            <p class="text-xs font-medium tracking-wider uppercase">
+                                Calificaciones sobres ordenes de compras
+                            </p>
+
+                        </div>
+                        <a class="items-center ml-2 font-semibold hover:text-gray-800 text-gold hover:underline"><i
+                                class="fa fa-angle-down" aria-hidden="true"></i>
+                        </a>
+                    </header>
+
+                    <div x-show="open"
+                        class="relative z-10 h-auto p-4 py-10 overflow-hidden bg-white border-b-2 border-gray-300 rounded-lg shadow-2xl px-7">
+
+
+                        @forelse ($comments as $comment){{-- recorrer la coleccion rating->comment para buscar calificaciones --}}
+
+                            <article class="grid items-center justify-between grid-cols-1 mb-4">{{-- valoraciones --}}
+
+
+                                <figure class="mb-2 order">
+                                    <img class="object-cover w-12 h-12 rounded-full shadow-lg"
+                                        src="{{ $comment->user->profile_photo_url ?? null }}" alt="">
+                                </figure>
+
+                                <div class="order-1">
+                                    <p class="flex items-center text-xs">
+                                        <b class="mr-1 text-gray-800">{{ $comment->user->name ?? null }}</b>
+                                        <i class="text-yellow-300 fas fa-star"></i>
+                                        ({{ $comment->rating ?? null }})&nbsp;
+
+                                    </p>
+
+                                    <div class="items-center flex-1 w-full text-xs tracking-wider text-justify uppercase card-body">
+                                        {{ $comment->comment ?? null }}
+                                    </div>
+                                </div>
+
+
+                            </article>
+                        @empty
+                            <div class="flex col-span-1 mt-2">
+                                <div class="relative px-4 py-4 leading-6 text-center">
+                                    <div class="text-xs font-medium tracking-wider text-gray-600 uppercase">
+                                        No hay comentarios sobre ordenes de compra
+                                    </div>
+                                </div>
+                            </div>
+                        @endforelse
+
+                    </div>
+
+                </div>
+
+        </div>
 
     </div>
 

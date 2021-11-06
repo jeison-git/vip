@@ -44,7 +44,7 @@ class AddCartItem extends Component
 
         $this->emitTo('dropdown-cart', 'render');
     }
-
+ 
     public function render()
     {
         return view('livewire.add-cart-item');

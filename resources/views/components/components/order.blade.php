@@ -1,7 +1,7 @@
 @props(['size'=> 30, 'color'=> 'white'])
 
 @php
-    switch ($color) {
+    switch ($color) { 
         case 'gray':
 
             $col = '#374151';

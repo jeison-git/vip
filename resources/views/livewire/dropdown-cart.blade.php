@@ -1,4 +1,4 @@
-<div>
+<div> 
     <x-jet-dropdown width="96">
         <x-slot name="trigger">
             <span class="relative inline-block cursor-pointer">
@@ -59,7 +59,7 @@
                         Ir al carrito de compras
                     </x-components.button-enlace>
 
-                </div>
+                </div> 
             @endif
 
         </x-slot>

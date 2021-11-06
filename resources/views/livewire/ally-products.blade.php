@@ -1,5 +1,5 @@
 <div wire:init="loadPosts">
-    @if (count($products))
+    @if (count($products)) 
 
         <div class="glider-contain">
 

@@ -10,6 +10,8 @@ use App\Models\District;
 use App\Models\Order;
 use App\Models\City;
 use App\Models\Claim;
+use App\Models\Review;
+use App\Models\User;
 
 class CreateOrder extends Component
 {
@@ -22,6 +24,7 @@ class CreateOrder extends Component
 
     public $department_id = "", $city_id = "", $district_id = "", $claim_id = "";
 
+       
     public $rules = [
         'contact' => 'required',
         'phone' => 'required',
@@ -85,7 +88,7 @@ class CreateOrder extends Component
 
         $this->validate($rules);
 
-        $order = new Order();
+        $order = new Order(); 
 
         $order->user_id = auth()->user()->id;
         $order->contact = $this->contact;
@@ -129,7 +132,15 @@ class CreateOrder extends Component
     }
 
     public function render()
-    {
-        return view('livewire.create-order');
+    {      
+        
+        $comments = Review::where('status', 1)
+                    ->with('user')
+                    ->with('order')
+                    ->inRandomOrder()
+                    ->limit(5)
+                    ->get();
+
+        return view('livewire.create-order', compact('comments'));
     }
 }

@@ -9,27 +9,30 @@ class Review extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $guarded = [];
+
+    protected $fillable = [
+        'comment'
+    ];
 
     //relacion uno a muchos inversa (reviews muchos comentarios vienen de un usuario)
 
     public function user(){
 
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
 
     }
 
-    public function product(){
-
-        return $this->belongsTo('App\Models\Product');
-
-    } 
-
-    public function order(){
+    /* public function order(){
 
         return $this->belongsTo('App\Models\Order');
 
-    } 
+    } */
+     //function for setup relationship with orderItem table
+     public function order()
+     { 
+         return $this->belongsTo(Order::class);
+     }
 
 
-} 
+}

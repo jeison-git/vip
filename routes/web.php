@@ -18,6 +18,7 @@ use App\Http\Controllers\WebhooksController;
 use App\Http\Livewire\VipCommerce;
 use App\Models\Order;
 use App\Http\Controllers\ContactController;
+use App\Http\Livewire\WishlistComponent;
 
 
 Route::get('/', WelcomeController::class)->name('megatiendavirtual');/* vista principal */

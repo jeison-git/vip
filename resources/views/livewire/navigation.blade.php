@@ -22,9 +22,9 @@ $nav_links = [
     ],
 ];
 
-@endphp{{-- fin links de navegacion  --}}
+@endphp{{-- fin links de navegacion --}}
 
-<header class="sticky top-0 bg-gray-50" style="z-index: 900" x-data="dropdown()">{{-- header del menu de navegacion  --}}
+<header class="sticky top-0 bg-gray-50" style="z-index: 900" x-data="dropdown()">{{-- header del menu de navegacion --}}
 
     <div class="hidden md:block">{{-- se debe ocultar estando en una pantalla pequeña --}}
 
@@ -38,7 +38,7 @@ $nav_links = [
                                     class="icon label-before fa fa-mobile"></span>Hotline: (+123) 456 789</a>
                         </li>
                     </ul>
-                </div> --}} 
+                </div> --}}
 
                 <div class="topbar-menu right-menu">{{-- dropdown links de navegacion segun el rol --}}
                     <ul>
@@ -49,8 +49,8 @@ $nav_links = [
                                 @if (Auth::user())
 
                                     <li class="menu-item menu-item-has-children parent">
-                                        <a title="My Account" class="cursor-default">Hola de nuevo {{ Auth::user()->name }}<i
-                                                class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                        <a title="My Account" class="cursor-default">Hola de nuevo
+                                            {{ Auth::user()->name }}<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                         <ul class="submenu curency">
 
                                             @can('Only admin')
@@ -63,7 +63,7 @@ $nav_links = [
                                                 <li class="menu-item">
                                                     <a title="Categories"
                                                         href="{{ route('admin.categories.index') }}">Gestionar categorias</a>
-                                                </li>                                                
+                                                </li>
 
                                                 <li class="menu-item">
                                                     <a title="Brands" href="{{ route('admin.brands.index') }}">Gestionar
@@ -71,10 +71,11 @@ $nav_links = [
                                                 </li>
 
                                                 <li class="menu-item">
-                                                    <a title="Manage Home Sliders" href="{{ route('admin.banners.index') }}">Gestionar
+                                                    <a title="Manage Home Sliders"
+                                                        href="{{ route('admin.banners.index') }}">Gestionar
                                                         Publicidad </a>
                                                 </li>
-                                                
+
                                                 <li class="menu-item">
                                                     <a title="All Order List"
                                                         href="{{ route('admin.orders.index') }}">Gestionar ordenes</a>
@@ -82,19 +83,21 @@ $nav_links = [
 
                                                 <li class="menu-item">
                                                     <a title="Manage Coupon" href="{{-- route('admin.coupons') --}}">Gestionar Cupón</a>
-                                                </li>  
-                                                
+                                                </li>
+
                                                 <li class="menu-item">
-                                                    <a title="Manage Coupon" href="{{route('admin.contacts.index')}}">Gestionar Mensajes</a>
+                                                    <a title="Manage Coupon"
+                                                        href="{{ route('admin.contacts.index') }}">Gestionar Mensajes</a>
                                                 </li>
 
                                                 <li class="menu-item">
                                                     <a title="Manage users" href="{{ route('admin.users.index') }}">Gestionar
                                                         usuarios</a>
-                                                </li>                                                
+                                                </li>
 
                                                 <li class="menu-item">
-                                                    <a title="Manage Coupon" href="{{route('admin.roles.index')}}">Gestionar Roles</a>
+                                                    <a title="Manage Coupon" href="{{ route('admin.roles.index') }}">Gestionar
+                                                        Roles</a>
                                                 </li>
                                             @endcan
 
@@ -188,13 +191,15 @@ $nav_links = [
             @livewire('search')
         </div>
 
-        <div class="hidden mx-12 md:block">{{-- componente livewire/DropdownCart --}}
+        <div class="hidden mx-12 md:block">
+            @livewire('dropdown-order')
+        </div>
+
+        {{-- componente livewire/DropdownCart --}}
+        <div class="hidden md:block">
             @livewire('dropdown-cart')
         </div>
 
-        {{-- <div class="hidden mx-12 md:block">
-            @livewire('dropdown-order')
-        </div> --}}
 
         {{-- dropdown users --}}
         {{-- <div class="relative hidden mx-6 md:block">
@@ -274,7 +279,7 @@ $nav_links = [
 
     <hr>{{-- revisar luego y modificar}}
 
-    {{-- Menu prueba links de afiliacion  --}}
+    {{-- Menu prueba links de afiliacion --}}
 
     <div class="flex-1 hidden lg:block">
         <div class="container nav-section header-sticky">
@@ -351,7 +356,7 @@ $nav_links = [
                 </svg>
             </a>
 
-        </ul>{{-- end icono de shopping bag --}}        
+        </ul>{{-- end icono de shopping bag --}}
 
         <a :class="{'bg-opacity-100 text-gold' : open}" x-on:click="show()" {{-- ico de categorias --}}
             class="flex flex-col items-center justify-center order-last h-full px-6 text-black bg-white bg-opacity-25 cursor-pointer md:order-first md:px-4">
@@ -396,7 +401,7 @@ $nav_links = [
             </svg>
         </a>{{-- end icono categorias --}}
 
-        <div class="flex-1 hidden md:block">{{-- links de navegacion: recibe los datos de la variable $nav_link ejecutada en la sentencia php que esta en el principio de esta view  --}}
+        <div class="flex-1 hidden md:block">{{-- links de navegacion: recibe los datos de la variable $nav_link ejecutada en la sentencia php que esta en el principio de esta view --}}
             @foreach ($nav_links as $nav_link)
                 <x-jet-nav-link href="{{ $nav_link['route'] }}" :active="$nav_link['active']">
                     {{ $nav_link['name'] }}
@@ -410,8 +415,8 @@ $nav_links = [
 
     <nav id="navigation-menu" x-show="open" :class="{'block': open, 'hidden': !open}"
         class="absolute hidden w-full bg-opacity-25 bg-trueGray-700">
-        
-        <div class="container hidden h-full md:block">{{-- Menu categorias y subcategorias computadora  --}}
+
+        <div class="container hidden h-full md:block">{{-- Menu categorias y subcategorias computadora --}}
 
             <div x-on:click.away="close()" class="relative grid h-full grid-cols-4">
                 <ul class="bg-white">
@@ -453,7 +458,7 @@ $nav_links = [
                 @livewire('search')
             </div>
 
-            <div class="pt-2 pb-3 space-y-1">{{-- links de navegacion  --}}
+            <div class="pt-2 pb-3 space-y-1">{{-- links de navegacion --}}
                 @foreach ($nav_links as $nav_link)
 
                     <x-jet-responsive-nav-link href="{{ $nav_link['route'] }}" :active="$nav_link['active']">
@@ -487,7 +492,7 @@ $nav_links = [
 
             @auth
 
-            <a href="{{ route('orders.index') }}"
+                <a href="{{ route('orders.index') }}"
                     class="flex items-center px-4 py-2 text-sm text-trueGray-500 hover:bg-gold hover:text-white">
 
                     <span class="flex justify-center w-9">
@@ -495,8 +500,8 @@ $nav_links = [
                     </span>
 
                     Mis pedidos
-                </a>                
-            
+                </a>
+
 
                 @can('Ver dashboard'){{-- solo los que tengan este permiso pueden visualisar esta opcion --}}
 

@@ -9,6 +9,7 @@ use App\Models\Subcategory;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class VipClient extends Component
 {
@@ -58,6 +59,7 @@ class VipClient extends Component
         return view('livewire.vip-client', compact('products', 'categories', 'subcategories', 'brands'));
     }
 
+    
     public function resetFilters()
     {
         $this->reset(['category_id', 'subcategory_id', 'brand_id']);

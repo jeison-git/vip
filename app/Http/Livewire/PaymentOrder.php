@@ -25,6 +25,10 @@ class PaymentOrder extends Component
         $this->order->save();
 
         return redirect()->route('orders.show', $this->order);
+
+        session()->flash('message', '¡Gracias por su compra!'); 
+        
+
     }
 
 

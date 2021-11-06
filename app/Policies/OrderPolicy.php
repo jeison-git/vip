@@ -27,7 +27,7 @@ class OrderPolicy
         if ($order->status == 1) {
             return true;
         }else{
-            return false;
+            return false; 
         }
     }
     

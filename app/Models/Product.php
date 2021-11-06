@@ -109,4 +109,14 @@ class Product extends Model
     {
         return 'slug';
     }
+
+
+    ////
+    
+
+    public function order()
+    {
+        return $this->hasMany(Order::class, 'product_id');
+    }
+
 }
