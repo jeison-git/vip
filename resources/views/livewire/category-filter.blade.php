@@ -93,13 +93,13 @@
                 <ul class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
                     @forelse ($products as $product)
 
-                        <div class="flex flex-col items-center justify-center h-full mb-4 bg-gray-100">
+                        <div class="flex flex-col items-center justify-center h-full mb-4 {{-- bg-gray-100 --}}">
                             {{-- tarjeta que muestra informacion del producto --}}
 
                             <div
                                 class="p-2 transition-all duration-500 transform bg-white shadow-xl w- rounded-xl hover:shadow-2xl">
 
-                                <img class="object-contain w-full h-64 rounded-t-md"
+                                <img class="object-cover object-center w-full h-64 rounded-t-md"
                                     src="{{ Storage::url($product->images->first()->url) }}"
                                     alt="" />{{-- primera imagen del producto --}}
 

@@ -31,8 +31,8 @@ use App\Http\Livewire\Admin\ShowContacts;
 // Registro de Productos  vista principal
 Route::get('/', ShowProducts::class)->middleware('can:Ver dashboard')->name('admin.index');
 Route::get('products/create', CreateProduct::class)->middleware('can:Ver dashboard')->name('admin.products.create');
-Route::get('products/{product}/edit', EditProduct::class)->middleware('can:Editar productos')->name('admin.products.edit');
-Route::post('products/{product}/files', [ProductController::class, 'files'])->middleware('can:Editar productos')->name('admin.products.files');
+Route::get('products/{product}/edit', EditProduct::class)->middleware('can:Ver dashboard')->name('admin.products.edit');
+Route::post('products/{product}/files', [ProductController::class, 'files'])->middleware('can:Ver dashboard')->name('admin.products.files');
 
 // Solucion de Ordenes
 Route::get('orders', [OrderController::class, 'index'])->middleware('can:Ver dashboard')->name('admin.orders.index');

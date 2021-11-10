@@ -5,7 +5,7 @@
     <article class="md:flex">
 
         <div class="md:flex-shrink-0">
-            <img class="object-cover w-full h-48 md:h-full md:w-48" src="{{ Storage::url($product->images->first()->url) }}" alt="looking at item at a shop">
+            <img class="object-contain object-center w-full h-48 md:h-full md:w-48" src="{{ Storage::url($product->images->first()->url) }}" alt="looking at item at a shop">
           </div>
 
         <div class="flex flex-col flex-1 px-6 py-4">                                    
@@ -51,9 +51,9 @@
 
             <div class="flex items-center justify-between mt-auto ">
 
-                <x-components.button class="px-4" href="{{ route('products.show', $product) }}">
+                <x-components.button-enlace class="px-4" href="{{ route('products.show', $product) }}">
                     COMPRA <img class="ml-2" src="https://img.icons8.com/dusk/20/000000/vip.png"/>
-                </x-components.button>
+                </x-components.button-enlace>
 
                 <div class="font-semibold text-center text-gray-500 sm:text-left">
                     US ${{ $product->price }}

@@ -25,16 +25,16 @@ class CreateProductsTable extends Migration
             $table->float('price');
 
             $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
 
             $table->unsignedBigInteger('subcategory_id');
-            $table->foreign('subcategory_id')->references('id')->on('subcategories');
+            $table->foreign('subcategory_id')->references('id')->on('subcategories')->onDelete('cascade');
 
             $table->unsignedBigInteger('claim_id');
-            $table->foreign('claim_id')->references('id')->on('claims');
+            $table->foreign('claim_id')->references('id')->on('claims')->onDelete('cascade');
 
             $table->unsignedBigInteger('brand_id');
-            $table->foreign('brand_id')->references('id')->on('brands');
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
 
             $table->integer('quantity')->nullable();
             $table->enum('status', [Product::BORRADOR, Product::PUBLICADO])->default(Product::BORRADOR);

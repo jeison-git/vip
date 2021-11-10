@@ -43,11 +43,6 @@
 <body class="font-sans antialiased" onload="myFunction()" style="margin:0;">
     <!-- Preloader section
 ================================================== -->
-    <div id="contenedor_carga">
-
-        <div class="carga"></div>
-    
-    </div>
 
     <div>
         <x-jet-banner />
@@ -90,21 +85,6 @@
             }
         }
     </script>
-
-    <script>
-        var myVar;
-
-        function myFunction() {
-            myVar = setTimeout(showPage, 3000);
-        }
-
-        function showPage() {
-            document.getElementById("contenedor_carga").style.display = "none";
-            document.getElementById("myDiv").style.display = "block";
-        }
-    </script>
-
-
 
     @stack('script')
 

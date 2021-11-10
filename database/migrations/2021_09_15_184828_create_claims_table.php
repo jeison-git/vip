@@ -31,7 +31,7 @@ class CreateClaimsTable extends Migration
             $table->string('observation')->nullable(); 
 
             $table->unsignedBigInteger('commerce_id');
-            $table->foreign('commerce_id')->references('id')->on('commerces');
+            $table->foreign('commerce_id')->references('id')->on('commerces')->onDelete('cascade');
 
             $table->timestamps();
         }); 

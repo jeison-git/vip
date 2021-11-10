@@ -121,13 +121,13 @@
 
                       
                         @forelse ($products as $product)
-                            <div class="flex flex-col items-center justify-center h-full bg-gray-100">
+                            <div class="flex flex-col items-center justify-center h-full">
                                 {{-- tarjeta que muestra informacion del producto --}}
 
                                 <div
                                     class="p-2 transition-all duration-500 transform bg-white shadow-xl w- rounded-xl hover:shadow-2xl hover:scale-105">
 
-                                    <img class="object-contain w-64 h-64 rounded-t-md"
+                                    <img class="object-cover object-center w-64 h-64 rounded-t-md"
                                         src="{{ Storage::url($product->images->first()->url) }}"
                                         alt="" />{{-- primera imagen del producto --}}
 

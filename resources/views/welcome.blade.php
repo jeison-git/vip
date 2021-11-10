@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-home-layout>
 
     {{-- inicio --}}
     <div class="container grid grid-cols-1 gap-2 mt-8 cursor-default md:p-4 md:grid-cols-4 md:gap-6"> {{-- guiarse separacion de los layout --}}
@@ -282,4 +282,4 @@
     </script>
 @endpush
 
-</x-app-layout>
+</x-home-layout>

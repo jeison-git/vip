@@ -1,4 +1,4 @@
-@props(['size'=> 30, 'color'=> 'white'])
+@props(['size'=> 30, 'color'=> 'white']){{-- componente items cart- /navlink --}}
 
 @php
     switch ($color) {

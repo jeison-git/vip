@@ -27,7 +27,7 @@ class SizeProduct extends Component
 
         if ($size) {
 
-            $this->emit('errorSize', 'Esa talla ya existe');
+            $this->emit('errorSize', 'La Talla Se Encuentra Registrada');
             
         } else {
 

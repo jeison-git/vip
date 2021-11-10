@@ -33,6 +33,11 @@ Route::get('shopping-cart', ShoppingCart::class)->name('shopping-cart');/* Compo
 
 Route::get('contacts', [ContactController::class, 'index'])->name('contacts.index');/* contacto */
 
+//Legales
+Route::view('about', 'about')->name('about');
+Route::view('policy', 'policy')->name('policy');
+Route::view('terms', 'terms')->name('terms');
+
 //Grupo de vistas donde es necesario que el usuario este registrado y logeado
 Route::middleware(['auth'])->group(function () {
 

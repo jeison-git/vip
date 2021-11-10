@@ -16,10 +16,10 @@ class CreateSizesTable extends Migration
         Schema::create('sizes', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name');
+            $table->string('name')->nullable();
 
-            $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->unsignedBigInteger('product_id')->nullable();
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             
             $table->timestamps();
         });

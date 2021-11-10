@@ -19,7 +19,7 @@ class ColorProduct extends Component
 
     protected $rules = [
         'color_id' => 'required',
-        'quantity' => 'required|numeric'
+        'quantity' => 'required|numeric|integer|Min:0'
     ];
 
 
@@ -85,7 +85,7 @@ class ColorProduct extends Component
 
     public function render()
     {
-
+ 
         $product_colors = $this->product->colors;
 
         return view('livewire.admin.color-product', compact('product_colors'));

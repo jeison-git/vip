@@ -180,10 +180,11 @@
                 </div>
                 <div class="flex mt-4 md:m-0">
                     <div class="-mx-4">
-                        <a href="#" class="px-4 text-sm">About</a>
-                        <a href="#" class="px-4 text-sm">Blog</a>
+                        <a href="{{ route('about') }}" class="px-4 text-sm no-underline hover:underline">Sobre Nosotros</a>
                         <a href="#" class="px-4 text-sm">News</a>
-                        <a href="{{ route('contacts.index')}}" class="px-4 text-sm">Contactanos</a>
+                        <a href="{{ route('contacts.index')}}" class="px-4 text-sm no-underline hover:underline">Contactanos</a>
+                        <a href="{{ route('terms') }}" class="px-4 text-sm no-underline hover:underline">Terms &amp; Conditions</a>
+                        <a href="{{ route('policy') }}" class="px-4 text-sm no-underline hover:underline">Privacy &amp; Policy</a>
                     </div>
                 </div>
             </section>

@@ -10,7 +10,7 @@
                     <li class="p-2 transition-all duration-500 transform bg-white shadow-xl w- rounded-xl hover:shadow-2xl {{ $loop->last ? '' : 'sm:mr-4' }}">
                         <article>
                             <figure>
-                                <img class="object-contain object-center w-48 h-48 rounded-t-md"
+                                <img class="object-cover object-center w-48 h-48 rounded-t-md"
                                     src="{{ Storage::url($product->images->first()->url) }}" alt="">
                             </figure> 
 

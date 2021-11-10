@@ -108,7 +108,7 @@
                 @foreach ($similares as $similar)
                     <div class="flex items-center p-2 bg-white border-2 border-gray-200 rounded-lg shadow-sm">
                         <div class="flex-shrink-0 w-20 mr-2 h-15">
-                            <img class="object-cover w-20 mr-4 h-15"
+                            <img class="object-cover object-center w-20 mr-4 h-15"
                                 src="{{ Storage::url($similar->images->first()->url ?? null) }}" alt="similares">
                         </div>
                         <div>
