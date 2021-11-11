@@ -359,7 +359,7 @@ $nav_links = [
         </ul>{{-- end icono de shopping bag --}}
 
         <a :class="{'bg-opacity-100 text-gold' : open}" x-on:click="show()" {{-- ico de categorias --}}
-            class="flex flex-col items-center justify-center order-last h-full px-6 text-black bg-white bg-opacity-25 cursor-pointer md:order-first md:px-4">
+            class="flex flex-col items-center justify-center order-last hidden h-full px-6 text-black bg-white bg-opacity-25 cursor-pointer md:order-first md:px-4 md:block">
 
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0 0 172 172"
                 style=" fill:#000000;">
@@ -409,6 +409,17 @@ $nav_links = [
             @endforeach
         </div>
 
+
+         <!-- Hamburger -->
+         <div class="flex items-center -mr-2 sm:hidden"  x-on:click="show()">
+            <button {{--  @click="open = ! open" --}} class="inline-flex items-center justify-center p-2 text-gray-400 transition rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500">
+                <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                    <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
     </div>{{-- end --}}
 
     {{-- Menu fin prueba --}}
@@ -451,6 +462,8 @@ $nav_links = [
             </div>
         </div>{{-- end --}}
 
+
+
         {{-- menu  celular, Categorias y links de navegacion --}}
         <div class="h-full mb-6 overflow-y-auto bg-white">
 
@@ -470,19 +483,21 @@ $nav_links = [
 
             <p class="px-6 my-2 text-trueGray-500">CATEGORÍAS</p>
 
-            <ul>
-                @foreach ($categories as $category)
-                    <li class="text-trueGray-500 hover:bg-gold hover:text-white">
-                        <a href="{{ route('categories.show', $category) }}"
-                            class="flex items-center px-4 py-2 text-sm">
+            <ul class="pt-2 pb-3 space-y-1">
+                @foreach ($categories as $key=>$item)
+
+                    <li class="text-trueGray-500">
+                        <x-jet-responsive-nav-link href="{{ route('categories.show', $item) }}"
+                            class="flex items-center px-4 text-sm">
 
                             <span class="flex justify-center w-9">
-                                {!! $category->icon !!}
+                                {!! $item->icon !!}
                             </span>
 
-                            {{ $category->name }}
-                        </a>
+                            {{ $item->name }}
+                        </x-jet-responsive-nav-link >
                     </li>
+                    
                 @endforeach
             </ul>
 
@@ -492,51 +507,51 @@ $nav_links = [
 
             @auth
 
-                <a href="{{ route('orders.index') }}"
-                    class="flex items-center px-4 py-2 text-sm text-trueGray-500 hover:bg-gold hover:text-white">
+                <x-jet-responsive-nav-link href="{{ route('orders.index') }}" :active="request()->routeIs('orders.index')"
+                    class="flex items-center px-4 py-2 text-sm text-trueGray-500">
 
                     <span class="flex justify-center w-9">
                         <i class="fa fa-shopping-bag" aria-hidden="true"></i>
                     </span>
 
                     Mis pedidos
-                </a>
+                </x-jet-responsive-nav-link>
 
 
                 @can('Ver dashboard'){{-- solo los que tengan este permiso pueden visualisar esta opcion --}}
 
-                    <a href="{{ route('admin.index') }}"
-                        class="flex items-center px-4 py-2 text-sm text-trueGray-500 hover:bg-gold hover:text-white">
+                    <x-jet-responsive-nav-link href="{{ route('admin.index') }}" :active="request()->routeIs('admin.index')"
+                        class="flex items-center px-4 py-2 text-sm text-trueGray-500">
 
                         <span class="flex justify-center w-9">
                             <i class="fa fa-cogs"></i>
                         </span>
 
                         Gestiones ATC
-                    </a>
+                    </x-jet-responsive-nav-link>
 
                 @endcan
 
-                <a href="{{ route('profile.show') }}"
-                    class="flex items-center px-4 py-2 text-sm text-trueGray-500 hover:bg-gold hover:text-white">
+                <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')"
+                    class="flex items-center px-4 py-2 text-sm text-trueGray-500">
 
                     <span class="flex justify-center w-9">
                         <i class="far fa-address-card"></i>
                     </span>
 
                     Perfil
-                </a>
+                </x-jet-responsive-nav-link>
 
-                <a href="{{ route('logout') }}"
+                <x-jet-responsive-nav-link href="{{ route('logout') }}" :active="request()->routeIs('logout')"
                     onClick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                    class="flex items-center px-4 py-2 text-sm text-trueGray-500 hover:bg-gold hover:text-white">
+                    class="flex items-center px-4 py-2 text-sm text-trueGray-500">
 
                     <span class="flex justify-center w-9">
                         <i class="fas fa-sign-out-alt"></i>
                     </span>
 
                     Cerrar sesión
-                </a>
+                </x-jet-responsive-nav-link>
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
                     @csrf
@@ -545,29 +560,30 @@ $nav_links = [
                 <div class="py-8"></div>
 
             @else
-                <a href="{{ route('login') }}"
-                    class="flex items-center px-4 py-2 text-sm text-trueGray-500 hover:bg-gold hover:text-white">
+                <x-jet-responsive-nav-link  href="{{ route('login') }}" :active="request()->routeIs('login')"
+                    class="flex items-center px-4 py-2 text-sm text-trueGray-500 ">
 
                     <span class="flex justify-center w-9">
                         <i class="fas fa-user-circle"></i>
                     </span>
 
                     Iniciar sesión
-                </a>
+                </x-jet-responsive-nav-link>
 
-                <a href="{{ route('register') }}"
-                    class="flex items-center px-4 py-2 text-sm text-trueGray-500 hover:bg-gold hover:text-white">
+                <x-jet-responsive-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')"
+                    class="flex items-center px-4 py-2 text-sm text-trueGray-500 ">
 
                     <span class="flex justify-center w-9">
                         <i class="fas fa-fingerprint"></i>
                     </span>
 
                     registrate
-                </a>
+                </x-jet-responsive-nav-link>
             @endauth
 
         </div>
+
         {{-- end menu responsive --}}
 
     </nav>
-</header>
+</header> 

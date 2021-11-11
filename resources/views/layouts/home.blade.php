@@ -49,13 +49,13 @@
     
     </div> --}}
 
-    <div id="contenedor_carga">
+    {{-- <div id="contenedor_carga">
         <div class="preloader">
 
             <div class="sk-spinner sk-spinner-pulse"></div>
 
         </div>
-    </div>
+    </div> --}}
 
 
     <div>

@@ -1,7 +1,7 @@
 <footer class="flex justify-center px-4 text-gray-700 bg-gray-50">
 
     <div class="container py-6 ">
-        <div class="hidden md:block">
+        <div class="hidden lg:block">
             <!-- card informacion static -->
             <section class="px-6 py-4 mx-auto cursor-default ">
                 <div class="grid gap-6 mb-8 md:grid-cols-2 lg:grid-cols-4">
@@ -61,17 +61,20 @@
 
                     <span class="ml-3 text-xl text-gray-800 ">DATOS DE CONTACTO</span>
 
-                    <a class="flex items-center justify-center mt-2 font-medium text-gray-900 title-font md:justify-start">
+                    <a
+                        class="flex items-center justify-center mt-2 font-medium text-gray-900 title-font md:justify-start">
 
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
 
-                        <span class="ml-3 text-sm text-gray-800 "> Meganegocios Vip | Edf: Onivas | Boulevard Sabana Grande,
+                        <span class="ml-3 text-sm text-gray-800 "> Meganegocios Vip | Edf: Onivas | Boulevard Sabana
+                            Grande,
                             Caracas.
                         </span>
 
                     </a>
 
-                    <a class="flex items-center justify-center mt-2 font-medium text-gray-900 title-font md:justify-start">
+                    <a
+                        class="flex items-center justify-center mt-2 font-medium text-gray-900 title-font md:justify-start">
 
                         <i class="fa fa-phone" aria-hidden="true"></i>
 
@@ -79,7 +82,8 @@
 
                     </a>
 
-                    <a class="flex items-center justify-center mt-2 font-medium text-gray-900 title-font md:justify-start">
+                    <a
+                        class="flex items-center justify-center mt-2 font-medium text-gray-900 title-font md:justify-start">
 
                         <i class="fa fa-envelope" aria-hidden="true"></i>
 
@@ -93,15 +97,20 @@
                 <div class="w-full text-center">
 
                     <h1 class="text-center text-gray-800 md:text-xl sm:text-xs">
-                        Reciba las últimas tendencias de productos y noticias de la industria <br> directamente a su bandeja
+                        Reciba las últimas tendencias de productos y noticias de la industria <br> directamente a su
+                        bandeja
                         de
                         entrada.
                     </h1>
+                    <div id="1e2e5MW2" class="flex justify-center w-full py-4 "></div>{{-- se esta usando el servio E-goi --}}
 
-                    <div class="flex justify-center mt-6">
+                    {{-- <div  class="flex justify-center mt-6">
 
                         <div class="bg-white rounded-lg">
-                            <div class="flex-wrap justify-between flex-1 md:flex-row">
+                            <div  class="flex-wrap justify-between flex-1 w-full md:flex-row">
+                                 <input type="name"
+                                    class="p-2 m-1 text-sm text-gray-700 rounded-lg appearance-none focus:outline-none"
+                                    placeholder="Ingrese su nombre">
                                 <input type="email"
                                     class="p-2 m-1 text-sm text-gray-700 rounded-lg appearance-none focus:outline-none"
                                     placeholder="Ingrese su correo">
@@ -110,17 +119,18 @@
                             </div>
                         </div>
 
-                    </div>
+                    </div> --}}
 
                 </div>
 
                 <div class="inline-flex mt-2 sm:ml-auto sm:mt-0 sm:justify-start">
 
-                    <div class="w-64">
+                    <div class="w-auto">
                         <h2 class="mb-3 text-xl tracking-widest text-gray-800">INFORMACIÓN</h2>
                         <nav class="mb-10 list-none">
                             <li>
-                                <a class="text-gray-800 hover:text-gold" href="{{ route('profile.show') }}">Mi cuenta</a>
+                                <a class="text-gray-800 hover:text-gold" href="{{ route('profile.show') }}">Mi
+                                    cuenta</a>
                             </li>
                             <li>
                                 <a class="text-gray-800 hover:text-gold" href="{{ route('orders.index') }}">Mis
@@ -139,56 +149,58 @@
                 </div>
 
             </section>
-
-            <!-- icons redes sociales -->
-            <section class="flex flex-col items-center justify-center md:flex-row">
-
-                <div class="flex mt-4 md:m-0">
-
-                    <!-- facebook -->
-                    <a href="https://www.facebook.com/Meganegocios-Vip-ca-1004343212943696/?ref=page_internal">
-                        <img src="https://img.icons8.com/color/48/000000/facebook-circled--v5.png" />
-                    </a>
-
-                    <!-- twitter -->
-                    <a href="https://twitter.com/meganegociosvip">
-                        <img src="https://img.icons8.com/color/48/000000/twitter--v2.png" />
-                    </a>
-
-                    <!-- instagram -->
-                    <a href="https://www.instagram.com/explore/tags/meganegociosvip/">
-                        <img src="https://img.icons8.com/color/48/000000/instagram-new--v2.png" />
-                    </a>
-
-                    <!-- youtoube -->
-                    <a href="https://www.instagram.com/explore/tags/meganegociosvip/">
-                        <img src="https://img.icons8.com/color/48/000000/youtube--v3.png" />
-                    </a>
-
-                </div>
-
-            </section>
-
-            <hr class="h-px mt-6 bg-gray-700 border-none ">
-            <!-- links pages about, contact,etc-->
-
-            <section class="flex flex-col items-center justify-between mt-6 md:flex-row">
-                <div>
-                    <a href="/" class="items-center">
-                        <x-jet-application-mark class="block w-auto h-9" />
-                    </a>
-                </div>
-                <div class="flex mt-4 md:m-0">
-                    <div class="-mx-4">
-                        <a href="{{ route('about') }}" class="px-4 text-sm no-underline hover:underline">Sobre Nosotros</a>
-                        <a href="#" class="px-4 text-sm">News</a>
-                        <a href="{{ route('contacts.index')}}" class="px-4 text-sm no-underline hover:underline">Contactanos</a>
-                        <a href="{{ route('terms') }}" class="px-4 text-sm no-underline hover:underline">Terms &amp; Conditions</a>
-                        <a href="{{ route('policy') }}" class="px-4 text-sm no-underline hover:underline">Privacy &amp; Policy</a>
-                    </div>
-                </div>
-            </section>
         </div>
+        <!-- icons redes sociales -->
+        <section class="flex flex-col items-center justify-center md:flex-row">
+
+            <div class="flex md:m-0">
+
+                <!-- facebook -->
+                <a href="https://www.facebook.com/Meganegocios-Vip-ca-1004343212943696/?ref=page_internal">
+                    <img src="https://img.icons8.com/color/48/000000/facebook-circled--v5.png" />
+                </a>
+
+                <!-- twitter -->
+                <a href="https://twitter.com/meganegociosvip">
+                    <img src="https://img.icons8.com/color/48/000000/twitter--v2.png" />
+                </a>
+
+                <!-- instagram -->
+                <a href="https://www.instagram.com/explore/tags/meganegociosvip/">
+                    <img src="https://img.icons8.com/color/48/000000/instagram-new--v2.png" />
+                </a>
+
+                <!-- youtoube -->
+                <a href="https://www.instagram.com/explore/tags/meganegociosvip/">
+                    <img src="https://img.icons8.com/color/48/000000/youtube--v3.png" />
+                </a>
+
+            </div>
+
+        </section>
+
+        <hr class="h-px mt-6 bg-gray-700 border-none ">
+        <!-- links pages about, contact,etc-->
+
+        <section class="flex-col items-center justify-between hidden mt-6 mb-4 md:flex-row lg:block">
+            <div class="flex items-center justify-between" >
+                <a href="/" class="items-center">
+                    <x-jet-application-mark class="block w-auto h-9" />
+                </a>
+                <div class="-mx-4">
+                    <a href="{{ route('about') }}" class="px-4 text-sm no-underline hover:underline">Sobre
+                        Nosotros</a>
+                    <a href="#" class="px-4 text-sm">News</a>
+                    <a href="{{ route('contacts.index') }}"
+                        class="px-4 text-sm no-underline hover:underline">Contactanos</a>
+                    <a href="{{ route('terms') }}" class="px-4 text-sm no-underline hover:underline">Terms &amp;
+                        Conditions</a>
+                    <a href="{{ route('policy') }}" class="px-4 text-sm no-underline hover:underline">Privacy &amp;
+                        Policy</a>
+                </div>
+            </div>
+        </section>
+
         <!-- copy right  message-->
         <div class="flex items-center justify-center text-center md:flex-row">
 
@@ -199,6 +211,19 @@
             </div>
 
         </div>
+
+        @push('script'){{-- formulario de suscripcion E-goi --}}
+        <script type="text/javascript">
+            (function () {
+                let u="https://egoi.page/1e2e5MW2/forms", c="1e2e5MW2",
+                i=document.createElement("iframe"), e=document.getElementById(c);
+                i.setAttribute("src", u);
+                i.setAttribute('style','border:none;width:100%;height:100%');
+                e.appendChild(i);
+            })();
+        </script>
+
+        @endpush
 
     </div>
 

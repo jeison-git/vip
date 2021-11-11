@@ -1,5 +1,5 @@
 {{-- @php
-    $nav_links = [
+    $nav_links = [ 
         [
             'name'   => 'Productos',
             'route'  => route('admin.index'),
