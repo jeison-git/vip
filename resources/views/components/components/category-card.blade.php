@@ -4,7 +4,7 @@
 
     <div
         class="p-6 bg-white shadow-xl w- rounded-xl">
-        <img class="object-cover object-center transition-all duration-500 transform w- rounded-xl hover:scale-105" src="{{ Storage::url($category->image) }}" alt="{{ $category->name }}" />
+        <img class="object-fill object-center h-64 transition-all duration-500 transform w- rounded-xl hover:scale-105" src="{{ Storage::url($category->image) }}" alt="{{ $category->name }}" />
         <div class="flex items-center justify-between">
             <div>
                 <h1 class="mt-5 text-sm font-semibold text-gray-700 uppercase">{{ $category->name }}</h1>
@@ -24,4 +24,4 @@
         </div>
     </div>
 
-</div>
+</div> 

@@ -1,9 +1,11 @@
-<div>
+<div class="mt-12">
+    
+    @livewire('static-banner'){{-- esta es la seccion de puplicidad estatica Livewire componente/static-banner --}}
 
     {{-- seccion de la vista aliados comerciales vip --}}
     <section class="container py-8">
 
-        <div class="py-8 "> {{-- texto  --}}
+        <div class="py-8 "> {{-- texto --}}
             <div class="flex items-center justify-between block">
 
                 <span class="flex text-xs text-center text-gray-700 uppercase md:text-2xl ">
@@ -16,7 +18,7 @@
             </div>
         </div>
 
-        @forelse ($claims as $claim){{--  itera el foreach.. la condicional @if agrega la propiedad de alpine x-data= open:false a cada registro encontrado excepto al primero. --}}
+        @forelse ($claims as $claim){{-- itera el foreach.. la condicional @if agrega la propiedad de alpine x-data= open:false a cada registro encontrado excepto al primero. --}}
             <article class="mb-4 shadow-lg" @if ($loop->first)
 
                 x-data="{ open: true }"
@@ -27,7 +29,7 @@
         @endif
         >
 
-                {{-- header desplegable con los detalles de los productos de los aliados comerciales. --}}
+        {{-- header desplegable con los detalles de los productos de los aliados comerciales. --}}
         <header class="flex items-center justify-between px-4 py-2 bg-gray-200 rounded shadow-lg cursor-pointer "
             x-on:click="open= !open">
             <div class="text-xs font-bold text-gray-800 uppercase md:text-2xl">
@@ -55,7 +57,7 @@
 
         </article>
 
-        @empty
+    @empty
 
         <div class="relative flex items-center justify-start px-4 py-3 text-red-700 bg-red-100 border border-red-400 rounded"
             role="alert">
@@ -66,7 +68,7 @@
 
         </div>
 
-    @endforelse
+        @endforelse
     </section>
 
     @push('script'){{-- scrip utilizado por el slider de glider --}}

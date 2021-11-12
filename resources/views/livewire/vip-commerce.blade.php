@@ -1,5 +1,15 @@
 <div>
     {{-- seccion de la vista aliados comerciales vip --}}
+    <!-- component -->
+    <div class="container object-fill h-auto px-10 py-24 mt-12 text-white bg-center bg-cover rounded-full "
+        style="background-image: url(https://images.unsplash.com/photo-1494253109108-2e30c049369b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80)">
+        <div class="md:w-1/2">
+            <p class="text-sm font-bold uppercase">Permite a nuestros usuarios conocerte</p>
+            <p class="font-bold md:text-3xl">Invierte en tu publicidad</p>
+            <p class="mb-10 leading-none md:text-2xl">Meganegocios Vip esta aquí para ser tu aliado y ayudarte a aumentar tus ventas.</p>
+            
+        </div>
+    </div>
 
     <section class="container py-8">
 
@@ -7,7 +17,7 @@
             <div class="flex items-center justify-between block">
 
                 <span class="flex text-xs text-center text-gray-700 uppercase md:text-2xl ">
-                    Disfruta de la compañia y servicios de nuestros commercios vip 
+                    Disfruta de la compañia y servicios de nuestros commercios vip
                 </span>
 
                 <div class="flex-1 w-full h-2 mx-6 bg-gray-400 rounded-full ">
@@ -26,7 +36,8 @@
 
         @endif>
 
-        <header class="flex items-center justify-between px-4 py-2 bg-gray-200 rounded shadow-lg cursor-pointer " x-on:click="open= !open">
+        <header class="flex items-center justify-between px-4 py-2 bg-gray-200 rounded shadow-lg cursor-pointer "
+            x-on:click="open= !open">
             <div class="text-xs font-bold text-gray-800 uppercase md:text-2xl">
 
                 <span class="inline-block w-8 mr-2 text-center">
@@ -34,11 +45,11 @@
                 </span>
 
                 {{ $item->name }}
-                 
+
             </div>
-            {{--<a class="ml-2 font-semibold hover:text-gray-800 text-gold hover:underline"
+            {{-- <a class="ml-2 font-semibold hover:text-gray-800 text-gold hover:underline"
                     href="{{ route('commerces.show', $item)}}">Ver más
-            </a>--}}
+            </a> --}}
         </header>
         {{-- seccion de barras  grises  para abrir y cerrar la seccion --}}
         <div class="px-4 py-2 card" x-show="open">

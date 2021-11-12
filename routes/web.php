@@ -16,10 +16,8 @@ use App\Http\Livewire\VipClient;
 use App\Http\Livewire\VipAlly;
 use App\Http\Controllers\WebhooksController;
 use App\Http\Livewire\VipCommerce;
-use App\Models\Order;
 use App\Http\Controllers\ContactController;
-use App\Http\Livewire\WishlistComponent;
-
+use App\Http\Livewire\StaticBanner;
 
 Route::get('/', WelcomeController::class)->name('megatiendavirtual');/* vista principal */
 
@@ -32,6 +30,9 @@ Route::get('products/{product}', [ProductController::class, 'show'])->name('prod
 Route::get('shopping-cart', ShoppingCart::class)->name('shopping-cart');/* Componente Shopping card */
 
 Route::get('contacts', [ContactController::class, 'index'])->name('contacts.index');/* contacto */
+
+
+/* Route::get('static-banner', StaticBanner::class)->name('static-banner'); */
 
 //Legales
 Route::view('about', 'about')->name('about');

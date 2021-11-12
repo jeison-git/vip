@@ -2,7 +2,7 @@
 
     <h1 class="flex mb-4 items-cente">
 
-        <a href="{{ URL::previous() }}" class="mr-2"><img
+        <a href="{{route('admin.categories.index')}}" class="mr-2"><img
                 src="https://img.icons8.com/dusk/25/000000/circled-left-2.png" /></a>
     </h1>
 

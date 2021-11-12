@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container"> 
 
     <div class="max-w-5xl py-4 mx-auto lg:px-8">{{-- componente para calificar una orden de compra --}}
 

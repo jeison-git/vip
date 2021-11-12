@@ -16,7 +16,7 @@ class VipClient extends Component
     //Componente Productos Clientes Vip Vista Principar
 
     use WithPagination;
-    
+
     public $category_id = "", $subcategory_id = "", $brand_id = "", $claim_id = "";
     //for price filter
     public $min_price;
@@ -24,7 +24,7 @@ class VipClient extends Component
 
     public $view = "grid";
 
-    public $productPerPage;    
+    public $productPerPage;
 
     public function mount()
     {
@@ -34,11 +34,12 @@ class VipClient extends Component
         $this->max_price = 1000;
     }
 
-    public function updatedCategoryId($value){
+    public function updatedCategoryId($value)
+    {
 
         $this->subcategories = Subcategory::where('category_id', $value)->get();
 
-        $this->brands = Brand::whereHas('categories', function(Builder $query) use ($value){
+        $this->brands = Brand::whereHas('categories', function (Builder $query) use ($value) {
             $query->where('category_id', $value);
         })->get();
 
@@ -58,9 +59,15 @@ class VipClient extends Component
             ->latest('id')
             ->paginate(12);
 
-        return view('livewire.vip-client', compact('products', 'categories', 'subcategories', 'brands'));
+        $offers = Product::where('status', 2) /* Mostrar productos donde el precio este entre 0 y 50 */
+            ->whereBetween('price', [0, 50])
+            ->inRandomOrder()
+            ->take(10)
+            ->get();
+
+        return view('livewire.vip-client', compact('products', 'categories', 'subcategories', 'brands', 'offers'));
     }
-    
+
     public function resetFilters()
     {
         $this->reset(['category_id', 'subcategory_id', 'brand_id']);

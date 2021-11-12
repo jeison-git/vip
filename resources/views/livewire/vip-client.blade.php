@@ -1,6 +1,55 @@
 <div class="container">
-    
-    
+
+    <!-- component -->
+    <div class="w-full min-h-full p-6 mt-12 bg-cover rounded-lg shadow-2xl contenair"
+        style="background-image: url('https://images.unsplash.com/photo-1618556450994-a6a128ef0d9d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=764&q=80');'">
+
+       
+        <h3 class="mb-4 text-base font-extrabold text-left text-white uppercase md:text-2xl">Promoción del día</h3>
+
+        <div
+            class="flex items-center justify-center w-3/4 h-16 py-8 mx-auto mt-8 mb-8 text-center transition duration-500 ease-in-out transform rounded-full shadow-lg cursor-default hover:-translate-y-1 hover:shadow-2xl">
+
+            <h3
+                class="font-extrabold text-center text-transparent uppercase md:text-2xl bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500">
+                ¡Super megas ofertas vip! Productos a precios increíbles
+            </h3>
+
+        </div>
+
+        <div class="flex items-center justify-center">
+            <div class="grid order-1 grid-cols-2 px-6 md:grid-cols-5 gap-x-6 gap-y-8">{{-- contiene productos estaticos definidos en el controlador welcome $offers --}}
+
+                @foreach ($offers as $offer)
+
+                    <div class="flex items-center justify-center">
+
+                        <div class="overflow-hidden rounded-lg shadow-lg cursor-pointer ">
+
+
+                            <a href="{{ route('products.show', $offer) }}">
+                                <div class="items-center flex-1 bg-white justify-centerp-4">
+                                    <img class="object-cover object-center w-full h-32 p-2 duration-500 transform hover:shadow-xl hover:scale-105"
+                                        src="{{ Storage::url($offer->images->first()->url) }}" alt="..." />
+                                    <span
+                                        class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">${{ $offer->price }}</span>
+                                </div>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                @endforeach
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
     <section class="py-16">
 
         {{-- barra de opcion para visualizar los productos por lista o columnas y filtros --}}
@@ -119,7 +168,7 @@
                 @if ($view == 'grid')
                     <ul class="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4">
 
-                      
+
                         @forelse ($products as $product)
                             <div class="flex flex-col items-center justify-center h-full">
                                 {{-- tarjeta que muestra informacion del producto --}}
@@ -202,7 +251,7 @@
                                 </div>
                             </li>
                         @endforelse
-                        
+
                     </ul>
 
                 @else {{-- vista de productos en lista, falta mejorar diseño --}}
@@ -238,6 +287,5 @@
         </div>
 
     </section>
-    
 
 </div>

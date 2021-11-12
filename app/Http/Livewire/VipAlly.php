@@ -7,11 +7,12 @@ use App\Models\Claim;
 
 class VipAlly extends Component
 {
-    //Componente Aliados comerciales Vip vista 
+
+
     public function render()
     {
         $claims = Claim::where('commerce_id', 1)->take(10)->get();
-
+        
         return view('livewire.vip-ally', compact('claims'));
     }
 }   

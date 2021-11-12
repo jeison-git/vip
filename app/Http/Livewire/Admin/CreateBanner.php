@@ -31,7 +31,7 @@ class CreateBanner extends Component
         'title'  => null,
         'owner'  => null,
         'image'  => null,
-    ];
+    ]; 
 
     public $editImage;
 
