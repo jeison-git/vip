@@ -12,6 +12,9 @@ use Illuminate\Support\Str;
 
 class ShowCommerce extends Component
 {
+
+    //Funciones para registrar o Añadir, editar y eliminar comercios 
+
     use WithFileUploads; 
 
     public $commerce, $claims, $claim, $rand;

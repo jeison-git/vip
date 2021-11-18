@@ -41,7 +41,8 @@ class ClaimFilter extends Component
         $brands        = Brand::all();
 
         $productsQuery = Product::query()->whereHas('claim', function (Builder $query){
-            $query->where('id', $this->claim->id);            
+            $query->where('id', $this->claim->id)            
+                  ->where('status', 2);   ///revisar si da problemas aliados comerciales vip        
         });
 
         $products = $productsQuery

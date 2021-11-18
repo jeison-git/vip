@@ -18,7 +18,7 @@ class ShowContacts extends Component
     }
 
     public function render()
-    {
+    {   //Función para mostrar lista de correos enviados desde contactanos
         $contacts = Contact::where('email', 'like', '%' . $this->search . '%')
         ->latest('id')                   
         ->paginate(10);

@@ -41,7 +41,8 @@ class CommerceFilter extends Component
         
 
         $productsQuery = Product::query()->whereHas('claim', function (Builder $query){
-            $query->where('id', $this->claim->id);            
+            $query->where('id', $this->claim->id)
+                  ->where('status', 2);            
         });
 
         $products = $productsQuery

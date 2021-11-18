@@ -24,9 +24,10 @@ class CategoryFilter extends Component
     }
 
     public function render()
-    {
+    {   //cambios a ver si solo se muestran el status 2
         $productsQuery = Product::query()->whereHas('subcategory.category', function(Builder $query){
-            $query->where('id', $this->category->id);
+            $query->where('id', $this->category->id)
+                    ->where('status', 2);
         } );   
         
         if ($this->subcategoria) {

@@ -12,7 +12,7 @@ class BrandComponent extends Component
     public $brands, $brand;
 
     protected $listeners = ['delete'];
-
+    //Función de gancho livewire para validación
     public $createForm=[
         'name' => null
     ];

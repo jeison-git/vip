@@ -37,7 +37,7 @@
                         Publicidad agregada
                     </x-jet-action-message>
 
-                    <x-components.button class="w-full p-4 mb-4 cursor-pointer">
+                    <x-components.button class="w-full p-4 mb-4 cursor-pointer" wire:loading.attr="disabled">
                         Guardar
                     </x-components.button>
                 </form>
@@ -52,15 +52,15 @@
                         <div
                             class="items-center min-h-screen p-1 overflow-hidden bg-white border-b-2 border-gray-300 rounded-lg shadow-2xl">
 
-                            <img alt="..." class="w-full min-h-screen " src="{{ Storage::url($item->image) }}">
+                            <img alt="..." class="w-full min-h-screen bg-fill" src="{{ Storage::url($item->image) }}">
 
-                            @can('Ver dashboard'){{-- los atc solo pueden editar la primera publicacion --}}
+                            @can('Only admin'){{-- los atc solo pueden editar la primera publicacion --}}
 
                                 <div class="flex items-center justify-center divide-x divide-gray-300">
                                     <a class="pr-2 cursor-pointer hover:text-blue-600"
-                                        wire:click="edit('{{ $item->id }}')">Editar</a>
-                                    <a disabled class="pl-2 cursor-pointer hover:text-red-600" {{-- Desabilitada esta opcion --}}
-                                        wire:click="$emit('deleteStatic', '{{ $item->id }}')">Eliminar</a>
+                                        wire:click="edit('{{ $item->id }}')">
+                                        Editar
+                                    </a>
                                 </div>
                             @endcan
 
@@ -134,7 +134,7 @@
                         <div
                             class="items-center min-h-screen p-1 overflow-hidden bg-white border-b-2 border-gray-300 rounded-lg shadow-2xl">
 
-                            <img alt="..." class="w-full min-h-screen" src="{{ Storage::url($advertising->image) }}">
+                            <img alt="..." class="object-fill w-full min-h-screen bg-center bg-cover" src="{{ Storage::url($advertising->image) }}">
 
                         </div>
                     @endif
@@ -164,10 +164,10 @@
 
                     <div>
                         @if ($editImage)
-                            <img class="object-cover object-center w-full h-64" src="{{ $editImage->temporaryUrl() }}"
+                            <img class="object-contain object-center w-full h-64" src="{{ $editImage->temporaryUrl() }}"
                                 alt="">
                         @else
-                            <img class="object-cover object-center w-full h-64"
+                            <img class="object-contain object-center w-full h-64"
                                 src="{{ Storage::url($editForm['image']) }}" alt="">
                         @endif
                     </div>

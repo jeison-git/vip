@@ -1,6 +1,6 @@
-<x-admin-layout>
+<x-admin-layout>    
         
-    <div class="container py-12">
+    <div class="container py-12">{{--función para añadir roles livewire/components--}}
         @livewire('admin.create-role')
     </div>
 

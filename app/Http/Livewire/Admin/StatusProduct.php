@@ -6,6 +6,7 @@ use Livewire\Component;
 
 class StatusProduct extends Component
 {
+    //Función para actualizar el estado del producto, BORRARDO O PUBLICADO
 
     public $product, $status;
 

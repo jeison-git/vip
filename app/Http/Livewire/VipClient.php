@@ -18,7 +18,7 @@ class VipClient extends Component
     use WithPagination;
 
     public $category_id = "", $subcategory_id = "", $brand_id = "", $claim_id = "";
-    //for price filter
+    //for price filter //no se esta usando
     public $min_price;
     public $max_price;
 
@@ -28,13 +28,13 @@ class VipClient extends Component
 
     public function mount()
     {
-        $this->productPerPage = 12;
+        $this->productPerPage = 12;//no se esta usando
 
-        $this->min_price = 1;
-        $this->max_price = 1000;
+        $this->min_price = 1;//no se esta usando
+        $this->max_price = 1000;//no se esta usando
     }
 
-    public function updatedCategoryId($value)
+    public function updatedCategoryId($value)//filtros 
     {
 
         $this->subcategories = Subcategory::where('category_id', $value)->get();
@@ -59,7 +59,7 @@ class VipClient extends Component
             ->latest('id')
             ->paginate(12);
 
-        $offers = Product::where('status', 2) /* Mostrar productos donde el precio este entre 0 y 50 */
+        $offers = Product::where('status', 2) /*comienzo de la pagina Mostrar productos donde el precio este entre 0 y 50 */
             ->whereBetween('price', [0, 50])
             ->inRandomOrder()
             ->take(10)

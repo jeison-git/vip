@@ -14,7 +14,7 @@ class UserComponent extends Component
 
     public $search; 
 
-
+    //Función ver los usuarios registrados 
     public function updatingSearch(){
         $this->resetPage();
     }
@@ -22,7 +22,6 @@ class UserComponent extends Component
 
     public function render()
     {
-
         $users = User::where('email', '<>', auth()->user()->email)
                     ->where(function($query){
                         $query->where('name', 'LIKE', '%' . $this->search . '%');

@@ -7,7 +7,7 @@ use App\Models\Department;
 
 class DepartmentComponent extends Component
 {
-
+    //Función para añadir, actualizar y eliminar un estado o distrito
     public $departments, $department;
 
     protected $listeners = ['delete'];

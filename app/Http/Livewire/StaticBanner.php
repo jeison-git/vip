@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 
 class StaticBanner extends Component
 {
-    //Crear, Editar, Actualizar y eliminar Publicidad
+    //Crear, Editar, Actualizar y eliminar Publicidad que se visualiza en aliados comerciales vip
 
     use WithFileUploads;
 
@@ -141,5 +141,5 @@ class StaticBanner extends Component
             ->get();
 
         return view('livewire.static-banner', compact('advertisings', 'products'));
-    }
+    } 
 }

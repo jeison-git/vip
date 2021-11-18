@@ -8,7 +8,7 @@ use App\Models\User;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
-{
+{   //función para configurar el rol del usuario 
     public function __construct()
     {
         $this->middleware('can:Ver usuarios')->only('index');        
@@ -18,10 +18,10 @@ class UserController extends Controller
     }
 
     public function index()
-    {
+    { //listar usuarios
         return view('admin.users.index');
     }    
-    
+     //función para asignar roles
     public function edit(User $user)
     {
         $roles = Role::all();

@@ -9,7 +9,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
-{
+{ // función para subir imagenes y añadirlos alos productos
     public function files(Product $product, Request $request){
 
         $request->validate([

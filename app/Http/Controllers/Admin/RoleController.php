@@ -10,7 +10,7 @@ use Spatie\Permission\Models\Permission;
 class RoleController extends Controller
 {
     public function __construct()
-    {
+    {   //función para configurar los roles solo podran los que tienen los siguientes permisos
         $this->middleware('can:Listar role')->only('index'); 
         $this->middleware('can:Crear role')->only('create-role', 'save');
         $this->middleware('can:Editar role')->only('create-role', 'update');

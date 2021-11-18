@@ -8,7 +8,8 @@ use App\Models\City;
 
 
 class ShowDepartment extends Component
-{
+{   
+    //Funcion para Añadir Municipios de un estado o distrito, actualizar o eliminar
     protected $listeners = ['delete'];
 
     public $department, $cities, $city;

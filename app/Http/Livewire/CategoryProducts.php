@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class CategoryProducts extends Component
 {
-   
+   //Función para ver productos pertenecientes a una categoria
     public $category;
     public $view = "grid";
     public $products = [];

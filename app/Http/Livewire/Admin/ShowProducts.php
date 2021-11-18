@@ -19,8 +19,7 @@ class ShowProducts extends Component
 
     public function render()
     {
-
-
+        //Función para mostrar lista de los productos registrados
         $products = Product::where('name', 'like', '%' . $this->search . '%')
         ->latest('id')
         ->paginate(10);

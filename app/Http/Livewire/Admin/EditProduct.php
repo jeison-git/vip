@@ -19,7 +19,7 @@ class EditProduct extends Component
     public $product, $categories, $subcategories, $brands, $slug;
 
     public $category_id;
-
+     //validation
     protected $rules = [
         'category_id'            => 'required',
         'product.subcategory_id' => 'required',
@@ -34,18 +34,18 @@ class EditProduct extends Component
 
     protected $listeners = ['refreshProduct', 'delete'];
 
-    public function mount(Product $product){
+    public function mount(Product $product){//gancho de ciclo de vida
         $this->product = $product;
 
-        $this->categories = Category::all();
+        $this->categories = Category::all();//traer categorias
 
-        $this->category_id = $product->subcategory->category->id;
+        $this->category_id = $product->subcategory->category->id;//traer subcategorias atraves de categorias
 
         $this->subcategories = Subcategory::where('category_id', $this->category_id)->get();
 
-        $this->slug = $this->product->slug;
+        $this->slug = $this->product->slug;//slug del producto
 
-        $this->brands = Brand::whereHas('categories', function(Builder $query){
+        $this->brands = Brand::whereHas('categories', function(Builder $query){//traer las marcas del producto
             $query->where('category_id', $this->category_id);
         })->get();
     }
@@ -59,7 +59,7 @@ class EditProduct extends Component
         $this->slug = Str::slug($value);
     }
 
-    public function updatedCategoryId($value){
+    public function updatedCategoryId($value){//actuaizar categoria, subcategorias y marcas
         $this->subcategories = Subcategory::where('category_id', $value)->get();
 
         $this->brands = Brand::whereHas('categories', function(Builder $query) use ($value){
@@ -93,7 +93,7 @@ class EditProduct extends Component
 
         $this->emit('saved');
     }
-
+   // función para eliminar imagen producto
     public function deleteImage(Image $image){
         Storage::delete([$image->url]);
         $image->delete();
@@ -102,7 +102,7 @@ class EditProduct extends Component
     }
 
     public function delete(){
-
+        //función para eliminar producto
         $images = $this->product->images;
 
         foreach ($images as $image) {

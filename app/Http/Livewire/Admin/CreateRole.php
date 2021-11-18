@@ -7,7 +7,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
 class CreateRole extends Component
-{    
+{  //Función para agregar roles, actualizar y eliminar, asociar permisos a un rol  
     public $roles, $role, $permissions, $rand;
 
     protected $listeners = ['delete'];

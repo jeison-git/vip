@@ -84,7 +84,7 @@ class CreateBanner extends Component
         $this->reset(['editImage']);
         $this->resetValidation();
 
-        $this->banner = $banner;
+        $this->banner = $banner; 
 
         $this->editForm['open']   = true;
         $this->editForm['title']  = $banner->title;

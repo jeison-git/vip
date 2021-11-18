@@ -7,7 +7,7 @@ use App\Models\Size;
 
 class SizeProduct extends Component
 {
-
+    //Funcion para añadir, actualizar, eliminar las tallas del producto (error no se puede eliminar de la tabla pivot)
     public $product, $name, $open = false;
 
     public $size, $name_edit;

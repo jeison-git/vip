@@ -16,7 +16,7 @@ class ColorProduct extends Component
     public $pivot, $pivot_color_id, $pivot_quantity;
 
     protected $listeners = ['delete'];
-
+    //Función livewire para validación de la tabla pivot color_product
     protected $rules = [
         'color_id' => 'required',
         'quantity' => 'required|numeric|integer|Min:0'
@@ -29,7 +29,7 @@ class ColorProduct extends Component
 
     public function save(){
         $this->validate();
-
+        //Función para guardar datos en la tabla pivot
         $pivot = Pivot::where('color_id', $this->color_id)
                     ->where('product_id', $this->product->id)
                     ->first();
@@ -77,7 +77,7 @@ class ColorProduct extends Component
 
         $this->open = false;
     }
-
+    //Error al querer eliminar no permite desde la vista de productos 
     public function delete(Pivot $pivot){
         $pivot->delete();
         $this->product = $this->product->fresh();

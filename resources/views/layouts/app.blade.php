@@ -40,9 +40,7 @@
 
 </head>
 
-<body class="font-sans antialiased" onload="myFunction()" style="margin:0;">
-    <!-- Preloader section
-================================================== -->
+<body class="font-sans antialiased">
 
     <div>
         <x-jet-banner />

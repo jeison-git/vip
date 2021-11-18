@@ -41,7 +41,7 @@
                     <x-jet-input-error for="createForm.owner" />
                 </div>
 
-                <div class="col-span-6 sm:col-span-4">
+                <div class="col-span-6 text-xs sm:col-span-4">
                     <x-jet-label>
                         Imagen
                     </x-jet-label>
@@ -83,12 +83,12 @@
                         </tr>
                     </thead>
 
-                    <tbody class="divide-y divide-gray-300">
+                    <tbody class="divide-y divide-gray-300 cursor-default">
                         @foreach ($banners as $banner)
                             <tr>
                                 <td class="py-2">
 
-                                    <span {{-- href="{{route('admin.banners.show', $banner)}}" --}} class="underline {{-- uppercase --}} hover:text-blue-600">
+                                    <span class="text-xs uppercase hover:text-blue-600">
                                         {{ $banner->title }}
                                     </span>
                                 </td>

@@ -1,6 +1,6 @@
 <div class="container">
 
-    <!-- component -->
+    <!-- component super mega offertas vip-->
     <div class="w-full min-h-full p-6 mt-12 bg-cover rounded-lg shadow-2xl contenair"
         style="background-image: url('https://images.unsplash.com/photo-1618556450994-a6a128ef0d9d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=764&q=80');'">
 

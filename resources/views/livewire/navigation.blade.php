@@ -314,9 +314,9 @@ $nav_links = [
 
     <div class="container items-center space-x-8 sm:-my-px sm:ml-10 sm:flex">{{-- links inferiores de navegacion, categorias, ciente vip, aliados comerciales, etc.. --}}
 
-        <ul class="hidden md:block md:order-first">{{-- ocultar en pantallas pequeñas --}}
+        <ul class="hidden md:block md:order-first ">{{-- ocultar en pantallas pequeñas --}}
 
-            <a href=" /" class="link-term mercado-item-title">{{-- icono de shoping bag con enlace a la pagina principal --}}
+            <a href=" /" class="link-term mercado-item-title ">{{-- icono de shoping bag con enlace a la pagina principal --}}
 
                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0 0 172 172"
                     style=" fill:#000000;">

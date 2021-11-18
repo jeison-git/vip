@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class OrderController extends Controller
 {
     public function index(){
-
+        // función para visualizar  estado del pedido
         $orders = Order::query()->where('status', '<>', 1);
 
         if (request('status')) {

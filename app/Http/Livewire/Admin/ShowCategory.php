@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 
 class ShowCategory extends Component
 {
+    //Actualizar editar y eliminar Subcategorias pertenecientes a una categoria
     public $category, $subcategories, $subcategory;
 
     protected $listeners = ['delete'];

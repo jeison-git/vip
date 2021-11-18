@@ -22,15 +22,15 @@ class AddCartItem extends Component
         $this->quantity = qty_available($this->product->id);
         $this->options['image'] = Storage::url($this->product->images->first()->url);
     }
-
+    //quitar items
     public function decrement(){
         $this->qty = $this->qty - 1;
     }
-
+    //añadir items
     public function increment(){
         $this->qty = $this->qty + 1;
     }
-
+    //Añadir items al shopping cart
     public function addItem(){
         Cart::add([ 'id' => $this->product->id, 
                     'name' => $this->product->name, 
