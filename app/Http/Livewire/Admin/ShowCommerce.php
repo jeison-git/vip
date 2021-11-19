@@ -27,10 +27,11 @@ class ShowCommerce extends Component
         'createForm.icon'     => 'required',
         'createForm.image'    => 'required|image|max:1024',
         'createForm.manager'  => 'required',
-        'createForm.document' => 'required',
+        'createForm.document' => 'required', 
         'createForm.number_phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:11',
         'createForm.email'        => 'required|email',
         'createForm.target'       => 'required',
+        'createForm.url'          => 'nullable|url',
         'createForm.description'  => 'required',
         'createForm.address'      => 'required',
         'createForm.observation'  => 'required',
@@ -46,6 +47,7 @@ class ShowCommerce extends Component
         'createForm.number_phone' => 'numero_de_telefono',
         'createForm.email'        => 'correo',
         'createForm.target'       => 'a_quien_te_diriges',
+        'createForm.url'          => 'link',
         'createForm.description'  => 'descripcion',
         'createForm.address'      => 'direccion',
         'createForm.observation'  => 'observaciones',
@@ -58,6 +60,7 @@ class ShowCommerce extends Component
         'editForm.number_phone' => 'numero_de_telefono',
         'editForm.email'        => 'correo',
         'editForm.target'       => 'a_quien_te_diriges',
+        'editForm.url'          => 'link',
         'editForm.description'  => 'descripcion',
         'editForm.address'      => 'direccion',
         'editForm.observation'  => 'observaciones',
@@ -73,6 +76,7 @@ class ShowCommerce extends Component
         'number_phone' => null,
         'email'        => null,
         'target'       => null,
+        'url'          => null,
         'description'  => null,
         'address'      => null,
         'observation'  => null,
@@ -89,6 +93,7 @@ class ShowCommerce extends Component
         'number_phone' => null,
         'email'        => null,
         'target'       => null,
+        'url'          => null,
         'description'  => null,
         'address'      => null,
         'observation'  => null,
@@ -132,15 +137,16 @@ class ShowCommerce extends Component
             'name' => $this->createForm['name'],
             'slug' => $this->createForm['slug'],
             'icon' => $this->createForm['icon'],
-            'manager' => $this->createForm['manager'],
-            'document' => $this->createForm['document'],
+            'manager'      => $this->createForm['manager'],
+            'document'     => $this->createForm['document'],
             'number_phone' => $this->createForm['number_phone'],
-            'email' => $this->createForm['email'],
+            'email'  => $this->createForm['email'],
             'target' => $this->createForm['target'],
+            'url'    => $this->createForm['url'],
             'description' => $this->createForm['description'],
-            'address' => $this->createForm['address'],
+            'address'     => $this->createForm['address'],
             'observation' => $this->createForm['observation'],
-            'image' => $image,
+            'image'       => $image,
         ]);
 
         $this->rand = rand();
@@ -169,6 +175,7 @@ class ShowCommerce extends Component
         $this->editForm['number_phone'] = $claim->number_phone;
         $this->editForm['email']        = $claim->email;
         $this->editForm['target']       = $claim->target;
+        $this->editForm['url']          = $claim->url;
         $this->editForm['description']  = $claim->description;
         $this->editForm['address']      = $claim->address;
         $this->editForm['observation']  = $claim->observation;
@@ -185,6 +192,7 @@ class ShowCommerce extends Component
             'editForm.number_phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:11',
             'editForm.email'        => 'required|email',
             'editForm.target'       => 'required',
+            'editForm.url'          => 'nullable|url',
             'editForm.description'  => 'required',
             'editForm.address'      => 'required',
             'editForm.observation'  => 'required',

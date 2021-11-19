@@ -20,6 +20,11 @@ $nav_links = [
         'route' => route('vip-commerce'),
         'active' => request()->routeIs('vip-commerce'),
     ],
+    [
+        'name' => 'Contáctanos',
+        'route' => route('contacts.index'),
+        'active' => request()->routeIs('contacts.index'),
+    ],
 ];
 
 @endphp{{-- fin links de navegacion --}}
@@ -544,7 +549,7 @@ $nav_links = [
 
                 <x-jet-responsive-nav-link href="{{ route('logout') }}" :active="request()->routeIs('logout')"
                     onClick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                    class="flex items-center px-4 py-2 text-sm text-trueGray-500">
+                    class="flex items-center px-4 py-2 mb-12 text-sm text-trueGray-500">
 
                     <span class="flex justify-center w-9">
                         <i class="fas fa-sign-out-alt"></i>
@@ -571,7 +576,7 @@ $nav_links = [
                 </x-jet-responsive-nav-link>
 
                 <x-jet-responsive-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')"
-                    class="flex items-center px-4 py-2 text-sm text-trueGray-500 ">
+                    class="flex items-center px-4 py-2 mb-12 text-sm text-trueGray-500 ">
 
                     <span class="flex justify-center w-9">
                         <i class="fas fa-fingerprint"></i>

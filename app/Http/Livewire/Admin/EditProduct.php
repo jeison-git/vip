@@ -99,6 +99,7 @@ class EditProduct extends Component
         $image->delete();
 
         $this->product = $this->product->fresh();
+
     }
 
     public function delete(){

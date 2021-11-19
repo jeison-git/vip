@@ -27,6 +27,11 @@ class PaymentOrder extends Component
 
         return redirect()->route('orders.show', $this->order);
 
+       /*  if($status == 'approved'){
+            $order->status = 2;
+            $order->save();
+        } */
+
         session()->flash('message', '¡Gracias por su compra!');//no funciona devido al error 403 
         
 

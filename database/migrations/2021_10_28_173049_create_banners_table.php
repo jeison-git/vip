@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Schema; 
 
 class CreateBannersTable extends Migration
 {
@@ -17,8 +17,9 @@ class CreateBannersTable extends Migration
             $table->id();
             
             $table->string('title');
-            $table->string('owner');
+            $table->string('owner'); 
             $table->string('image');
+            $table->timestamp('finished_at')->nullable();
 
             $table->timestamps();
         });

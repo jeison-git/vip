@@ -7,6 +7,7 @@ use App\Models\StaticAdvertising;
 use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
 
 
 class CreateStaticbanner extends Component
@@ -23,14 +24,16 @@ class CreateStaticbanner extends Component
 
         'title'  => null,
         'owner'  => null,
-        'image'  => null,
+        'image'  => null,        
+        'finished_at'  => null,
     ];
 
     public $editForm = [
         'open'   => false,
         'title'  => null,
         'owner'  => null,
-        'image'  => null,
+        'image'  => null,        
+        'finished_at'  => null,
     ];
 
     public $editImage;
@@ -38,16 +41,19 @@ class CreateStaticbanner extends Component
     protected $rules = [
         'createForm.title'   => 'nullable',
         'createForm.owner'   => 'nullable',
-        'createForm.image'   => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'createForm.image'   => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',        
+        'createForm.finished_at' => 'nullable'
     ];
 
     protected $validationAttributes = [
         'createForm.title'   => 'nombre',
         'createForm.owner'   => 'dueño',
-        'createForm.image'   => 'imagen',
+        'createForm.image'   => 'imagen',                
+        'createForm.finished_at' =>"'Fecha de vencimiento'",
         'editForm.title'     => 'nombre',
         'editForm.owner'     => 'dueño',
-        'editImage'          => 'imagen',
+        'editImage'          => 'imagen',        
+        'editForm.finished_at' =>"'Fecha de vencimiento'",
     ];
 
     public function mount()
@@ -71,7 +77,8 @@ class CreateStaticbanner extends Component
 
         StaticAdvertising::create([
             'title' => $this->createForm['title'],
-            'owner' => $this->createForm['owner'],
+            'owner' => $this->createForm['owner'],            
+            'finished_at' => $this->createForm['finished_at'],
             'image' => $image
         ]);
 
@@ -92,7 +99,8 @@ class CreateStaticbanner extends Component
 
         $this->editForm['open']   = true;
         $this->editForm['title']  = $static->title;
-        $this->editForm['owner']  = $static->owner;
+        $this->editForm['owner']  = $static->owner;        
+        $this->editForm['finished_at']  = $static->finished_at;
         $this->editForm['image']  = $static->image;
     }
 
@@ -101,7 +109,8 @@ class CreateStaticbanner extends Component
 
         $rules = [
             'editForm.title'  => 'required',
-            'editForm.owner'  => 'required',
+            'editForm.owner'  => 'required',            
+            'editForm.finished_at'  => 'nullable',
         ];
 
         if ($this->editImage) {

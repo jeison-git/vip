@@ -46,7 +46,7 @@
                 Tipo de comercio creado
             </x-jet-action-message>
 
-            <x-jet-button>
+            <x-jet-button wire:loading.attr="disabled">
                 Agregar
             </x-jet-button>
         </x-slot>

@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Claim;
-use App\Models\Product;
+use App\Models\Product; 
 
 class VipCommerce extends Component
 {

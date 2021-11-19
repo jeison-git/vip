@@ -17,8 +17,9 @@ class CreateStaticAdvertisingsTable extends Migration
             $table->id();
             
             $table->string('title')->nullable();
-            $table->string('owner')->nullable();
+            $table->string('owner')->nullable(); 
             $table->string('image')->nullable();
+            $table->timestamp('finished_at')->nullable();
 
             $table->timestamps();
         });

@@ -4,7 +4,7 @@
             <div class="flex items-center justify-between">                            
 
                 <h1 class="flex items-center font-semibold leading-tight text-gray-800 md:text-2xl">                    
-                        <a href="{{ URL::previous() }}" class="mr-2"><img src="https://img.icons8.com/dusk/25/000000/circled-left-2.png"/></a></a> Resgistro de Comercios
+                        <a href="{{ route('admin.commerces.index') }}" class="mr-2"><img src="https://img.icons8.com/dusk/25/000000/circled-left-2.png"/></a></a> Resgistro de Comercios
                 </h1>
                 
             </div>
@@ -98,6 +98,16 @@
 
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label>
+                    ¿Posee pagina web?. Añadir link, caso contrario colocar https://meganegociosvip.com/.
+                </x-jet-label>
+
+                <x-jet-input wire:model="createForm.url" type="text" class="w-full mt-1" placeholder="ejemplo: https://meganegociosvip.com/ " />
+
+                <x-jet-input-error for="createForm.url" />
+            </div>
+
+            <div class="col-span-6 sm:col-span-4">
+                <x-jet-label>
                     Lema que identifique al negocio, o descripción breve del mísmo.
                 </x-jet-label>
 
@@ -154,7 +164,7 @@
                 Comercio
             </x-jet-action-message>
 
-            <x-jet-button>
+            <x-jet-button wire:loading.attr="disabled">
                 Agregar
             </x-jet-button>
         </x-slot>
@@ -299,6 +309,16 @@
                     <x-jet-input wire:model="editForm.target" type="text" class="w-full mt-1" />
     
                     <x-jet-input-error for="editForm.target" />
+                </div>
+
+                <div class="col-span-6 sm:col-span-4">
+                    <x-jet-label>
+                        Actualizar link, caso contrario colocar https://meganegociosvip.com/.
+                    </x-jet-label>
+    
+                    <x-jet-input wire:model="editForm.url" type="text" class="w-full mt-1" placeholder="ejemplo: https://meganegociosvip.com/ " />
+    
+                    <x-jet-input-error for="editForm.url" />
                 </div>
     
                 <div class="col-span-6 sm:col-span-4">

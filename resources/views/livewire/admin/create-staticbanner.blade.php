@@ -14,9 +14,9 @@
                 * El tamaño de dato de la imagen no puede sobrepasar &nbsp;&nbsp;&nbsp;2048 megabytes (2MB). <br>
                 * Es muy importante que todas las publicaciones (imagenes) &nbsp;&nbsp;&nbsp;posean las mismas
                 dimesiones. <br>
-                * La resolución recomendada para las dimensiones de sus &nbsp;&nbsp;&nbsp;publicaciones es 640px *
-                480px. <br>
-                * La dimensiones máximas aceptadas en este registro son &nbsp;&nbsp;&nbsp;640px * 480px. <br>
+                * La resolución recomendada para las dimensiones de sus &nbsp;&nbsp;&nbsp;publicaciones es 300px *
+                720px. <br>
+                * La dimensiones máximas aceptadas en este registro son &nbsp;&nbsp;&nbsp;300px * 720px. <br>
                 * Antes de añadir otro registro actualice la página.
 
             </x-slot>
@@ -27,7 +27,7 @@
                         Titulo
                     </x-jet-label>
 
-                    <x-jet-input wire:model="createForm.title" type="text" class="w-full mt-1" />
+                    <x-jet-input wire:model.defer="createForm.title" type="text" class="w-full mt-1" />
 
                     <x-jet-input-error for="createForm.title" />
                 </div>
@@ -41,13 +41,22 @@
                     <x-jet-input-error for="createForm.owner" />
                 </div>
 
+                <div class="col-span-6 sm:col-span-4">
+                    <x-jet-label>
+                        ¿Quieres un límite de tiempo para esta publicidad?
+                    </x-jet-label>
+
+                    <input wire:model.defer="createForm.finished_at" type="datetime-local" class="w-full mt-1 form-control">
+                    <x-jet-input-error for="createForm.finished_at" />
+                </div>
+
                 <div class="col-span-6 text-xs sm:col-span-4">
                     <x-jet-label>
                         Imagen
                     </x-jet-label>
 
                     <input wire:model="createForm.image" accept="image/*" type="file" class="mt-1" name=""
-                        id="{{ $rand }}">
+                        id="{{ $rand ?? null}}">
                     <x-jet-input-error for="createForm.image" />
                 </div>
             </x-slot>
@@ -58,7 +67,7 @@
                     Publicidad agregada
                 </x-jet-action-message>
 
-                <x-jet-button>
+                <x-jet-button wire:loading.attr="disabled">
                     Agregar
                 </x-jet-button>
             </x-slot>
@@ -78,7 +87,7 @@
                 <table class="text-xs text-gray-600">
                     <thead class="border-b border-gray-300">
                         <tr class="text-left">
-                            <th class="w-full py-2">Titulo</th>
+                            <th class="w-full py-2">Titulo&nbsp;-&nbsp;Vencimiento</th>
                             <th class="py-2">Acción</th>
                         </tr>
                     </thead>
@@ -91,7 +100,11 @@
                                     <span class="text-xs uppercase hover:text-blue-600">
                                         {{ $static->title }}
                                     </span>
+                                    <span class="ml-1 mr-1 text-xs hover:text-red-600">
+                                        Vence&nbsp;{{ $static->finished_at ? $static->finished_at->diffForHumans() : 'Sin límite de tiempo' }}
+                                    </span>
                                 </td>
+
                                 <td class="py-2">
                                     <div class="flex divide-x divide-gray-300">
                                         <a class="pr-2 cursor-pointer hover:text-blue-600"
@@ -111,7 +124,7 @@
         <x-jet-dialog-modal wire:model="editForm.open">{{-- Modal Solo  Editar la primera publicacion --}}
 
             <x-slot name="title">
-                Editar static
+                Editar Banner statico
             </x-slot>
 
             <x-slot name="content">
@@ -140,7 +153,7 @@
 
                     <div>
                         <x-jet-label>
-                            A quíen pertenece esta publicidad ?
+                            ¿ A quíen pertenece esta publicidad ?
                         </x-jet-label>
 
                         <x-jet-input wire:model.defer="editForm.owner" type="text" class="w-full mt-1" />
@@ -149,11 +162,21 @@
 
                     <div>
                         <x-jet-label>
+                            Fecha de vencimiento
+                        </x-jet-label>
+
+                        <input wire:model.defer="editForm.finished_at" type="datetime-local" class="w-full mt-1 form-control">
+
+                        <x-jet-input-error for="editForm.finished_at" />
+                    </div>
+
+                    <div>
+                        <x-jet-label> 
                             Imagen
                         </x-jet-label>
 
                         <input wire:model="editImage" accept="image/*" type="file" class="mt-1" name=""
-                            id="{{ $rand }}">
+                            id="{{ $rand ?? null }}">
                         <x-jet-input-error for="editImage" />
                     </div>
                 </div>

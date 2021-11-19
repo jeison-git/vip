@@ -24,10 +24,10 @@ class Search extends Component
     public function render()
     {
         //access all category
-        $categories  = Category::all();
+        $categories  = Category::all(['id','name','slug', 'image', 'icon']);
 
         if ($this->search) {
-            $products = Product::where('name', 'LIKE' ,'%' . $this->search . '%')
+            $products = Product::select('id','name','slug', 'subcategory_id')->where('name', 'LIKE' ,'%' . $this->search . '%')
                                 ->where('status', 2)
                                 ->take(5)
                                 ->get();

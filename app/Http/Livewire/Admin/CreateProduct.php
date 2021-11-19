@@ -35,7 +35,7 @@ class CreateProduct extends Component
     ]; 
 
     //actualizar categoria
-    public function updatedCategoryId($value){
+    public function updatedCategoryId($value){ 
 
 
         $this->subcategories = Subcategory::where('category_id', $value)->get();

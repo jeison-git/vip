@@ -10,7 +10,8 @@ class Navigation extends Component
     //Componente barra de navegacion
     public function render()
     {
-        $categories = Category::all();
+       $categories = Category::all(['id','name','slug', 'image', 'icon']); ; 
+
         return view('livewire.navigation', compact('categories'));
     }
 }

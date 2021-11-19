@@ -14,7 +14,8 @@ class ClaimSeeder extends Seeder
      * @return void
      */
     public function run()
-    { {
+    {
+         {
             $claims = [
                 /*'Aliados Comerciales Vip'*/
 
@@ -28,6 +29,7 @@ class ClaimSeeder extends Seeder
                     'number_phone' => '0424.002.123',
                     'email'        => 'meganegocios@meganegociosvip.com',
                     'target'       => 'de todo',
+                    'url'          => 'https://meganegociosvip.com/',
                     'description'  => 'Todo lo que quieres y necesitas aquí lo consigues',
                     'address'      => 'Sabanagrande, Caracas',
                     'observation'  => 'local muy angosto',
@@ -45,6 +47,7 @@ class ClaimSeeder extends Seeder
                     'number_phone' => '0424.002.123',
                     'email'        => 'meganegocios@meganegociosvip.com',
                     'target'       => 'de todo',
+                    'url'          => 'https://meganegociosvip.com/',
                     'description'  => 'Todo lo que quieres y necesitas aquí lo consigues',
                     'address'      => 'Sabanagrande, Caracas',
                     'observation'  => 'local muy angosto',
@@ -61,6 +64,7 @@ class ClaimSeeder extends Seeder
                     'number_phone' => '0424.002.123',
                     'email'        => 'meganegocios@meganegociosvip.com',
                     'target'       => 'de todo',
+                    'url'          => 'https://meganegociosvip.com/',
                     'description'  => 'Todo lo que quieres y necesitas aquí lo consigues',
                     'address'      => 'Av. Casanova, Edif.  (Frente al Gran Café), El Recreo, Caracas',
                     'observation'  => 'local muy angosto',
@@ -77,6 +81,7 @@ class ClaimSeeder extends Seeder
                     'number_phone' => '0424.002.123',
                     'email'        => 'meganegocios@meganegociosvip.com',
                     'target'       => 'de todo',
+                    'url'          => 'https://meganegociosvip.com/',
                     'description'  => 'Todo lo que quieres y necesitas aquí lo consigues',
                     'address'      => 'Av. Casanova, Edif. cochinitos food (Frente al Gran Café), El Recreo, Caracas',
                     'observation'  => 'local muy angosto',

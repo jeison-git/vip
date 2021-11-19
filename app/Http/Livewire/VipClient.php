@@ -48,18 +48,18 @@ class VipClient extends Component
 
     public function render()
     {
-        $categories    = Category::all();
-        $subcategories = Subcategory::all();
-        $brands        = Brand::all();
+        $categories    = Category::all(['id','name']);
+        $subcategories = Subcategory::all(['id','name']); 
+        $brands        = Brand::all(['id','name']);
 
-        $products = Product::where('status', 2)
+        $products = Product::select('id','slug','name','price')->where('status', 2)
             ->category($this->category_id)
             ->subcategory($this->subcategory_id)
             ->brand($this->brand_id)
             ->latest('id')
             ->paginate(12);
 
-        $offers = Product::where('status', 2) /*comienzo de la pagina Mostrar productos donde el precio este entre 0 y 50 */
+        $offers = Product::select('id','slug','name','price')->where('status', 2) /*comienzo de la pagina Mostrar productos donde el precio este entre 0 y 50 */
             ->whereBetween('price', [0, 50])
             ->inRandomOrder()
             ->take(10)

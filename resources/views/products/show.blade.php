@@ -5,7 +5,7 @@
             <div class="flex items-center justify-between">
 
                 <h1 class="flex items-center font-semibold leading-tight text-gray-800 md:text-2xl">
-                      
+
                     <a href="{{ URL::previous() }}" class="mr-2">
                         <img src="https://img.icons8.com/dusk/25/000000/circled-left-2.png" />
                     </a>
@@ -106,24 +106,31 @@
 
             <div class="grid gap-6 mb-8 md:grid-cols-2 lg:grid-cols-4">
                 @foreach ($similares as $similar)
-                    <div class="flex items-center p-2 bg-white border-2 border-gray-200 rounded-lg shadow-sm">
-                        <div class="flex-shrink-0 w-20 mr-2 h-15">
-                            <img class="object-cover object-center w-20 mr-4 h-15"
-                                src="{{ Storage::url($similar->images->first()->url ?? null) }}" alt="similares">
-                        </div>
-                        <div>
-                            <p class="mb-2 text-base text-center text-gray-800"><a
-                                    class="transition duration-300 hover:text-gold hover:shadow-md"
-                                    href="{{ route('products.show', $similar) }}">{{ Str::limit($similar->name, 40) }}</a>
-                            </p>
-                            <p class="text-sm text-center text-gray-600">{{ $similar->price }}</p>
-                        </div>
+
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <a href="{{ route('products.show', $similar) }}">
+                            <div
+                                class="p-2 transition-all duration-500 transform bg-white shadow-xl w- rounded-xl hover:shadow-2xl hover:scale-105">
+                                <img class="object-fill object-center w-full h-48 rounded-t-md"
+                                    src="{{ Storage::url($similar->images->first()->url ?? null) }}" alt="similares">
+
+                                    <div class="mt-4">
+
+                                        <h1 class="text-base text-gray-700 uppercase hover:text-gold">
+                                            {{ Str::limit($similar->name, 20) }}
+                                        </h1>
+                                        <p class="text-sm text-gray-600 hover:text-gold">UD ${{ $similar->price }}</p>
+                                    </div>
+                            </div>
+                            
+                        </a>
                     </div>
+                    
                 @endforeach
             </div>
 
         </section>
-       
+
     </div>
 
     @push('script')

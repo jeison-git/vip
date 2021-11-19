@@ -11,6 +11,8 @@ class Subcategory extends Model
 
     public $guarded =  ['id', 'created_at', 'updated_at'];
 
+    protected $with = ['category'];
+
     //Relacion uno a muchos
     public function products(){
 
@@ -19,7 +21,7 @@ class Subcategory extends Model
     }
 
     //Relacion uno a muchos inversa
-    public function category(){
+    public function category(){ 
 
         return $this->belongsTo(Category::class);
          

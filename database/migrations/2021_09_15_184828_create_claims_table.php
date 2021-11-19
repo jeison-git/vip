@@ -25,7 +25,8 @@ class CreateClaimsTable extends Migration
             $table->string('number_phone')->nullable();
             $table->string('email')->nullable();
             $table->string('target')->nullable();
-            
+            $table->string('url')->nullable();
+                        
             $table->text('description');
             $table->string('address');
             $table->string('observation')->nullable(); 

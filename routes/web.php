@@ -40,7 +40,7 @@ Route::view('policy', 'policy')->name('policy');
 Route::view('terms', 'terms')->name('terms');
 
 //Grupo de vistas donde es necesario que el usuario este registrado y logeado
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('orders', [OrderController::class, 'index'])->name('orders.index');/* lLista de ordenes del usuario */
 

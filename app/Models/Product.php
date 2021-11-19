@@ -16,6 +16,8 @@ class Product extends Model
 
     public $guarded =  ['id', 'created_at', 'updated_at'];
 
+    protected $with = ['category', 'subcategory', 'images'];
+
     //accesores    
 
     public function getStockAttribute()

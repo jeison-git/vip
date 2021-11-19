@@ -4,7 +4,6 @@ namespace  App\Http\Livewire\Admin;
 
 use Livewire\Component;
 use App\Models\Banner;
-
 use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Str;
@@ -23,14 +22,16 @@ class CreateBanner extends Component
         
         'title'  => null,
         'owner'  => null,
-        'image'  => null,
+        'image'  => null,                
+        'finished_at'  => null,
     ];
 
     public $editForm = [
         'open'   => false,
         'title'  => null,
         'owner'  => null,
-        'image'  => null,
+        'image'  => null,                
+        'finished_at'  => null,
     ]; 
 
     public $editImage;
@@ -38,16 +39,19 @@ class CreateBanner extends Component
     protected $rules = [
         'createForm.title'   => 'required',
         'createForm.owner'   => 'required',
-        'createForm.image'   => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048|dimensions:max_width=640,max_height=480',
+        'createForm.image'   => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048|dimensions:max_width=640,max_height=480',                
+        'createForm.finished_at' => 'nullable'
     ];
 
     protected $validationAttributes = [
         'createForm.title'   => 'nombre',
         'createForm.owner'   => 'dueño',
-        'createForm.image'   => 'imagen',
+        'createForm.image'   => 'imagen',                        
+        'createForm.finished_at' =>"'Fecha de vencimiento'",
         'editForm.title'     => 'nombre',
         'editForm.owner'     => 'dueño',
-        'editImage'          => 'imagen',
+        'editImage'          => 'imagen',                
+        'editForm.finished_at' =>"'Fecha de vencimiento'",
     ];
 
     public function mount(){
@@ -68,8 +72,10 @@ class CreateBanner extends Component
 
         Banner::create([
             'title' => $this->createForm['title'],
-            'owner' => $this->createForm['owner'],
+            'owner' => $this->createForm['owner'],                        
+            'finished_at' => $this->createForm['finished_at'],
             'image' => $image
+            
         ]);
 
         $this->rand = rand();
@@ -88,7 +94,8 @@ class CreateBanner extends Component
 
         $this->editForm['open']   = true;
         $this->editForm['title']  = $banner->title;
-        $this->editForm['owner']  = $banner->owner;
+        $this->editForm['owner']  = $banner->owner;                
+        $this->editForm['finished_at']  = $banner->finished_at;        
         $this->editForm['image']  = $banner->image;
     }
 
@@ -96,7 +103,8 @@ class CreateBanner extends Component
 
         $rules = [
             'editForm.title'  => 'required',
-            'editForm.owner'  => 'required',
+            'editForm.owner'  => 'required',                        
+            'editForm.finished_at'  => 'nullable',
         ];
 
         if ($this->editImage) {

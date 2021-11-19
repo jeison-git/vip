@@ -130,12 +130,13 @@
                                                     style="border-collapse:collapse;border-spacing:0px;">
                                                     <tbody>
                                                         <tr>
-                                                            <td style="width:300px;"><a
-                                                                    href="https://meganegociosvip.com/"
-                                                                    target="_blank"><img alt="" height="auto"
-                                                                        src="{{ asset('img/Logo.png') }}"
-                                                                        style="border:none;border-radius:px;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
-                                                                        width="300"></a></td>
+                                                            <td style="width:300px;">
+                                                                    <a
+                                                                         href="https://meganegociosvip.com/"
+                                                                         target="_blank"><img alt="" height="auto"
+                                                                         src="{{ asset('img/Logo.png') }}">
+                                                                    </a>
+                                                            </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -212,7 +213,7 @@
                                                             <td align="center" bgcolor="#4BB9F1" role="presentation"
                                                                 style="border:none;border-radius:60px;cursor:auto;mso-padding-alt:15px 30px;background:#4BB9F1;"
                                                                 valign="middle"><a
-                                                                    href="https://www.exhttps://meganegociosvip.com/ample.com"
+                                                                    href="https://meganegociosvip.com/"
                                                                     style="display:inline-block;background:#4BB9F1;color:#ffffff;font-family:Arial, sans-serif;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:15px 30px;mso-padding-alt:0px;border-radius:60px;"
                                                                     target="_blank"><span
                                                                         style="background-color:#4BB9F1;color:#FFFFFF;font-size:13px;"><b>Visitanos</b></span></a>
