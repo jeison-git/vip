@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\Admin\ApplicationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RoleController;
@@ -24,9 +24,10 @@ use App\Http\Livewire\Admin\AnswerContact;
 use App\Http\Livewire\Admin\DepartmentComponent;
 use App\Http\Livewire\Admin\ShowDepartment;
 use App\Http\Livewire\Admin\CityComponent;
+use App\Http\Livewire\Admin\ShowApplications;
 use App\Http\Livewire\Admin\UserComponent;
 
-use App\Http\Livewire\Admin\ShowContacts; 
+use App\Http\Livewire\Admin\ShowContacts;
 
 // Registro de Productos  vista principal
 Route::get('/', ShowProducts::class)->middleware('can:Ver dashboard')->name('admin.index');
@@ -66,3 +67,11 @@ Route::get('contacts', ShowContacts::class)->middleware('can:Ver dashboard')->na
 Route::get('contacts/{contact}/answer', AnswerContact::class)->middleware('can:Ver dashboard')->name('admin.contacts.answer');
 Route::get('contacts/{contact}/message', [ContactController::class, 'message'])->middleware('can:Ver dashboard')->name('contacts.message');
 Route::post('contacts/{contact}/answered', [ContactController::class, 'answer'])->middleware('can:Ver dashboard')->name('contacts.answered');
+
+////Solicitud de empleo
+Route::get('applications', ShowApplications::class)->middleware('can:Ver dashboard')->name('admin.applications.index');
+
+Route::get('applications/{application}/view', [ApplicationController::class, 'show'])->middleware('can:Ver dashboard')->name('admin.applications.show');
+
+Route::get('applications/{application}/message', [ApplicationController::class, 'message'])->middleware('can:Ver dashboard')->name('admin.applications.message');
+Route::post('applications/{application}/approved', [ApplicationController::class, 'approved'])->middleware('can:Ver dashboard')->name('admin.applications.approved');

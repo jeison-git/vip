@@ -111,6 +111,10 @@
                         Departamentos
                     </x-jet-nav-link>
 
+                    <x-jet-nav-link class="mr-2" href="{{route('admin.applications.index')}}" :active="request()->routeIs('admin.applications.index')">
+                        Solicitud
+                    </x-jet-nav-link>
+
                     <x-jet-nav-link class="mr-2" href="{{route('admin.contacts.index')}}" :active="request()->routeIs('admin.contacts.index')">
                         Mensajes
                     </x-jet-nav-link>
@@ -275,6 +279,10 @@
 
             <x-jet-responsive-nav-link href="{{route('admin.contacts.index')}}" :active="request()->routeIs('admin.contacts.index')">
                 Mensajes
+            </x-jet-responsive-nav-link>
+
+            <x-jet-responsive-nav-link href="{{route('admin.applications.index')}}" :active="request()->routeIs('admin.applications.index')">
+                Solicitud
             </x-jet-responsive-nav-link>
 
             <x-jet-responsive-nav-link href="{{route('admin.users.index')}}" :active="request()->routeIs('admin.users.index')">

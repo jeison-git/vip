@@ -66,11 +66,23 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Order::class);
     }
 
-/////////////////
+    /////////////////
     public function reviews(){  // (reviews un usuario puede comentar muchas veces)
 
         return $this->hasMany(Review::class);
 
+    }
+
+    ////////////////////// 
+    public function job_application(){  //(un desempleado  tiene muchas solicitudes de empleo)
+
+        return $this->hasMany(Employment::class);
+        
+    }
+    ////
+    public function experiences(){
+
+        return $this->belongsToMany(Experience::class);
     }
     
 }

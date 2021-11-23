@@ -47,7 +47,7 @@ class EditProduct extends Component
 
         $this->brands = Brand::whereHas('categories', function(Builder $query){//traer las marcas del producto
             $query->where('category_id', $this->category_id);
-        })->get();
+        })->get(); 
     }
 
 
@@ -85,7 +85,7 @@ class EditProduct extends Component
             }
         }
 
-        $this->validate($rules);
+        $this->validate($rules); 
 
         $this->product->slug = $this->slug;
 

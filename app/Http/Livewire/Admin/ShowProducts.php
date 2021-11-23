@@ -22,7 +22,7 @@ class ShowProducts extends Component
         //Función para mostrar lista de los productos registrados
         $products = Product::where('name', 'like', '%' . $this->search . '%')
         ->latest('id')
-        ->paginate(10);
+        ->paginate(10); 
 
         return view('livewire.admin.show-products', compact('products'))->layout('layouts.admin');
     }

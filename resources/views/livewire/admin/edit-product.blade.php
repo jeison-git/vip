@@ -12,7 +12,7 @@
                                 src="https://img.icons8.com/dusk/25/000000/plus-2-math.png" /></a>Productos
                 </h1>
 
-                <x-jet-danger-button wire:click="$emit('deleteProduct')">
+                <x-jet-danger-button wire:click="$emit('deleteProduct')">{{-- problemas para eliminar --}}
                     Eliminar
                 </x-jet-danger-button>
 
@@ -48,7 +48,7 @@
 
                     @endforeach
 
-                </ul>
+                </ul> 
             </section>
 
         @endif

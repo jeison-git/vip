@@ -2,29 +2,26 @@
 
 namespace App\Mail;
 
-use App\Models\Contact;
-
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use App\Models\Employment;
 
-class AnswerContacts extends Mailable
+class AnswerApplications extends Mailable
 {
-    //Mailable para respnder mensajes de contactos
     use Queueable, SerializesModels;
-
     public $subject = "¡Hemos respondido tu solicitud, gracias por escribirnos!";
-    public $contact;
+    public $application;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Contact $contact)
+    public function __construct(Employment $application)
     {
-        $this->contact = $contact;
+        $this->application = $application;
     }
 
     /**

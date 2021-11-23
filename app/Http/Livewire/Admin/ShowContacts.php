@@ -24,5 +24,5 @@ class ShowContacts extends Component
         ->paginate(10);
 
         return view('livewire.admin.show-contacts', compact('contacts'))->layout('layouts.admin');
-    }
+    } 
 }

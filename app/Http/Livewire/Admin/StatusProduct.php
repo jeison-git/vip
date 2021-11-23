@@ -18,7 +18,7 @@ class StatusProduct extends Component
         $this->product->status = $this->status;
         $this->product->save();
 
-        $this->emit('saved');
+        $this->emit('saved'); 
     }
 
     public function render()

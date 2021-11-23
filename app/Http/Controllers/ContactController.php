@@ -28,6 +28,7 @@ class ContactController extends Controller
         ]);
 
         $contact->answer()->create($request->all());
+        
         $contact->status = 2;
         $contact->save();
 
@@ -36,6 +37,6 @@ class ContactController extends Controller
         Mail::to($contact->email)->send($mail);
 
         return redirect()->route('admin.contacts.index');
-    }
+    } 
 
 }

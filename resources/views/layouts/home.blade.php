@@ -49,7 +49,7 @@
     
     </div> --}}
 
-    <div id="contenedor_carga">
+    {{-- <div id="contenedor_carga">
         
         <div class="preloader">
 
@@ -57,7 +57,7 @@
 
         </div>
 
-    </div>
+    </div> --}}
 
     <div>
         <x-jet-banner />
@@ -105,7 +105,7 @@
         var myVar;
 
         function myFunction() {
-            myVar = setTimeout(showPage, 3000);
+            myVar = setTimeout(showPage, 1000);
         }
 
         function showPage() {

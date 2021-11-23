@@ -1,7 +1,7 @@
 @php
 $nav_links = [
     [
-        'name' => 'Mega Tienda Virtual',
+        'name' => 'Mega Tienda Virtual Vip',
         'route' => route('megatiendavirtual'),
         'active' => request()->routeIs('megatiendavirtual'),
     ],
@@ -19,6 +19,11 @@ $nav_links = [
         'name' => 'Comercios Vip',
         'route' => route('vip-commerce'),
         'active' => request()->routeIs('vip-commerce'),
+    ],
+    [
+        'name' => 'Empleos Vip',
+        'route' => route('job-application'),
+        'active' => request()->routeIs('job-application'),
     ],
     [
         'name' => 'Contáctanos',
@@ -415,12 +420,15 @@ $nav_links = [
         </div>
 
 
-         <!-- Hamburger -->
-         <div class="flex items-center -mr-2 sm:hidden" style="z-index: 900" x-on:click="show()">
-            <button {{--  @click="open = ! open" --}} class="inline-flex items-center justify-center p-2 text-gray-400 transition rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500">
+        <!-- Hamburger -->
+        <div class="flex items-center -mr-2 sm:hidden" style="z-index: 900" x-on:click="show()">
+            <button {{-- @click="open = ! open" --}}
+                class="inline-flex items-center justify-center p-2 text-gray-400 transition rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500">
                 <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                    <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
         </div>
@@ -470,7 +478,7 @@ $nav_links = [
 
 
         {{-- menu  celular, Categorias y links de navegacion --}}
-        <div class="h-full mb-6 overflow-y-auto bg-white">
+        <div class="max-h-full mb-6 overflow-y-auto bg-white">
 
             <div class="container py-3 mb-2 bg-gray-200">{{-- componente Search resource/livewire/search --}}
                 @livewire('search')
@@ -488,8 +496,8 @@ $nav_links = [
 
             <p class="px-6 my-2 text-trueGray-500">CATEGORÍAS</p>
 
-            <ul class="pt-2 pb-3 space-y-1">
-                @foreach ($categories as $key=>$item)
+            <ul class="pt-2 pb-3 space-y-1 border-t border-gray-200">
+                @foreach ($categories as $key => $item)
 
                     <li class="text-trueGray-500">
                         <x-jet-responsive-nav-link href="{{ route('categories.show', $item) }}"
@@ -500,72 +508,95 @@ $nav_links = [
                             </span>
 
                             {{ $item->name }}
-                        </x-jet-responsive-nav-link >
+                        </x-jet-responsive-nav-link>
                     </li>
-                    
+
                 @endforeach
             </ul>
 
-            <p class="px-6 my-2 text-trueGray-500">USUARIOS</p>
+            <p class="px-6 my-2 text-trueGray-500">USUARIOS</p>            
 
-            @livewire('cart-phone'){{-- componente resources/livewire/cart-phone --}}
+            @auth               
+                <!-- Responsive Settings Options -->
+                <div class="pt-4 pb-4 border-t border-gray-200">
 
-            @auth
+                    <div class="flex items-center px-4 mb-2">
 
-                <x-jet-responsive-nav-link href="{{ route('orders.index') }}" :active="request()->routeIs('orders.index')"
-                    class="flex items-center px-4 py-2 text-sm text-trueGray-500">
+                        <div class="flex-shrink-0 mr-3">
+                            <img class="object-cover w-10 h-10 rounded-full" src="{{ Auth::user()->profile_photo_url }}"
+                                alt="{{ Auth::user()->name }}" />
+                        </div>
 
-                    <span class="flex justify-center w-9">
-                        <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                    </span>
+                        <div>
+                            <div class="text-base font-medium text-gray-800">{{ Auth::user()->name }}</div>
+                            <div class="text-sm font-medium text-gray-500">{{ Auth::user()->email }}</div>
+                        </div>
+                    </div>
 
-                    Mis pedidos
-                </x-jet-responsive-nav-link>
-
-
-                @can('Ver dashboard'){{-- solo los que tengan este permiso pueden visualisar esta opcion --}}
-
-                    <x-jet-responsive-nav-link href="{{ route('admin.index') }}" :active="request()->routeIs('admin.index')"
+                    @livewire('cart-phone'){{-- componente resources/livewire/cart-phone --}}
+                    
+                    <x-jet-responsive-nav-link href="{{ route('orders.index') }}"
+                        :active="request()->routeIs('orders.index')"
                         class="flex items-center px-4 py-2 text-sm text-trueGray-500">
 
                         <span class="flex justify-center w-9">
-                            <i class="fa fa-cogs"></i>
+                            <i class="fa fa-shopping-bag" aria-hidden="true"></i>
                         </span>
 
-                        Gestiones ATC
+                        Mis pedidos
                     </x-jet-responsive-nav-link>
 
-                @endcan
 
-                <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')"
-                    class="flex items-center px-4 py-2 text-sm text-trueGray-500">
+                    @can('Ver dashboard'){{-- solo los que tengan este permiso pueden visualisar esta opcion --}}
 
-                    <span class="flex justify-center w-9">
-                        <i class="far fa-address-card"></i>
-                    </span>
+                        <x-jet-responsive-nav-link href="{{ route('admin.index') }}" :active="request()->routeIs('admin.index')"
+                            class="flex items-center px-4 py-2 text-sm text-trueGray-500">
 
-                    Perfil
-                </x-jet-responsive-nav-link>
+                            <span class="flex justify-center w-9">
+                                <i class="fa fa-cogs"></i>
+                            </span>
 
-                <x-jet-responsive-nav-link href="{{ route('logout') }}" :active="request()->routeIs('logout')"
-                    onClick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                    class="flex items-center px-4 py-2 mb-12 text-sm text-trueGray-500">
+                            Gestiones ATC
+                        </x-jet-responsive-nav-link>
 
-                    <span class="flex justify-center w-9">
-                        <i class="fas fa-sign-out-alt"></i>
-                    </span>
+                    @endcan
 
-                    Cerrar sesión
-                </x-jet-responsive-nav-link>
+                    <div class="mb-8">
+                        <!-- Account Management -->
+                        <x-jet-responsive-nav-link href="{{ route('profile.show') }}"
+                            :active="request()->routeIs('profile.show')"
+                            class="flex items-center px-4 text-sm text-trueGray-500">
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
-                    @csrf
-                </form>
+                            <span class="flex justify-center w-9">
+                                <i class="far fa-address-card"></i>
+                            </span>
 
-                <div class="py-8"></div>
+                            Perfil
+                        </x-jet-responsive-nav-link>
+
+                        <!-- Authentication -->
+                        <x-jet-responsive-nav-link href="{{ route('logout') }}" :active="request()->routeIs('logout')"
+                            onClick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                            class="flex items-center px-4 py-2 text-sm text-trueGray-500">
+
+                            <span class="flex justify-center w-9">
+                                <i class="fas fa-sign-out-alt"></i>
+                            </span>
+
+                            Cerrar sesión
+                        </x-jet-responsive-nav-link>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                            @csrf
+                        </form>
+
+                    </div>
+                </div>
+
+                <div class="h-8"></div>
 
             @else
-                <x-jet-responsive-nav-link  href="{{ route('login') }}" :active="request()->routeIs('login')"
+                <x-jet-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')"
                     class="flex items-center px-4 py-2 text-sm text-trueGray-500 ">
 
                     <span class="flex justify-center w-9">
@@ -576,7 +607,7 @@ $nav_links = [
                 </x-jet-responsive-nav-link>
 
                 <x-jet-responsive-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')"
-                    class="flex items-center px-4 py-2 mb-12 text-sm text-trueGray-500 ">
+                    class="flex items-center px-4 py-2 mb-8 text-sm text-trueGray-500 ">
 
                     <span class="flex justify-center w-9">
                         <i class="fas fa-fingerprint"></i>
@@ -584,11 +615,12 @@ $nav_links = [
 
                     registrate
                 </x-jet-responsive-nav-link>
+                <div class="h-12"></div>
             @endauth
 
         </div>
 
         {{-- end menu responsive --}}
-
     </nav>
-</header> 
+
+</header>

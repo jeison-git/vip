@@ -7,7 +7,7 @@ use App\Models\Subcategory;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Brand;
-use App\Models\Claim;
+use App\Models\Claim; 
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
@@ -102,7 +102,7 @@ class CreateProduct extends Component
         session()->flash('message', '¡Gracias usted a añadido un producto!');
     }
 
-    public function render()
+    public function render() 
     {
         return view('livewire.admin.create-product')->layout('layouts.admin');
     }
