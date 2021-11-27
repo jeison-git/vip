@@ -10,6 +10,8 @@ class Employment extends Model
     use HasFactory;
     protected $guarded   = ['id', 'status'];
 
+    protected $with = ['images'];
+
     const BORRADOR   = 1;
     const REVISION   = 2;
     const RESPONDIDO = 3;
@@ -52,7 +54,7 @@ class Employment extends Model
         return $this->hasManyThrough(Experience::class, Oldjob::class);
     }
 
-    //Relacion uno a muchos polimorfica
+    //Relacion uno a muchos polimorfica 
     public function images()
     {
 

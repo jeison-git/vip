@@ -21,7 +21,8 @@ class ShowApplications extends Component
     public function render()
     {
         //Función para mostrar lista de olicitudes de empleos
-        $applications = Employment::where(function($query){
+        $applications = Employment::select('id','slug', 'names', 'email', 'status')->where('status', '>', 1)
+            ->where(function($query){
             $query->where('names', 'LIKE', '%' . $this->search . '%');
             $query->orWhere('email', 'LIKE', '%' . $this->search . '%');
         })
