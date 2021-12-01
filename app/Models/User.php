@@ -28,7 +28,9 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'name',
         'email',
-        'password',
+        'password',        
+        'social_id',
+        'social_type'
     ];
 
     /**
@@ -83,6 +85,19 @@ class User extends Authenticatable implements MustVerifyEmail
     public function experiences(){
 
         return $this->belongsToMany(Experience::class);
+    }
+
+    //////////////subscription
+    
+    public function subscription()
+    {
+        return $this->hasOne(Subscription::class);
+    }
+
+    public function hasActiveSubscription()
+    {
+        // return true;
+        return optional($this->subscription)->isActive() ?? false;
     }
     
 }

@@ -34,6 +34,6 @@ class AnswerContacts extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.answer-application');
+        return $this->view('mail.answer-contact');
     }
 }

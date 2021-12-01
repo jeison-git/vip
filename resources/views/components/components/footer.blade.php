@@ -12,8 +12,8 @@
                             <img src="https://img.icons8.com/color/50/000000/motorcycle-delivery-multiple-boxes.png" />
                         </div>
                         <div>
-                            <p class="mb-2 text-xl text-center text-gray-800">ENVÍO GRATIS</p>
-                            <p class="text-sm text-center text-gray-800">En pedidos mayor a $99</p>
+                            <p class="mb-2 text-xl text-center text-gray-800">ENVÍO SEGUROS</p>
+                            <p class="text-sm text-center text-gray-800">Su pedído sera monitoreado</p>
                         </div>
                     </div>
                     <!-- Card 2 -->
@@ -141,7 +141,7 @@
                                     carrito</a>
                             </li>
                             <li>
-                                <a class="text-gray-800 hover:text-gold" href="{{ route('vip-client') }}">Afiliate</a>
+                                <a class="text-gray-800 hover:text-gold" href="{{route('subscribe.show')}}">Afiliate</a>
                             </li>
                         </nav>
                     </div>

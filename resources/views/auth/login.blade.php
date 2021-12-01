@@ -3,7 +3,7 @@
         <x-slot name="logo">
             <a href="/" class="cursor-pointer">
                 <x-jet-application-logo />
-            </a>            
+            </a>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
@@ -19,12 +19,14 @@
 
             <div>
                 <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block w-full mt-1" type="email" name="email" :value="old('email')" required autofocus />
+                <x-jet-input id="email" class="block w-full mt-1" type="email" name="email" :value="old('email')"
+                    required autofocus />
             </div>
 
             <div class="mt-4">
                 <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block w-full mt-1" type="password" name="password" required autocomplete="current-password" />
+                <x-jet-input id="password" class="block w-full mt-1" type="password" name="password" required
+                    autocomplete="current-password" />
             </div>
 
             <div class="block mt-4">
@@ -35,9 +37,10 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-               
+
                 @if (Route::has('password.request'))
-                    <a class="text-sm text-gray-600 underline hover:text-gray-900" href="{{ route('password.request') }}">
+                    <a class="text-sm text-gray-600 underline hover:text-gray-900"
+                        href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
@@ -53,7 +56,13 @@
                 </a>
 
             </p>
-            
+
+            <a href="{{ url('login/google') }}"
+                style="margin-top: 0px !important;background: green;color: #ffffff;padding: 5px;border-radius:7px;"
+                class="ml-2">
+                <strong>Google Login</strong>
+            </a>
+
         </form>
     </x-jet-authentication-card>
 </x-guest-layout>

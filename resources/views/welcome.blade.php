@@ -1,5 +1,15 @@
 <x-home-layout>
 
+    @if (session('success'))
+        <h1>{{ session('success') }}</h1>
+    @endif
+
+    @error('unsubscribed')
+        <div class="mt-4 text-center invalid-feedback d-block" role="alert">
+            <strong>{{ $message }}</strong>
+        </div>
+    @enderror
+
     {{-- inicio --}}
     <div class="container grid grid-cols-1 gap-2 mt-8 cursor-default md:p-4 md:grid-cols-4 md:gap-6">
         {{-- guiarse separacion de los layout --}}
@@ -161,11 +171,11 @@
                     @endauth {{-- end auth --}}
 
                     <div class="p-6" style="
-            background-image: url('https://images.unsplash.com/photo-1610825469646-083e2ae916c5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80');
-            background-repeat: no-repat;
-            background-size: cover;
-            background-blend-mode: multiply;
-            ">{{-- imagen estatica para la parte inferior del layouts --}}
+background-image: url('https://images.unsplash.com/photo-1610825469646-083e2ae916c5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80');
+background-repeat: no-repat;
+background-size: cover;
+background-blend-mode: multiply;
+">{{-- imagen estatica para la parte inferior del layouts --}}
 
                         <h3
                             class="text-base font-extrabold text-center text-transparent md:text-2xl bg-clip-text bg-gradient-to-tl from-blue-800 to-orange-500">
@@ -245,23 +255,51 @@
 </section>
 
 <!-- component texto aumenta tus ganacias -->
-<div class="flex items-center justify-center w-full h-64 bg-gray-800">
-    <section class="w-full bg-red-400">
+
+<div class="container mb-8 ">{{-- identifica la seccion de categorias --}}
+    <div class="flex items-center justify-between block">
+
+        <span class="flex text-xs text-center text-gray-700 uppercase md:text-2xl ">
+            Algunos de nuestros aliados comerciales vip
+        </span>
+
+        <div class="flex-1 w-full h-2 mx-6 bg-gray-400 rounded-full ">
+        </div>
+
+    </div>
+</div>
+
+<div class="grid items-center justify-center w-full h-64 grid-cols-1 bg-gray-800">
+
+    <section class="flex w-full bg-red-400 ">
         <div class="container px-4 mx-auto">
-            <div class="grid grid-cols-1 my-10">
-              <div class="mx-4 my-auto text-center text-white">
+            <div class="my-10">
+                <div class="mx-4 my-auto text-center text-white">
 
-                <h1 class="font-bold md:text-3xl">Aumenta tus ganancias con Meganegocios Vip</h1>
-                <h2 class="md:text-xl">¡Afíliate en minutos!</h2>
-                <h3 class="md:text-xl">Despega y conquista a millones de compradores.</h3>
-                
+                    <h1 class="font-bold md:text-3xl">Aumenta tus ganancias con Meganegocios Vip</h1>
+                    <h2 class="md:text-xl">¡Afíliate en minutos!</h2>
+                    <h3 class="md:text-xl">Despega y conquista a millones de compradores.</h3>
 
-              </div>
+
+                </div>
 
             </div>
         </div>
     </section>
-  </div>
+
+</div>
+{{-- comercios  - --}}
+<section class="{{-- hidden md:block --}} ">
+    <div class="grid px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8">
+
+        @foreach ($claims as $claim)
+
+            <x-components.commerce-card :claim="$claim" />{{-- este card se encuentra en resources/views/components/components --}}
+
+        @endforeach
+
+    </div>
+</section>
 
 
 {{-- Categorias - --}}

@@ -122,10 +122,14 @@
                     <x-jet-nav-link class="mr-2" href="{{route('admin.users.index')}}" :active="request()->routeIs('admin.users.index')">
                         Usuarios
                     </x-jet-nav-link>
+                    @can('Only admin')                     
 
                     <x-jet-nav-link class="mr-2" href="{{route('admin.roles.index')}}" :active="request()->routeIs('admin.roles.index')">
                         Roles
                     </x-jet-nav-link>
+
+                    @endcan
+
                 </div>
             </div>
 
@@ -288,10 +292,14 @@
             <x-jet-responsive-nav-link href="{{route('admin.users.index')}}" :active="request()->routeIs('admin.users.index')">
                 Usuarios
             </x-jet-responsive-nav-link>
+
+            @can('Only admin')  
             
             <x-jet-responsive-nav-link href="{{route('admin.roles.index')}}" :active="request()->routeIs('admin.roles.index')">
                 Roles
             </x-jet-responsive-nav-link>
+                
+            @endcan
         </div>
 
         <!-- Responsive Settings Options -->

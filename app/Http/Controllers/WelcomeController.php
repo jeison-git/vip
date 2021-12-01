@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Cache;
 
 class WelcomeController extends Controller
 {
-    public function __invoke()
+    public function __invoke() 
     {
 
         if (auth()->user()) { /* si el usuario no ha cancelado un pedido mostrar este mensaje  */
@@ -29,7 +29,10 @@ class WelcomeController extends Controller
 
         $categories = Category::all(['id','name','slug', 'image', 'icon']);
         
-        /* $claims = Claim::where('commerce_id', 1)->get(); */
+        $claims = Claim::select('id', 'slug', 'name', 'icon')
+            ->inRandomOrder()
+            ->take(4)
+            ->get(); 
 
         $banners = Banner::all(['id','image']);
 
@@ -51,6 +54,6 @@ class WelcomeController extends Controller
             ->take(20)
             ->get();
         
-        return view('welcome', compact('categories', 'products', 'homes', 'twohomes', 'banners'));
+        return view('welcome', compact('categories','claims', 'products', 'homes', 'twohomes', 'banners'));
     }
-}
+} 

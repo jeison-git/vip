@@ -48,7 +48,7 @@ $nav_links = [
                                     class="icon label-before fa fa-mobile"></span>Hotline: (+123) 456 789</a>
                         </li>
                     </ul>
-                </div> --}}
+                </div> --}} 
 
                 <div class="topbar-menu right-menu">{{-- dropdown links de navegacion segun el rol --}}
                     <ul>
@@ -299,19 +299,19 @@ $nav_links = [
 
                     <ul class="nav menu-nav clone-main-menu" id="mercado_haead_menu" data-menuname="Sale Info">
                         <li class="menu-item">
-                            <a href="#" class="link-term">Mega Tienda Virtual</a>
+                            <a href="{{route('megatiendavirtual')}}" class="link-term">Mega Tienda Virtual</a>
                             <span class="nav-label hot-label">Vip</span>
                         </li>
                         <li class="menu-item">
-                            <a href="#" class="link-term">Afiliate Cliente</a>
+                            <a href="{{route('subscribe.show')}}" class="link-term">Afiliate Cliente</a>
                             <span class="nav-label hot-label">Vip</span>
                         </li>
                         <li class="menu-item">
-                            <a href="#" class="link-term">Afiliate Aliados Comerciales</a>
+                            <a href="{{route('subscribe.show')}}" class="link-term">Afiliate Aliados Comerciales</a>
                             <span class="nav-label hot-label">Vip</span>
                         </li>
                         <li class="menu-item">
-                            <a href="#" class="link-term">Afiliate Comercio</a>
+                            <a href="{{route('subscribe.show')}}" class="link-term">Afiliate Comercio</a>
                             <span class="nav-label hot-label">Vip</span>
                         </li>
                     </ul>
@@ -493,6 +493,17 @@ $nav_links = [
 
                 @endforeach
             </div>
+            
+            <x-jet-responsive-nav-link href="{{route('subscribe.show')}}"
+                        :active="request()->routeIs('subscribe.show')"
+                        class="flex items-center px-4 py-2 text-sm text-trueGray-500">
+
+                        <span class="flex justify-center w-9">
+                            <i class="fa fa-plus-square" aria-hidden="true"></i>
+                        </span>
+
+                        Afíliate
+                    </x-jet-responsive-nav-link>
 
             <p class="px-6 my-2 text-trueGray-500">CATEGORÍAS</p>
 

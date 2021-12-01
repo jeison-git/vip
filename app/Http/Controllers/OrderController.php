@@ -43,7 +43,7 @@ class OrderController extends Controller
         return view('orders.show', compact('order', 'items', 'envio'));
     }
 
-   //detalles para cancelar, api mercado pago deshabilitada se usa cdn paypal
+   //detalles para cancelar, api mercado pago deshabilitada se usa paypal
     public function pay(Order $order, Request $request){
 
         $this->authorize('author', $order);

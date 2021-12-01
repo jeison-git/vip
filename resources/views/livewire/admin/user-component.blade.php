@@ -33,6 +33,10 @@
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                Afiliado
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                 Rol
                             </th>
                             <th scope="col" class="relative px-6 py-3">
@@ -66,6 +70,18 @@
                                 <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                     <div class="text-sm text-gray-900">
                                         
+                                       {{--  @if (count(user())->hasActiveSubscription()) --}}
+                                        @if ($user->hasActiveSubscription())
+                                            Afiliado
+                                        @else
+                                            No
+                                        @endif
+
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">
+                                        
                                         @if (count($user->roles))
                                             Posee rol
                                         @else
@@ -75,8 +91,12 @@
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+
+                                    @can('Only admin')                                        
                                     
                                     <a class="pr-2 underline cursor-pointer hover:text-blue-600"  href="{{route('admin.users.edit', $user)}}">Asignar o cambiar rol</a>
+
+                                    @endcan
 
                                 </td>
                             </tr>

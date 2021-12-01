@@ -37,6 +37,6 @@ class ContactController extends Controller
         Mail::to($contact->email)->send($mail);
 
         return redirect()->route('admin.contacts.index');
-    } 
+    }  
 
 }

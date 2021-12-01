@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\CommerceController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\CommerceController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AllyController;
@@ -18,10 +19,20 @@ use App\Http\Controllers\WebhooksController;
 use App\Http\Livewire\VipCommerce;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EmploymentController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\SubscriptionController;
 use App\Http\Livewire\CreateJobapplication;
 use App\Http\Livewire\EditJobapplication;
 use App\Http\Livewire\ShowEmployments;
 use App\Http\Livewire\StaticBanner;
+use App\Http\Controllers\GoogleSocialiteController;
+
+
+Route::get('login/google', [GoogleSocialiteController::class, 'redirectToGoogle']);
+
+Route::get('login/google/callback', [GoogleSocialiteController::class, 'handleCallback']);
+
+/////////////////////////////////////////////////////////////////////////////////////////
 
 Route::get('/', WelcomeController::class)->name('megatiendavirtual');/* vista principal */
 
@@ -37,13 +48,52 @@ Route::get('contacts', [ContactController::class, 'index'])->name('contacts.inde
 
 /* Route::get('static-banner', StaticBanner::class)->name('static-banner'); */
 
-//Legales
+////////////////////////* Sucripciones *//////////////////////////////////////////////////
+
+Route::post('/payments/pay', [PaymentController::class, 'pay'])->name('pay');
+
+Route::get('/payments/approval', [PaymentController::class, 'approval'])->name('approval');
+
+Route::get('/payments/cancelled', [PaymentController::class, 'cancelled'])->name('cancelled');
+
+Route::prefix('subscribe')
+    ->name('subscribe.')
+    ->group(function () {
+        Route::get('/', [SubscriptionController::class, 'show'])->name('show');
+
+        Route::post('/', [SubscriptionController::class, 'store'])->name('store');
+
+        Route::get('/approval', [SubscriptionController::class, 'approval'])->name('approval');
+
+        Route::get('/cancelled', [SubscriptionController::class, 'cancelled'])->name('cancelled');
+    });
+
+////////////////////Legales//////////////////////////////////////////////////////////////////////////////
+
 Route::view('about', 'about')->name('about');
+
 Route::view('policy', 'policy')->name('policy');
+
 Route::view('terms', 'terms')->name('terms');
 
-//Grupo de vistas donde es necesario que el usuario este registrado y logeado
+/////////////////////Solicitud de Empleos Vip ////////////////////////////////////////////////////////////////////
+
 Route::middleware(['auth', 'verified'])->group(function () {
+
+    Route::get('job-application', ShowEmployments::class)->name('job-application');/* Solicitud de empleo */
+
+    Route::get('job-application/create', CreateJobapplication::class)->name('applications.create');
+
+    Route::get('job-application/{application}/edit', EditJobapplication::class)->name('applications.edit');
+
+    Route::post('job-application/{application}/files', [EmploymentController::class, 'files'])->name('applications.files');
+
+    Route::get('job-applications/{application}/message', [EditJobapplication::class, 'message'])->name('applications.message');
+});
+
+/////////////Grupo de vistas donde es necesario que el usuario este registrado, logeado, verificado y afiliado///////////////////////////////////
+
+Route::middleware(['auth', 'verified', 'unsubscribed'])->group(function () {
 
     Route::get('orders', [OrderController::class, 'index'])->name('orders.index');/* lLista de ordenes del usuario */
 
@@ -57,19 +107,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::post('webhooks', WebhooksController::class);
 
-    /* Vistas Vip Cliente, Aliados y Comercios */
+    ////////////////////* Vistas Vip Cliente, Aliados y Comercios *///////////////////////////////////////////////////////////////
+
     Route::get('vip-client', VipClient::class)->name('vip-client');
+
     Route::get('vip-ally', VipAlly::class)->name('vip-ally');
+
     Route::get('vip-commerce', VipCommerce::class)->name('vip-commerce');
 
     Route::get('claims/{claim}', [AllyController::class, 'show'])->name('claims.show');/* Vistas de los Aliados comerciales */
+
     Route::get('commerces/{claim}', [CommerceController::class, 'show'])->name('commerces.show');/* Vistas de los  comercios Vip*/
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    Route::get('job-application', ShowEmployments::class)->name('job-application');/* Solicitud de empleo */
-    Route::get('job-application/create', CreateJobapplication::class)->name('applications.create');
-    Route::get('job-application/{application}/edit', EditJobapplication::class)->name('applications.edit');
-    Route::post('job-application/{application}/files', [EmploymentController::class, 'files'])->name('applications.files');
-    Route::get('job-applications/{application}/message', [EditJobapplication::class, 'message'])->name('applications.message');
 });
