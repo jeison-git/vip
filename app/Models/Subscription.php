@@ -11,7 +11,7 @@ class Subscription extends Model
 {
     use HasFactory; 
 
-    protected $with = ['user'];
+    protected $with = ['user']; 
 
     protected $fillable = [
         'active_until',
@@ -31,6 +31,11 @@ class Subscription extends Model
     public function plan()
     {
         return $this->belongsTo(Plan::class);
+    }
+
+    public function credential()
+    {
+        return $this->belongsTo(Credentialcard::class);
     }
 
     public function isActive()

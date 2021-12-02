@@ -27,7 +27,6 @@ use App\Http\Livewire\ShowEmployments;
 use App\Http\Livewire\StaticBanner;
 use App\Http\Controllers\GoogleSocialiteController;
 
-
 Route::get('login/google', [GoogleSocialiteController::class, 'redirectToGoogle']);
 
 Route::get('login/google/callback', [GoogleSocialiteController::class, 'handleCallback']);

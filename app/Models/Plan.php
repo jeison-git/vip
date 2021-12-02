@@ -21,6 +21,11 @@ class Plan extends Model
         return $this->hasMany(Subscription::class);
     }
 
+    public function credentials()
+    {
+        return $this->hasMany(Credentialcard::class);
+    }
+
     public function getVisualPriceAttribute()
     {
         return '$' . number_format($this->price / 100, 2, '.', ',');

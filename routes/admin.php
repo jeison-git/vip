@@ -24,10 +24,12 @@ use App\Http\Livewire\Admin\AnswerContact;
 use App\Http\Livewire\Admin\DepartmentComponent;
 use App\Http\Livewire\Admin\ShowDepartment;
 use App\Http\Livewire\Admin\CityComponent;
+use App\Http\Livewire\Admin\IndexCredentials;
 use App\Http\Livewire\Admin\ShowApplications;
 use App\Http\Livewire\Admin\UserComponent;
 
 use App\Http\Livewire\Admin\ShowContacts;
+use App\Http\Livewire\Admin\ShowCredentials;
 
 // Registro de Productos  vista principal
 Route::get('/', ShowProducts::class)->middleware('can:Ver dashboard')->name('admin.index');
@@ -75,3 +77,7 @@ Route::get('applications/{application}/view', [ApplicationController::class, 'sh
 
 Route::get('applications/{application}/message', [ApplicationController::class, 'message'])->middleware('can:Ver dashboard')->name('admin.applications.message');
 Route::post('applications/{application}/approved', [ApplicationController::class, 'approved'])->middleware('can:Ver dashboard')->name('admin.applications.approved');
+
+//Credenciales
+Route::get('credentials', IndexCredentials::class)->middleware('can:Ver dashboard')->name('admin.credentials.index');
+Route::get('credentials/{credential}/show', ShowCredentials::class)->middleware('can:Ver dashboard')->name('admin.credentials.show');

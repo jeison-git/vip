@@ -18,7 +18,7 @@ class StatusApplication extends Component
         $this->application->status = $this->status;
         $this->application->save();
 
-        $this->emit('saved'); 
+        $this->emit('saved');  
 
         return redirect()->route('job-application');
         

@@ -48,7 +48,7 @@ class CreateJobapplication extends Component
 
         $this->validate($rules);
 
-        $application = new Employment();
+        $application = new Employment(); 
 
         $application->user_id        = auth()->user()->id;
         $application->names          = $this->names;

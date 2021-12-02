@@ -8,7 +8,7 @@ use App\Models\Contact;
 use App\Mail\AnswerContacts;
 use Illuminate\Support\Facades\Mail;
 
-class AnswerContact extends Component
+class AnswerContact extends Component 
 {
     public $contact, $contacts;
 
