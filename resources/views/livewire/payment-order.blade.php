@@ -166,7 +166,7 @@
                     </x-components.table-responsive>
                 </div>
 
-            </div>
+            </div>            
 
             <div class="order-1 lg:order-2 xl:col-span-2">{{-- card contenedor de metodo de pago --}}
                 <div class="px-6 pt-6 bg-white rounded-lg shadow-lg">
@@ -246,11 +246,12 @@
                     onApprove: function(data, actions) {
                         return actions.order.capture().then(function(details) {
 
-                            Livewire.emit('payOrder');
+                            /* window.livewire.emit('payOrder'); */
+                            Livewire.emit('payOrder'); 
 
-                            /*console.log(details);
+                            console.log(details);
 
-                                    alert('Transaction completed by ' + details.payer.name.given_name);*/
+                                    alert(details.payer.name.given_name +' Gracias por su compra. Luego de ver este mensaje por favor dirijase a sus pedidos para màs detalles :) ');          
 
                         });
                     }

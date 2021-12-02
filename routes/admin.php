@@ -31,6 +31,20 @@ use App\Http\Livewire\Admin\UserComponent;
 use App\Http\Livewire\Admin\ShowContacts;
 use App\Http\Livewire\Admin\ShowCredentials;
 
+/* use Analytics; */
+use Spatie\Analytics\AnalyticsFacade as Analytics;
+use Spatie\Analytics\Period;
+
+////////////////////////////////////////////////////////
+
+Route::get('analyticsdata', function () {
+
+    $analyticsData = Analytics::fetchVisitorsAndPageViews(Period::days(7));
+    return view('admin.datanalytics', ['analyticsData' => $analyticsData]);
+}); 
+
+///////////////////////////////////////////////////////////////////////
+
 // Registro de Productos  vista principal
 Route::get('/', ShowProducts::class)->middleware('can:Ver dashboard')->name('admin.index');
 Route::get('products/create', CreateProduct::class)->middleware('can:Ver dashboard')->name('admin.products.create');

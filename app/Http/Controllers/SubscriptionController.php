@@ -68,9 +68,11 @@ class SubscriptionController extends Controller
                     'plan_id' => $plan->id,
                 ]);
 
-                return redirect()
-                    ->route('megatiendavirtual')
-                    ->withSuccess(['payment' => "Thanks, {$user->name}. You have a {$plan->slug} subscription. Start using it."]);
+                $mensaje = "Gracias, $user->name. Tienes una suscripción a $plan->slug. Activa tu credencial y empieza a usarlo.";
+
+                session()->flash('flash.banner', $mensaje);
+                return redirect()->route('profile.show'); 
+                    /* ->withSuccess(['payment' => "Thanks, {$user->name}. You have a {$plan->slug} subscription. Start using it."]); */
             }
 
 

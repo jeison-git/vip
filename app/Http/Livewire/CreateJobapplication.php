@@ -71,9 +71,10 @@ class CreateJobapplication extends Component
 
         $application->save();
 
+        session()->flash('flash.banner', '¡Gracias usted a añadido uns solicitud!');
         return redirect()->route('applications.edit', $application);
 
-        session()->flash('message', '¡Gracias usted a añadido un applicationo!');
+       
     }
 
     public function render()

@@ -81,51 +81,60 @@
                 </div> --}}
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-6 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-2 sm:-my-px sm:ml-10 sm:flex">
 
-                    <x-jet-nav-link  class="mr-2" href="{{route('admin.index')}}" :active="request()->routeIs('admin.index')">
+                    <x-jet-nav-link  class="mr-0" href="{{route('admin.index')}}" :active="request()->routeIs('admin.index')">
                         Productos
                     </x-jet-nav-link>
 
-                    <x-jet-nav-link class="mr-2" href="{{route('admin.commerces.index')}}" :active="request()->routeIs('admin.commerces.*')">
+                    <x-jet-nav-link class="mr-0" href="{{route('admin.commerces.index')}}" :active="request()->routeIs('admin.commerces.*')">
                         Comercios
                     </x-jet-nav-link>                   
 
-                    <x-jet-nav-link class="mr-2" href="{{route('admin.orders.index')}}" :active="request()->routeIs('admin.orders.*')">
+                    <x-jet-nav-link class="mr-0" href="{{route('admin.orders.index')}}" :active="request()->routeIs('admin.orders.*')">
                         Ordenes
                     </x-jet-nav-link>
 
-                    <x-jet-nav-link class="mr-2" href="{{route('admin.categories.index')}}" :active="request()->routeIs('admin.categories.*')">
+                    <x-jet-nav-link class="mr-0" href="{{route('admin.categories.index')}}" :active="request()->routeIs('admin.categories.*')">
                         Categorias
                     </x-jet-nav-link>
                     
-                    <x-jet-nav-link class="mr-2" href="{{route('admin.brands.index')}}" :active="request()->routeIs('admin.brands.*')">
+                    <x-jet-nav-link class="mr-0" href="{{route('admin.brands.index')}}" :active="request()->routeIs('admin.brands.*')">
                         Marcas
                     </x-jet-nav-link>
 
-                    <x-jet-nav-link class="mr-2" href="{{route('admin.banners.index')}}" :active="request()->routeIs('admin.banners.*')">
+                    <x-jet-nav-link class="mr-0" href="{{route('admin.banners.index')}}" :active="request()->routeIs('admin.banners.*')">
                         Publicidad
                     </x-jet-nav-link>
 
-                    <x-jet-nav-link class="mr-2" href="{{route('admin.departments.index')}}" :active="request()->routeIs('admin.departments.index')">
+                    <x-jet-nav-link class="mr-0" href="{{route('admin.departments.index')}}" :active="request()->routeIs('admin.departments.index')">
                         Departamentos
                     </x-jet-nav-link>
 
-                    <x-jet-nav-link class="mr-2" href="{{route('admin.applications.index')}}" :active="request()->routeIs('admin.applications.index')">
+                    <x-jet-nav-link class="mr-0" href="{{route('admin.applications.index')}}" :active="request()->routeIs('admin.applications.index')">
                         Solicitud
                     </x-jet-nav-link>
 
-                    <x-jet-nav-link class="mr-2" href="{{route('admin.contacts.index')}}" :active="request()->routeIs('admin.contacts.index')">
+                    <x-jet-nav-link class="mr-0" href="{{route('admin.contacts.index')}}" :active="request()->routeIs('admin.contacts.index')">
                         Mensajes
                     </x-jet-nav-link>
 
-                    <x-jet-nav-link class="mr-2" href="{{route('admin.users.index')}}" :active="request()->routeIs('admin.users.index')">
+                    <x-jet-nav-link class="mr-0" href="{{route('admin.users.index')}}" :active="request()->routeIs('admin.users.index')">
                         Usuarios
                     </x-jet-nav-link>
+
+                    <x-jet-nav-link class="mr-0" href="{{route('admin.credentials.index')}}" :active="request()->routeIs('admin.credentials.index')">
+                        Credenciales
+                    </x-jet-nav-link>
+
                     @can('Only admin')                     
 
-                    <x-jet-nav-link class="mr-2" href="{{route('admin.roles.index')}}" :active="request()->routeIs('admin.roles.index')">
+                    <x-jet-nav-link class="mr-0" href="{{route('admin.roles.index')}}" :active="request()->routeIs('admin.roles.index')">
                         Roles
+                    </x-jet-nav-link>
+
+                    <x-jet-nav-link class="mr-0" href="analyticsdata">
+                        Data
                     </x-jet-nav-link>
 
                     @endcan
@@ -293,11 +302,18 @@
                 Usuarios
             </x-jet-responsive-nav-link>
 
+            <x-jet-responsive-nav-link href="{{route('admin.credentials.index')}}" :active="request()->routeIs('admin.credentials.index')">
+                Credenciales
+            </x-jet-responsive-nav-link>
+
             @can('Only admin')  
             
             <x-jet-responsive-nav-link href="{{route('admin.roles.index')}}" :active="request()->routeIs('admin.roles.index')">
                 Roles
             </x-jet-responsive-nav-link>
+            {{-- <x-jet-responsive-nav-link href="{{route('analyticsdata')}}" :active="request()->routeIs('analyticsdata')">
+                Analytics
+            </x-jet-responsive-nav-link> --}}
                 
             @endcan
         </div>

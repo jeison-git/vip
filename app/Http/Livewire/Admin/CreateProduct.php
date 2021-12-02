@@ -97,9 +97,8 @@ class CreateProduct extends Component
 
         $product->save();
 
+        session()->flash('flash.banner', '¡Gracias usted a añadido un producto!');
         return redirect()->route('admin.products.edit', $product);
-        
-        session()->flash('message', '¡Gracias usted a añadido un producto!');
     }
 
     public function render() 

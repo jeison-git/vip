@@ -12,29 +12,23 @@ class PaymentOrder extends Component
     // Componente Pado de orden se usa Cdn Paypal
     use AuthorizesRequests;
 
-    public $order; 
+    public $order;
 
     protected $listeners = ['payOrder'];
 
-    public function mount(Order $order){
+    public function mount(Order $order)
+    {
         $this->order = $order;
     }
 
-   //Una ves que el pago de la orden cambia de estatus, la policy evita que vuelva a cancelar arroja el error 403
-    public function payOrder(){
+    //Una ves que el pago de la orden cambia de estatus, la policy evita que vuelva a cancelar arroja el error 403
+    public function payOrder()
+    {
         $this->order->status = 2;
         $this->order->save();
 
-        return redirect()->route('orders.show', $this->order);
-
-       /*  if($status == 'approved'){
-            $order->status = 2;
-            $order->save();
-        } */
-
-        session()->flash('message', '¡Gracias por su compra!');//no funciona devido al error 403 
-        
-
+            session()->flash('flash.banner', '¡Gracias por su compra!'); //no funciona devido al error 403 
+            return redirect()->route('orders.index');
     }
 
     public function render()
@@ -48,5 +42,4 @@ class PaymentOrder extends Component
 
         return view('livewire.payment-order', compact('items', 'envio'));
     }
-
 }
