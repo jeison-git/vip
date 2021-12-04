@@ -478,7 +478,7 @@ $nav_links = [
 
 
         {{-- menu  celular, Categorias y links de navegacion --}}
-        <div class="max-h-full mb-6 overflow-y-auto bg-white">
+        <div class="h-full mb-12 overflow-y-auto bg-white">
 
             <div class="container py-3 mb-2 bg-gray-200">{{-- componente Search resource/livewire/search --}}
                 @livewire('search')
@@ -604,7 +604,9 @@ $nav_links = [
                     </div>
                 </div>
 
-                <div class="h-8"></div>
+                <div class="h-full">
+                    
+                </div>
 
             @else
                 <x-jet-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')"
@@ -626,8 +628,12 @@ $nav_links = [
 
                     registrate
                 </x-jet-responsive-nav-link>
-                <div class="h-12"></div>
+                <div class="h-full">
+                
+                </div>
             @endauth
+
+            
 
         </div>
 

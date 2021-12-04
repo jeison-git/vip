@@ -19,9 +19,8 @@
         <div
             class="relative h-56 m-auto text-white transition-transform transform bg-red-100 shadow-2xl md:w-96 rounded-xl hover:scale-110">
 
-            <img class="object-center w-full h-full rounded-xl" src="{{ asset('img/credentials.png') }}">
-
-
+            <img class="object-center w-full h-full rounded-xl" src="{{ asset('img/credentialcard.jpg') }}">
+            {{-- 
             <div
                 class="absolute w-8 h-8 overflow-hidden rounded-lg top-10 left-8 bg-gradient-to-r from-yellow-400 to-yellow-200 opacity-90">
                 <span
@@ -34,43 +33,38 @@
                     class="flex absolute bottom-1.5 right-0 w-full h-5 bg-opacity-50 rounded-full transform translate-y-1/2 border border-gray-400"></span>
 
 
-            </div>
+            </div> --}}
 
+            <div class="absolute w-full px-8 mt-16 top-8">
 
-
-            <div class="absolute w-full px-8 mt-8 top-8">
-
-                <div class="grid grid-cols-1 mt-2">
+                <div class="grid grid-cols-1 mt-6">
 
                     <div class="flex justify-center">
 
                         <div>
                             <!-- Card number -->
-                            <div class="font-semibold md:text-2xl number whitespace-nowrap"
+                            <div class="font-semibold md:text-2xl number text-gold hover:text-white whitespace-nowrap"
                                 style="font-family:Courier new, mono;">
                                 {{ auth()->user()->id }}&nbsp;{{ auth()->user()->subscription->id ?? null }}&nbsp;{{ auth()->user()->subscription->plan_id ?? null }}&nbsp;4242
                             </div>
                         </div>
 
-
                     </div>
 
                     <div>
-                        <label class="font-light">
-                            Name
-                        </label>
-                        <div class="font-semibold md:text-2xl number whitespace-nowrap"
+                        
+                        <div class="font-semibold text-gold md:text-2xl number whitespace-nowrap"
                             style="font-family:Courier new, mono;">{{ auth()->user()->name }}</div>
                     </div>
 
                 </div>
-                <div class="pt-6 pr-6">
-                    <div class="flex justify-between">
+                <div class="pt-1 pr-2">
+                    <div class="flex items-center justify-between">
                         <div class="">
                             <p class="text-xs font-light">
                                 Valid
                                 </h1>
-                            <p class="text-sm font-medium tracking-wider">
+                            <p class="text-xs font-medium tracking-wider">
                                 {{ \Carbon\Carbon::parse(auth()->user()->subscription->active_until ?? null)->format('d/m/Y') }}
                             </p>
                         </div>
@@ -78,7 +72,7 @@
                             <p class="text-xs font-light">
                                 Expiry
                                 </h1>
-                            <p class="text-sm font-medium tracking-wider">
+                            <p class="text-xs font-medium tracking-wider">
                                 {{ \Carbon\Carbon::parse(auth()->user()->subscription->active_until ?? null)->addDays(auth()->user()->subscription->plan->duration_in_days ?? null)->format('d/m/Y') }}
                             </p>
                         </div>
@@ -88,7 +82,7 @@
                                 CVV
                                 </h1>
                             <p class="text-sm font-bold tracking-more-wider">
-                                {{ auth()->user()->id }} {{ auth()->user()->subscription->id ?? null }}
+                                {{ auth()->user()->id }}{{ auth()->user()->subscription->id ?? null }}
                             </p>
                         </div>
                     </div>
@@ -96,6 +90,26 @@
 
             </div>
 
+        </div>
+
+        <div class="relative h-56 m-auto text-white transition-transform transform bg-red-100 shadow-2xl md:w-96 rounded-xl hover:scale-110">
+                
+            <img class="object-center w-full h-full rounded-xl" src="{{asset('img/credentialcardother.jpg')}}">
+            
+            <div class="absolute w-full px-8 mt-8 top-8">
+                <div class="grid grid-cols-1">
+
+                    <div class="flex justify-center text-black">
+                        <p class="font-light">
+                            {{ auth()->user()->id }}&nbsp;{{ auth()->user()->subscription->id ?? null }}&nbsp;{{ auth()->user()->subscription->plan_id ?? null }}&nbsp;4242
+                        </h1>
+                        <p class="font-medium tracking-widest">
+                            {{ auth()->user()->id }} {{ auth()->user()->subscription->id ?? null }}
+                        </p>
+                    </div>
+
+                </div>
+            </div> 
         </div>
 
         @if ($hideForm != true)

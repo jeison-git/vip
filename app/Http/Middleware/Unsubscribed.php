@@ -26,11 +26,11 @@ class Unsubscribed
 
     public function handle(Request $request, Closure $next)
     {
-        if (optional($request->user())->hasActiveSubscription()) {
+        if ((optional($request->user())->hasActiveSubscription() ) ||  $request->user()->subscription) {
 
             return $next($request);
            
-        }
+        } 
 
 
         return redirect()->route('megatiendavirtual')->withErrors(['unsubscribed' => 'Si Deseas Disfrutar Los Beneficios De Ser Cliente Vip, Afíliate :)']);

@@ -174,11 +174,9 @@
 
                 <hr>
 
-                <p class="mt-2 text-sm text-gray-700">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam
-                    atque quo, labore facere placeat illo consequatur hic ut sapiente exercitationem, architecto iure,
-                    consequuntur impedit ex iusto ipsa voluptas laudantium iste <a href=""
-                        class="font-semibold text-orange-500">Políticas y privacidad</a></p>
-            </div>
+                <p class="mt-2 text-xs text-gray-700">Este acuerdo de usuario (en adelante, el Acuerdo) contiene las condiciones sujetas a las cuales los autores de los servicios prestados en el sitio web meganegociosvip.com (en adelante, el Titular de los derechos) brindan a una parte o partes interesadas (en adelante, el Usuario) la capacidad de utilizar estos servicios (en adelante los servicios). <a href="/terms"
+                        class="font-semibold text-orange-500">Terminos & Condiciones</a></p>
+            </div> 
 
         </div>
 

@@ -31,6 +31,9 @@ use App\Http\Livewire\Admin\UserComponent;
 use App\Http\Livewire\Admin\ShowContacts;
 use App\Http\Livewire\Admin\ShowCredentials;
 
+use App\Http\Livewire\Admin\ShowSubscriptions;
+use App\Http\Livewire\Admin\CreateSubscription;
+use App\Http\Livewire\Admin\EditSubscription;
 /* use Analytics; */
 use Spatie\Analytics\AnalyticsFacade as Analytics;
 use Spatie\Analytics\Period;
@@ -95,3 +98,9 @@ Route::post('applications/{application}/approved', [ApplicationController::class
 //Credenciales
 Route::get('credentials', IndexCredentials::class)->middleware('can:Ver dashboard')->name('admin.credentials.index');
 Route::get('credentials/{credential}/show', ShowCredentials::class)->middleware('can:Ver dashboard')->name('admin.credentials.show');
+
+//Credenciales
+Route::get('subscriptions', ShowSubscriptions::class)->middleware('can:Ver dashboard')->name('admin.subscriptions.index');
+Route::get('subscriptions/create', CreateSubscription::class)->middleware('can:Ver dashboard')->name('admin.subscriptions.create');
+Route::get('subscriptions/{subscription}/edit', EditSubscription::class)->middleware('can:Ver dashboard')->name('admin.subscriptions.edit');
+

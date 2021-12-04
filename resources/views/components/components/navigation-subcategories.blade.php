@@ -18,7 +18,7 @@
 
     <div class="col-span-3">
 
-        <img class="object-cover object-center w-full h-64" src="{{Storage::url($category->image)}}" alt="">
+        <img class="object-center w-full h-64 " src="{{Storage::url($category->image)}}" alt="">
 
     </div>
 

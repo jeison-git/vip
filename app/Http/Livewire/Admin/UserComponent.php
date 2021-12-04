@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Models\Subscription;
 use Livewire\Component;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
@@ -27,6 +28,7 @@ class UserComponent extends Component
                         $query->where('name', 'LIKE', '%' . $this->search . '%');
                         $query->orWhere('email', 'LIKE', '%' . $this->search . '%');
                     })
+                    ->with('subscription', 'roles')
                     ->latest('id')
                     ->paginate();
 

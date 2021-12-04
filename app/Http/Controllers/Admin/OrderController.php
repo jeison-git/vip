@@ -4,19 +4,19 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; 
 
 class OrderController extends Controller
 {
     public function index(){
         // función para visualizar  estado del pedido
-        $orders = Order::query()->where('status', '<>', 1);
+        $orders = Order::query()->where('status', '<>', 0);        
 
         if (request('status')) {
             $orders->where('status', request('status'));
         }
 
-        $orders = $orders->get();
+        $orders = $orders->latest('id')->get();
 
 
         $pendiente = Order::where('status', 1)->count();

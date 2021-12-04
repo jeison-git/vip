@@ -215,11 +215,11 @@
                     </div>
 
 
-                    @if (optional(auth()->user())->hasActiveSubscription())
+                    @if ((optional(auth()->user())->hasActiveSubscription()) || auth()->user()->subscription )
 
                         <div class="mt-8 font-medium text-center text-gray-800 card">
                             <div class="capitalize card-body">
-                                Si ya eres parte de la Comunidad Clientes vip, Disfruta al máximo aquí encontrarás
+                                Si ya eres parte de la Comunidad Clientes vip Disfruta al máximo aquí encontrarás
                                 todos los recursos que necesitas.
                             </div>
                         </div>
@@ -232,6 +232,12 @@
                             <div data-toggle="buttons">
 
                                 <label>Seleccione la plataforma de pago deseada:</label>
+
+                                <div class="flex items-center justify-center p-3 mt-4 font-semibold text-center bg-white shadow-xl rounded-xl">
+                                    Puede realizar el pago en efectivo, pago móvil o punto de venta. <br>
+                                    Dirigiéndose a uno de nuestros Aliados Comerciales Vip o <br>
+                                    comunicándose con nosotros a través de los canales disponibles.
+                                    </div>
 
                                 @foreach ($paymentPlatforms as $paymentPlatform)
 

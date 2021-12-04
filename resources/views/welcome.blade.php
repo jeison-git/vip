@@ -271,7 +271,7 @@ background-blend-mode: multiply;
 
 <div class="grid items-center justify-center w-full h-64 grid-cols-1 bg-gray-800">
 
-    <section class="flex w-full bg-red-400 ">
+    <section class="flex w-full bg-orange-500 ">
         <div class="container px-4 mx-auto">
             <div class="my-10">
                 <div class="mx-4 my-auto text-center text-white">

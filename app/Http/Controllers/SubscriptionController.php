@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; 
 
 use Illuminate\Http\Request;
 use App\Models\PaymentPlatform;
@@ -63,7 +63,7 @@ class SubscriptionController extends Controller
                 $user = $request->user();
 
                 $subscription = Subscription::create([
-                    'active_until' => now()->addDays($plan->duration_in_days),
+                    'active_until' => now(),
                     'user_id' => $user->id,
                     'plan_id' => $plan->id,
                 ]);

@@ -31,13 +31,13 @@ class EditJobapplication extends Component
         'application.profession'     => 'required',
         'application.languages'      => 'required',
         'application.studies'        => 'required',
-        'application.applications'        => 'required',
+        'application.courses'        => 'required',
         'application.skills'         => 'required',
         'application.bilingue'       => 'required',
 
 
-    ];
-    protected $listeners = ['refreshApplications', 'delete'];
+    ]; 
+    protected $listeners = ['refreshApplication', 'delete'];
 
     public function mount(Employment $application)
     { //gancho de ciclo de vida
@@ -47,7 +47,7 @@ class EditJobapplication extends Component
         $this->user_id = $this->application->slug; //slug 
     }
 
-    public function refreshApplications()
+    public function refreshApplication()
     {
         $this->application = $this->application->fresh();
     }

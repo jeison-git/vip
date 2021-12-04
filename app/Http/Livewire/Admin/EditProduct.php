@@ -121,5 +121,5 @@ class EditProduct extends Component
     public function render()
     {
         return view('livewire.admin.edit-product')->layout('layouts.admin');
-    }
+    } 
 }

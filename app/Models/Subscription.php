@@ -41,6 +41,6 @@ class Subscription extends Model
     public function isActive()
     {
         return $this->active_until->gt(now());
-    }
+    } 
 
 }

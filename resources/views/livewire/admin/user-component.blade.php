@@ -71,7 +71,8 @@
                                     <div class="text-sm text-gray-900">
                                         
                                        {{--  @if (count(user())->hasActiveSubscription()) --}}
-                                        @if ($user->hasActiveSubscription())
+                                        {{-- @if ($user->hasActiveSubscription() ) --}}
+                                        @if ( $user->hasActiveSubscription() || $user->subscription )
                                             Afiliado
                                         @else
                                             No

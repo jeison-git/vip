@@ -3,7 +3,7 @@
         <div class="flex flex-col items-center min-h-screen pt-6 sm:pt-0">
             
             <a href="/">
-                <x-jet-application-mark />
+                <x-jet-application-logo /> 
             </a>
 
             <div class="w-full p-6 mt-6 overflow-hidden prose bg-white shadow-md sm:max-w-2xl sm:rounded-lg">

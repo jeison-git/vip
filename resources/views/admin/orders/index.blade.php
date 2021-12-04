@@ -1,8 +1,20 @@
 <x-admin-layout>{{-- estado del orden de compra --}}    
 
-    <div class="container py-12">
+    <div class="container py-12"> 
 
-        <section class="grid px-4 mx-auto mb-4 text-white sm:px-6 lg:px-8 sm:grid-cols-1 md:grid-cols-4 gap-x-4 gap-y-8">{{-- card estados de orden compras  --}}
+        <section class="grid px-4 mx-auto mb-4 text-white sm:px-6 lg:px-8 sm:grid-cols-1 md:grid-cols-5 gap-x-4 gap-y-8">{{-- card estados de orden compras  --}}
+
+            {{-- cards estados del pedido pendiente, recibido, etc --}}
+            <a href="{{ route('admin.orders.index') . '?status=1' }}"
+                class="px-12 pt-8 pb-4 bg-red-500 bg-opacity-75 rounded-lg">
+                <p class="text-2xl text-center">
+                    {{ $pendiente }}
+                </p>
+                <p class="text-center uppercase">Pendiente</p>
+                <p class="mt-2 text-2xl text-center">
+                    <i class="fas fa-business-time"></i>
+                </p>
+            </a> 
            
             <a href="{{ route('admin.orders.index') . "?status=2" }}" class="px-12 pt-8 pb-4 bg-gray-500 bg-opacity-75 rounded-lg">
                 <p class="text-2xl text-center">

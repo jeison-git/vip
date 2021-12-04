@@ -8,7 +8,10 @@ use App\Models\Category;
 use App\Models\Claim;
 use App\Models\Product;
 use App\Models\Order;
+use App\Models\Subcategory;
 use Illuminate\Support\Facades\Cache;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class WelcomeController extends Controller
 {
@@ -54,6 +57,6 @@ class WelcomeController extends Controller
             ->take(20)
             ->get();
         
-        return view('welcome', compact('categories','claims', 'products', 'homes', 'twohomes', 'banners'));
+        return view('welcome', compact('categories','claims', 'products', 'homes', 'twohomes', 'banners')); 
     }
 } 

@@ -21,7 +21,7 @@
                 <x-jet-section-border />
             @endif
 
-            @if (optional(auth()->user())->hasActiveSubscription()){{-- credenciales activacion --}}
+            @if ((optional(auth()->user())->hasActiveSubscription()) || auth()->user()->subscription ){{-- credenciales activacion --}}
             <div class="sm:mt-0">
                 @livewire('credential-cards')
             </div>

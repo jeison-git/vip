@@ -25,19 +25,21 @@ class CreateOrder extends Component
 
     public $department_id = "", $city_id = "", $district_id = "", $claim_id = "";
 
-       
+
     public $rules = [
         'contact' => 'required',
         'phone' => 'required',
         'envio_type' => 'required'
     ];
 
-    public function mount(){
+    public function mount()
+    {
         $this->departments = Department::all();
         $this->claims      = Claim::all();
     }
     //Insertar datos de contacto del usuario
-    public function updatedEnvioType($value){
+    public function updatedEnvioType($value)
+    {
         if ($value == 1) {
             $this->resetValidation([
                 'department_id', 'city_id', 'district_id', 'address', 'references'
@@ -49,16 +51,17 @@ class CreateOrder extends Component
                 'claim_id'
             ]);
         }
-
-    } 
+    }
     //direcion en caso de entrega a domicilio
-    public function updatedDepartmentId($value){
+    public function updatedDepartmentId($value)
+    {
         $this->cities = City::where('department_id', $value)->get();
 
         $this->reset(['city_id', 'district_id']);
     }
 
-    public function updatedCityId($value){
+    public function updatedCityId($value)
+    {
 
         $city = City::find($value);
 
@@ -67,17 +70,18 @@ class CreateOrder extends Component
         $this->districts = District::where('city_id', $value)->get();
 
         $this->reset('district_id');
-    } 
+    }
     // registrar orden de compra y generar orden de pago
-    public function create_order(){
+    public function create_order()
+    {
 
         $rules = $this->rules;
 
-        if($this->envio_type == 1){
+        if ($this->envio_type == 1) {
             $rules['claim_id'] = 'required';
         }
 
-        if($this->envio_type == 2){
+        if ($this->envio_type == 2) {
             $rules['department_id'] = 'required';
             $rules['city_id'] = 'required';
             $rules['district_id'] = 'required';
@@ -87,7 +91,7 @@ class CreateOrder extends Component
 
         $this->validate($rules);
 
-        $order = new Order(); 
+        $order = new Order();
 
         $order->user_id = auth()->user()->id;
         $order->contact = $this->contact;
@@ -127,18 +131,22 @@ class CreateOrder extends Component
 
         Cart::destroy();
 
+        $mensaje = "!Usted a Creado un Pedido¡ Puede realizar el pago en efectivo, dirigiéndose a uno 
+        de nuestros Aliados Comerciales Vip de su preferencia.No Olvide Su Número de Orden ;) ";
+
+        session()->flash('flash.banner', $mensaje);
         return redirect()->route('orders.payment', $order);
     }
 
     public function render()
-    {      
-        
+    {
+
         $comments = Review::where('status', 1)
-                    ->with('user')
-                    ->with('order')
-                    ->inRandomOrder()
-                    ->limit(5)
-                    ->get();
+            ->with('user')
+            ->with('order')
+            ->inRandomOrder()
+            ->limit(5)
+            ->get();
 
         return view('livewire.create-order', compact('comments'));
     }

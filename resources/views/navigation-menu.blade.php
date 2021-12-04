@@ -66,8 +66,9 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex items-center">
-                    <a href="/" class="items-center flex-1 ">
-                        <x-jet-application-mark class="block w-auto h-9" />
+                    <a href="/" class="flex items-center justify-between">
+                        {{-- <x-jet-application-mark class="block w-auto h-9" /> --}}
+                        <img class="block w-auto h-9" src="https://img.icons8.com/doodle/64/000000/cafe-building.png"/> Tienda 
                     </a>
                 </div>
 
@@ -123,6 +124,10 @@
                         Usuarios
                     </x-jet-nav-link>
 
+                    <x-jet-nav-link class="mr-0" href="{{route('admin.subscriptions.index')}}" :active="request()->routeIs('admin.subscriptions.index')">
+                        Suscripción
+                    </x-jet-nav-link>
+
                     <x-jet-nav-link class="mr-0" href="{{route('admin.credentials.index')}}" :active="request()->routeIs('admin.credentials.index')">
                         Credenciales
                     </x-jet-nav-link>
@@ -133,9 +138,9 @@
                         Roles
                     </x-jet-nav-link>
 
-                    <x-jet-nav-link class="mr-0" href="analyticsdata">
+                    <x-jet-nav-link class="mr-0" href="/admin/analyticsdata">
                         Data
-                    </x-jet-nav-link>
+                    </x-jet-nav-link> 
 
                     @endcan
 
@@ -300,6 +305,10 @@
 
             <x-jet-responsive-nav-link href="{{route('admin.users.index')}}" :active="request()->routeIs('admin.users.index')">
                 Usuarios
+            </x-jet-responsive-nav-link>
+
+            <x-jet-responsive-nav-link href="{{route('admin.subscriptions.index')}}" :active="request()->routeIs('admin.subscriptions.index')">
+                Suscripción
             </x-jet-responsive-nav-link>
 
             <x-jet-responsive-nav-link href="{{route('admin.credentials.index')}}" :active="request()->routeIs('admin.credentials.index')">

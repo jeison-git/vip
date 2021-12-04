@@ -3,8 +3,12 @@
     <x-slot name="header">
         <div class="flex items-center">
             <h2 class="font-semibold leading-tight text-gray-600 md:text-xl">
-                Lista De Credenciales Activas
+                Lista De Suscripciones Activas
             </h2>
+
+            <x-components.button-enlace class="ml-auto" href="{{route('admin.subscriptions.create')}}">
+                Agregar Suscripción
+            </x-components.button-enlace>
         </div>
     </x-slot>
 
@@ -13,20 +17,24 @@
 
         <x-components.table-responsive>
 
-            <div class="px-6 py-4">
+            <div class="px-6 py-4 text-xs">
 
                 <x-jet-input type="text" 
                     wire:model="search" 
                     class="w-full"
-                    placeholder="Ingrese el nombre que desea buscar" />
+                    placeholder="Ingrese El Número De Suscripción 0 ID Usuario Que Desea Buscar" />
 
             </div>
 
-            @if ($credentials->count())
+            @if ($subscriptions->count())
                 
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
+                            <th scope="col"
+                                class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                # Suscripción
+                            </th>
                             <th scope="col"
                                 class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                 ID Usuario
@@ -37,20 +45,24 @@
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                Estado Credencial
+                                Email Usuario
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                CVV
+                                ID Plan 
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                Fecha de Validación
                             </th>
                             <th scope="col" class="relative px-6 py-3">
-                                <span class="sr-only">Ver mensaje</span>
+                                <span class="sr-only">Editar</span>
                             </th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
 
-                        @foreach ($credentials as $credential)
+                        @foreach ($subscriptions as $subscription)
 
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap">
@@ -60,7 +72,7 @@
                                         </div>
                                         <div class="ml-4">
                                             <div class="text-sm font-medium text-gray-900">
-                                                {{ $credential->user_id }}
+                                                 {{ $subscription->id }} 
                                             </div>
                                         </div>
                                     </div>
@@ -68,38 +80,40 @@
                                 <td class="px-6 py-4 whitespace-nowrap">
 
                                     <div class="text-sm text-gray-900">
-                                        {{ $credential->name }}
+                                        {{ $subscription->user_id}}
                                     </div>
-
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    @switch($credential->status)
-                                        @case(0)
-                                            <span
-                                                class="inline-flex px-2 text-xs font-semibold leading-5 text-red-800 bg-red-100 rounded-full">
-                                                Borrador
-                                            </span>
-                                        @break
-                                        @case(1)
-                                            <span
-                                                class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
-                                                Activo
-                                            </span>
-                                        @break
-                                        @default
-
-                                    @endswitch
 
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
 
                                     <div class="text-sm text-gray-900">
-                                        {{ $credential->cvv }}
+                                        {{ $subscription->user->name }}
+                                    </div>
+
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+
+                                    <div class="text-sm text-gray-900">
+                                        {{ $subscription->user->email }}
+                                    </div>
+
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+
+                                    <div class="text-sm text-gray-900">
+                                        {{ $subscription->plan_id }}
+                                    </div>
+
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+
+                                    <div class="text-sm text-gray-900">
+                                        {{ $subscription->active_until }}
                                     </div>
 
                                 </td>
                                 <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                                    <a  href="{{ route('admin.credentials.show', $credential) }}" class="text-indigo-600 hover:text-indigo-900">Ver Credencial</a>
+                                    <a  href="{{ route('admin.subscriptions.edit', $subscription) }}" class="text-indigo-600 hover:text-indigo-900">Editar</a>
                                 </td>
                             </tr>
 
@@ -114,10 +128,10 @@
                 </div>
             @endif
 
-            @if ($credentials->hasPages())
+            @if ($subscriptions->hasPages())
                 
                 <div class="px-6 py-4">
-                    {{ $credentials->links() }}
+                    {{ $subscriptions->links() }}
                 </div>
                 
             @endif                
@@ -126,3 +140,4 @@
     </div>
 
 </div>
+ 

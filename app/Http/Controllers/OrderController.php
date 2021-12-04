@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Http;
 class OrderController extends Controller
 {
     //
-    public function index()
+    public function index() 
     {
         //Validar el usuario que realiza una orden de pago
         $orders = Order::query()->where('user_id', auth()->user()->id);

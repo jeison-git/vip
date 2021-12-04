@@ -22,9 +22,9 @@ class CreateSubscriptionsTable extends Migration
 
             $table->bigInteger('plan_id')->unsigned();
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
-            $table->foreign('plan_id')->references('id')->on('plans');
+            $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade');
             
             $table->timestamps();
         });

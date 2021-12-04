@@ -103,6 +103,6 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         // return true;
         return optional($this->subscription)->isActive() ?? false;
-    }
+    } 
     
 }

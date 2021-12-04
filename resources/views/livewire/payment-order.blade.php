@@ -18,7 +18,7 @@
     <div class="container mt-4"> {{-- orden de pago --}}
 
         {{-- sdk de mercado pago no funciona en VE --}}
-            {{-- @php
+        {{-- @php
             // SDK de Mercado Pago
             require base_path('vendor/autoload.php');
             // Agrega credenciales
@@ -55,7 +55,7 @@
             $preference->items = $products;
             $preference->save();
         @endphp --}}
-            {{-- end Sdk Mpago --}}
+        {{-- end Sdk Mpago --}}
 
         <div class="container grid grid-cols-1 gap-6 py-8 lg:grid-cols-2 xl:grid-cols-5">{{-- orden de pago --}}
 
@@ -166,10 +166,23 @@
                     </x-components.table-responsive>
                 </div>
 
-            </div>            
+            </div>
 
             <div class="order-1 lg:order-2 xl:col-span-2">{{-- card contenedor de metodo de pago --}}
-                <div class="px-6 pt-6 bg-white rounded-lg shadow-lg">
+                <div class="px-6 font-semibold text-justify text-gray-800 bg-white rounded-lg shadow-lg">
+
+                    Puede realizar el pago en efectivo, pago móvil o punto de venta, dirigiéndose a uno
+                    de nuestros Aliados Comerciales Vip de su preferencia o comunicándose con nosotros a través de los
+                    canales disponibles. <br> Su Pedido estará como Pendiente de Pago, si el tiempo limite para procesar el
+                    pago se vence, su pedido regresará al inventario. <br>
+
+                    O puede realizar el pago en línea a través de la siguiente pasarela de pago: <br>
+                    Si tiene alguna duda por favor comuníquese con nosotros.                   
+
+                    <hr>
+
+                </div>
+                <div class="px-6 pt-2 bg-white rounded-lg shadow-lg">
 
                     <div class="grid items-center justify-between grid-cols-1 mb-4 text-center md:grid-cols-2">
 
@@ -247,11 +260,13 @@
                         return actions.order.capture().then(function(details) {
 
                             /* window.livewire.emit('payOrder'); */
-                            Livewire.emit('payOrder'); 
+                            Livewire.emit('payOrder');
 
                             console.log(details);
 
-                                    alert(details.payer.name.given_name +' Gracias por su compra. Luego de ver este mensaje por favor dirijase a sus pedidos para màs detalles :) ');          
+                            alert(details.payer.name.given_name +
+                                ' Gracias por su compra. Luego de ver este mensaje por favor dirijase a sus pedidos para màs detalles :) '
+                                );
 
                         });
                     }

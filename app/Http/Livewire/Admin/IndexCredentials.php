@@ -26,5 +26,5 @@ class IndexCredentials extends Component
          ->paginate(10);
  
         return view('livewire.admin.index-credentials', compact('credentials'))->layout('layouts.admin');
-    }
+    } 
 } 

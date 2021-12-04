@@ -25,5 +25,5 @@ class ShowProducts extends Component
         ->paginate(10); 
 
         return view('livewire.admin.show-products', compact('products'))->layout('layouts.admin');
-    }
+    } 
 }

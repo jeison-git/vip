@@ -39,7 +39,7 @@
 
         <div class="mb-4" wire:ignore>{{-- Script para  subir añadir imagenes --}}
             <form action="{{ route('applications.files', $application) }}" method="POST" class="dropzone"
-                id="my-awesome-dropzone"></form>
+                id="my-awesome-dropzones"></form>
         </div>
 
         @if ($application->images->count()){{-- Imagenes del usuario a actualizar --}}
@@ -258,7 +258,7 @@
                 <div class="mb-4">
                     <div wire:ignore>
                         <x-jet-label value="Cursos realizados" />
-                        <textarea class="w-full form-control" rows="4" wire:model.defer="application.applications"
+                        <textarea class="w-full form-control" rows="4" wire:model.defer="application.courses"
                             x-data x-init="ClassicEditor.create($refs.miapplications, {
                         toolbar: [ 'heading', '|', 'bold', 'italic', 'blockQuote', 'insertTable', 'link', 'numberedList', 'bulletedList', '|', 'undo', 'redo' ],
                     } )  
@@ -272,7 +272,7 @@
                         } );" x-ref="miapplications">
                     </textarea>
                     </div>
-                    <x-jet-input-error for="application.applications" />
+                    <x-jet-input-error for="application.courses" />
                 </div>
 
             </div>
@@ -367,7 +367,7 @@
     {{-- Scripts --}}
     @push('script')
         <script>
-            Dropzone.options.myAwesomeDropzone = {
+            Dropzone.options.myAwesomeDropzones = {
                 headers: {
                     'X-CSRF-TOKEN': "{{ csrf_token() }}"
                 },
@@ -379,7 +379,7 @@
                     this.removeFile(file);
                 },
                 queuecomplete: function() {
-                    Livewire.emit('refreshApplications');
+                    Livewire.emit('refreshApplication');
                 }
             };
 

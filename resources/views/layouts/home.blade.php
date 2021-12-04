@@ -50,7 +50,7 @@
     </div> --}}
 
     {{-- <div id="contenedor_carga">
-        
+
         <div class="preloader">
 
             <div class="sk-spinner sk-spinner-pulse"></div>
@@ -69,6 +69,19 @@
         <main>
             {{ $slot }}
         </main>
+
+        <a target="_blank" href="https://api.whatsapp.com/send?phone=584242450613&text=">
+
+            <div class="container fixed bottom-0 right-0 z-10 flex items-end justify-end mb-4 mr-4 ">
+
+                <button id="whatsapp"
+                    class="w-12 h-12 text-2xl text-green-500 duration-500 transform bg-white border-2 border-green-600 rounded-full shadow-xl animate-bounce hover:-translate-y-3 hover:bg-green-600 hover:text-white">
+                    <i class="fab fa-whatsapp"></i>
+
+                </button>
+            </div>
+
+        </a>
 
         <x-components.footer />
 

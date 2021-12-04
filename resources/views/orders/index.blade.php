@@ -13,7 +13,7 @@
                 <p class="mt-2 text-2xl text-center">
                     <i class="fas fa-business-time"></i>
                 </p>
-            </a>
+            </a> 
 
             <a href="{{ route('orders.index') . '?status=2' }}"
                 class="px-12 pt-8 pb-4 bg-gray-500 bg-opacity-75 rounded-lg">

@@ -69,7 +69,7 @@ class CreateJobapplication extends Component
         $application->skills        = $this->skills;
         $application->bilingue      = $this->bilingue;
 
-        $application->save();
+        $application->save(); 
 
         session()->flash('flash.banner', '¡Gracias usted a añadido uns solicitud!');
         return redirect()->route('applications.edit', $application);
