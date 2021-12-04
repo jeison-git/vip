@@ -57,11 +57,11 @@
 
             </p>
 
-            <a href="{{ url('login/google') }}"
+            {{-- <a href="{{ url('login/google') }}"
                 style="margin-top: 0px !important;background: green;color: #ffffff;padding: 5px;border-radius:7px;"
                 class="ml-2">
                 <strong>Google Login</strong>
-            </a>
+            </a> --}}
 
         </form>
     </x-jet-authentication-card>
