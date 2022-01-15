@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class PaymentOrder extends Component
 {
     // Componente Pado de orden se usa Cdn Paypal
-    use AuthorizesRequests;
+    use AuthorizesRequests; 
 
     public $order;
 

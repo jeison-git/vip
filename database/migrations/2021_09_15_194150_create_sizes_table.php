@@ -18,8 +18,8 @@ class CreateSizesTable extends Migration
 
             $table->string('name')->nullable();
 
-            $table->unsignedBigInteger('product_id')->nullable();
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreignId('product_id')->constrained('products')
+            ->onDelete('cascade');
             
             $table->timestamps();
         });

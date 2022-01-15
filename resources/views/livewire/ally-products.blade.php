@@ -11,8 +11,19 @@
                         class="p-2 transition-all duration-500 transform bg-white shadow-xl w- rounded-xl hover:shadow-2xl {{ $loop->last ? '' : 'sm:mr-4' }}">
                         <article>
                             <figure>
-                                <img class="object-cover object-center w-48 h-48 rounded-t-md"
-                                    src="{{ Storage::url($product->images->first()->url) }}" alt="">
+
+                                @if ($product->images->count())
+
+                                    <img class="object-fill object-center w-full h-48 rounded-t-md"
+                                    src="{{ Storage::url($product->images->first()->url) }}" alt="">{{-- primera imagen del producto --}}
+
+                                @else
+                                    <img class="object-contain w-64 h-64 rounded-full"
+                                        src="https://img.icons8.com/fluency/64/000000/nothing-found.png"
+                                        alt="nothing-found">
+                                @endif
+                                
+
                             </figure>
 
                             <div cclass="mt-4">

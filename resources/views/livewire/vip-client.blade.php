@@ -33,8 +33,18 @@
 
                             <a href="{{ route('products.show', $offer) }}">
                                 <div class="items-center flex-1 bg-white justify-centerp-4">
-                                    <img class="object-cover object-center w-full h-32 p-2 duration-500 transform hover:shadow-xl hover:scale-105"
-                                        src="{{ Storage::url($offer->images->first()->url) }}" alt="..." />
+
+                                    @if ($offer->images->count())
+
+                                        <img class="object-cover object-center w-full h-32 p-2 duration-500 transform hover:shadow-xl hover:scale-105"
+                                            src="{{ Storage::url($offer->images->first()->url) }}" alt="..." />
+
+                                    @else
+                                        <img class="object-contain w-full rounded-full h-3264"
+                                            src="https://img.icons8.com/fluency/64/000000/nothing-found.png"
+                                            alt="nothing-found">
+                                    @endif
+
                                     <span
                                         class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">${{ $offer->price }}</span>
                                 </div>
@@ -180,9 +190,16 @@
                                 <div
                                     class="p-2 transition-all duration-500 transform bg-white shadow-xl w- rounded-xl hover:shadow-2xl hover:scale-105">
 
-                                    <img class="object-cover object-center w-64 h-64 rounded-t-md"
-                                        src="{{ Storage::url($product->images->first()->url) }}"
-                                        alt="" />{{-- primera imagen del producto --}}
+                                    @if ($product->images->count())
+                                        <img class="{{-- object-fill --}}object-center w-64 h-64 rounded-t-md"
+                                            src="{{ Storage::url($product->images->first()->url) }}"
+                                            alt="" />{{-- primera imagen del producto --}}
+
+                                    @else
+                                        <img class="object-contain w-64 h-64 rounded-full"
+                                            src="https://img.icons8.com/fluency/64/000000/nothing-found.png"
+                                            alt="nothing-found">
+                                    @endif
 
                                     <div class="mt-4">{{-- detalles del producto, nombre, etc --}}
                                         <h1 class="text-base text-gray-700 uppercase">

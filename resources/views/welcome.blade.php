@@ -33,8 +33,15 @@
 
                                     <div class="flex items-center w-full shadow hover:bg-blue-400 hover:bg-opacity-25">
                                         <div class="flex flex-col">
-                                            <img alt="Unpretentious Baker" class="object-scale-down w-full h-24"
-                                                src="{{ Storage::url($item->images->first()->url) }}">
+                                            @if ($item->images->count())
+
+                                                <img alt="Unpretentious Baker" class="object-scale-down w-full h-24"
+                                                    src="{{ Storage::url($item->images->first()->url) }}">
+                                            @else
+                                                <img class="object-contain w-24 h-24 rounded-xl"
+                                                    src="https://img.icons8.com/fluency/64/000000/nothing-found.png"
+                                                    alt="nothing-found">
+                                            @endif
 
                                             <div class="mx-2">
                                                 <div class="">
@@ -77,17 +84,9 @@
                 </ul>
             </div>{{-- end FlexSlider --}}
 
-            {{-- este componente se prende utilizar para agregar un carrousel interactivo --}}
-            <div class="flex flex-row flex-wrap w-full h-48 p-3 bg-white rounded-lg shadow-lg" style="
-            background-image: url('https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80');
-            background-repeat: no-repat;
-            background-size: container;
-            background-blend-mode: multiply;
-            ">
-                <div class="w-2/3 mx-auto">
-
-                </div>
-
+            {{-- url("./images/oriental-tiles.png");este componente se prende utilizar para agregar un carrousel interactivo background-image: url('https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80'); --}}
+            <div class="flex flex-row flex-wrap w-full h-48 p-3 bg-gray-200 rounded-lg shadow-lg">
+                <img class="w-full object-center object-fill h-48 rounded-lg" src="{{ asset('img/contratacion.jpg') }}" />
             </div>{{-- end componente --}}
 
         </div>
@@ -191,8 +190,17 @@ background-blend-mode: multiply;
 
                                 <div class="flex items-center w-full shadow hover:bg-gray-50 hover:bg-opacity-90">
                                     <div class="flex flex-col">
-                                        <img alt="Unpretentious Baker" class="object-scale-down w-full h-24"
-                                            src="{{ Storage::url($home->images->first()->url) }}">
+
+                                        @if ($home->images->count())
+
+                                            <img alt="Unpretentious Baker" class="object-scale-down w-full h-24"
+                                                src="{{ Storage::url($home->images->first()->url) }}">
+                                        @else
+                                            <img class="object-contain w-24 h-24 rounded-xl"
+                                                src="https://img.icons8.com/fluency/64/000000/nothing-found.png"
+                                                alt="nothing-found">
+                                        @endif
+
 
                                         <div class="mx-2">
                                             <div class="">

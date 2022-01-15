@@ -16,9 +16,9 @@
         </ul>
     </div>
 
-    <div class="col-span-3">
+    <div class="col-span-3"> 
 
-        <img class="object-center w-full h-64 " src="{{Storage::url($category->image)}}" alt="">
+        <img style="object-fit: fill;"class="object-center w-full h-80 " src="{{Storage::url($category->image)}}" alt="">
 
     </div>
 

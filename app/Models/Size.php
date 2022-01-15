@@ -9,7 +9,9 @@ class Size extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'product_id'];
+    protected $fillable = [
+        'name','product_id'
+    ];
 
     //Relacion uno a muchos inversa
     public function product(){
@@ -21,8 +23,8 @@ class Size extends Model
     //Relacion muchos a muchos
     public function colors(){
 
-        return $this->belongsToMany(Color::class)->withPivot('quantity');
+        return $this->belongsToMany(Color::class)->withPivot('quantity','id');
 
-    }
+    } 
 
 }

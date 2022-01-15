@@ -33,5 +33,6 @@ class ProductObserver
                 }
             }
         }
+        $product->quantity = null; /* ojo aca revisar luego */
     }
 }

@@ -1,5 +1,5 @@
 <div class="container">{{-- Componente y vista principal de lños productos de Comercios vip --}}
-    
+
     <section class="py-16">
 
         {{-- barra de opcion lista o columnas --}}
@@ -7,7 +7,7 @@
 
             <div class="flex items-center justify-between px-6 py-2">
 
-                {{-- prueba  filtros--}}
+                {{-- prueba  filtros --}}
                 <div class="container topbar-menu-area">
                     <div class="items-center topbar-menu">
                         <ul>
@@ -20,7 +20,7 @@
                                 <ul class="submenu curency">
                                     @foreach ($categories as $category)
                                         <li class="cursor-pointer menu-item">
-                                            <a title="Categories" value="{{$category->id}}"
+                                            <a title="Categories" value="{{ $category->id }}"
                                                 wire:click="$set('category_id', {{ $category->id }})">
                                                 {{ $category->name }}
                                             </a>
@@ -39,7 +39,7 @@
                                 <ul class="submenu curency">
                                     @foreach ($subcategories as $subcategory)
                                         <li class="cursor-pointer menu-item">
-                                            <a title="Subcategories" value="{{$subcategory->id}}"
+                                            <a title="Subcategories" value="{{ $subcategory->id }}"
                                                 wire:click="$set('subcategory_id', {{ $subcategory->id }})">
                                                 {{ $subcategory->name }}
                                             </a>
@@ -58,7 +58,7 @@
                                 <ul class="submenu curency">
                                     @foreach ($brands as $brand)
                                         <li class="cursor-pointer menu-item">
-                                            <a title="brand" value="{{$brand->id}}"
+                                            <a title="brand" value="{{ $brand->id }}"
                                                 wire:click="$set('brand_id', {{ $brand->id }})">
                                                 {{ $brand->name }}
                                             </a>
@@ -103,8 +103,15 @@
                                 <div
                                     class="p-2 transition-all duration-500 transform bg-white shadow-xl w- rounded-xl hover:shadow-2xl hover:scale-105">
 
-                                    <img class="object-cover object-center w-64 rounded-t-md"
-                                        src="{{ Storage::url($product->images->first()->url) }}" alt="" />
+                                    @if ($product->images->count())
+                                        <img style="object-fit: fill;" class="{{-- object-cover --}} object-center w-64 rounded-t-md"
+                                            src="{{ Storage::url($product->images->first()->url) }}" alt="" />
+
+                                    @else
+                                        <img class="object-contain w-64 h-64 rounded-full"
+                                            src="https://img.icons8.com/fluency/64/000000/nothing-found.png"
+                                            alt="nothing-found">
+                                    @endif
 
                                     <div class="mt-4">
                                         <h1 class="text-xl font-bold text-gray-700">
@@ -113,7 +120,8 @@
                                             </a>
                                         </h1>
 
-                                        <p class="mt-2 text-sm text-gray-700">{{ Str::limit($product->claim->name, 20) }}</p>
+                                        <p class="mt-2 text-sm text-gray-700">
+                                            {{ Str::limit($product->claim->name, 20) }}</p>
 
                                         <div class="flex justify-between pl-4 pr-2 mt-4 mb-2">
 
@@ -140,67 +148,29 @@
 
                 @else {{-- vista de productos en lista, falta mejorar diseño --}}
 
-                    <ul>
-                        @foreach ($products as $product)
+                <ul>
+                    @forelse ($products as $product)
 
-                            <li class="mb-6 bg-white rounded-lg shadow">
-                                <article class="flex">
-                                    <figure>
-                                        <img class="object-cover object-center w-56 h-48"
-                                            src="{{ Storage::url($product->images->first()->url) }}" alt="">
-                                    </figure>
+                        <x-components.product-list :product="$product" /> {{-- este componente se encuenta en resources/views/components/components --}}
 
-                                    <div class="flex flex-col flex-1 px-6 py-6">
-                                        <div class="flex justify-between">
-                                            <div>
-                                                <h1 class="text-lg font-semibold text-gray-700">{{ $product->name }}
-                                                </h1>
-                                                
-                                                <p class="mb-2 font-bold text-gray-700">USD {{ $product->price }}
-                                                </p>
-                                            </div>
+                    @empty
 
-                                            <div class="flex items-center">
+                        <div class="relative flex items-center justify-start px-4 py-3 text-red-700 bg-red-100 border border-red-400 rounded"
+                            role="alert">
 
-                                                <ul class="flex text-sm">
-                                                    <li>
-                                                        <i class="mr-1 fas fa-star text-gold"></i>
-                                                    </li>
-                                                    <li>
-                                                        <i class="mr-1 fas fa-star text-gold"></i>
-                                                    </li>
-                                                    <li>
-                                                        <i class="mr-1 fas fa-star text-gold"></i>
-                                                    </li>
-                                                    <li>
-                                                        <i class="mr-1 fas fa-star text-gold"></i>
-                                                    </li>
-                                                    <li>
-                                                        <i class="mr-1 fas fa-star text-gold"></i>
-                                                    </li>
-                                                </ul>
+                            <strong class="items-center font-bold text-center"> <img class="mr-2"
+                                    src="https://img.icons8.com/dusk/64/000000/sad-ghost.png" /> Upss!</strong>
+                            <span class="flex ml-2 font-semibold">Se completo la busqueda y no se encontro ningún
+                                producto con esa especificacíon.</span>
 
-                                                <span class="ml-1 text-sm text-gray-700">(28)</span>
+                        </div>
 
-                                            </div>
-                                        </div>
-
-                                        <div class="mt-auto">
-                                            <x-components.danger-enlace
-                                                href="{{ route('products.show', $product) }}">
-                                                MÁS INFORMACÍON
-                                            </x-components.danger-enlace>
-                                        </div>
-                                    </div>
-                                </article>
-                            </li>
-                            
-                        @endforeach
-                    </ul>
+                    @endforelse
+                </ul>
 
                 @endif
 
-                
+
             </div>
 
         </div>

@@ -135,7 +135,7 @@
                 <div>
                     <p class="text-gray-700">
                         <span class="text-lg font-bold">Total:</span>
-                        US ${{ Cart::subTotal() }}
+                        US ${{ Cart::subTotal() }} 
                     </p>
                 </div>
 

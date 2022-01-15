@@ -1,137 +1,139 @@
 <div>
-    <div class="p-6 my-12 bg-white rounded-lg shadow-lg">
+    <div class="my-12 bg-gray-50 shadow-xl rounded-lg p-6">
 
-        {{-- Color --}}
-        <div class="mb-6">
-            <x-jet-label>
-                Color
-            </x-jet-label>
-
+        {{-- Color Producto --}}
+        <div class="mb-4">
+            <x-jet-label value="{{ __('Colour') }}" />
             <div class="grid grid-cols-6 gap-6">
                 @foreach ($colors as $color)
-                    <label>
-                        <input type="radio" name="color_id" wire:model.defer="color_id" value="{{ $color->id }}">
-                        <span class="ml-2 text-gray-700 capitalize">
+                    <label class="flex">
+                        <input wire:model.lazy="color_id" type="radio" name="color_id" value="{{ $color->id }}">
+                        <span class="ml-1 text-trueGray-700 capitalize">
                             {{ __($color->name) }}
                         </span>
                     </label>
                 @endforeach
             </div>
-
             <x-jet-input-error for="color_id" />
         </div>
 
         {{-- Cantidad --}}
-        <div>
-
+        <div class="mb-4">
             <x-jet-label>
-                Cantidad
+                {{ __('Cantidad') }}
             </x-jet-label>
 
-            <x-jet-input type="number" wire:model.defer="quantity" placeholder="Ingrese una cantidad" class="w-full" />
-
+            <x-jet-input class="w-full" placeholder="Ingrese una cantidad" wire:model.lazy="quantity"
+                type="number" />
             <x-jet-input-error for="quantity" />
-
         </div>
+        <div class="flex justify-end items-center">
 
-        <div class="flex items-center justify-end mt-4">
-
-            <x-jet-action-message class="mr-3" on="saved">
-                Agregado
+            <x-jet-action-message class="mr-3 text-green-500 font-medium" on="saved">
+                {{ __('Añadido') }}
             </x-jet-action-message>
 
-            <x-jet-button wire:loading.attr="disabled" wire:target="save" wire:click="save">
-                Agregar
+            <x-jet-button {{-- class=" bg-blue-600 hover:bg-blue-500" --}} wire:click='save' wire:loading.attr='disabled'
+                wire:target='save'>
+                {{ __('Añadir') }}
             </x-jet-button>
         </div>
-
     </div>
 
     @if ($product_colors->count())
-        
-        <div class="p-6 bg-white rounded-lg shadow-lg">
-            <table>
-                <thead>
-                    <tr>
-                        <th class="w-1/3 px-4 py-2">
-                            Color
-                        </th>
-
-                        <th class="w-1/3 px-4 py-2">
-                            Cantidad
-                        </th>
-                        <th class="w-1/3 px-4 py-2"></th>
+    <div class=" bg-gray-50 shadow-xl rounded-lg p-6">
+        <table class=" w-full text-left">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2  w-1/3">
+                        color
+                    </th>
+                    <th class="px-4 py-2  w-1/3">
+                        cantidad
+                    </th>
+                    <th class="px-4 py-2  w-1/3">
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($product_colors as $product_color)
+                    <tr wire:key='product_color-{{ $product_color->pivot->id }}'>
+                        <td class=" capitalize px-4 py-2 ">
+                            {{ __($colors->find($product_color->pivot->color_id)->name) }}
+                        </td>
+                        <td class=" capitalize px-4 py-2 ">
+                            {{ $product_color->pivot->quantity }} unid.
+                        </td>
+                        <td class="py-2 flex w-full">
+                            <x-jet-secondary-button wire:click="edit({{ $product_color->pivot->id }})"
+                                wire:loading.attr='disabled' wire:target='edit({{ $product_color->pivot->id }})'
+                                class="ml-auto mr-2">
+                                actualizar
+                            </x-jet-secondary-button>
+                            <x-jet-danger-button wire:click="confirColorDelete({{ $product_color->pivot->id }})"
+                                wire:loading.attr='disabled'
+                                wire:target='confirColorDelete({{ $product_color->pivot->id }})'>
+                                eliminar
+                            </x-jet-danger-button>
+                        </td>
                     </tr>
-                </thead>
-
-                <tbody>
-                    @foreach ($product_colors as $product_color)
-                        <tr wire:key="product_color-{{ $product_color->pivot->id }}">
-                            <td class="px-4 py-2 capitalize">
-                                {{ __($colors->find($product_color->pivot->color_id)->name) }}
-                            </td>
-                            <td class="px-4 py-2">
-                                {{ $product_color->pivot->quantity }} unidades
-                            </td>
-                            <td class="flex px-4 py-2">
-                                <x-jet-secondary-button class="ml-auto mr-2"
-                                    wire:click="edit({{ $product_color->pivot->id }})" wire:loading.attr="disabled"
-                                    wire:target="edit({{ $product_color->pivot->id }})">
-                                    Actualizar
-                                </x-jet-secondary-button>
-
-                                <x-jet-danger-button
-                                    wire:click="$emit('deletePivot', {{ $product_color->pivot->id }})">
-                                    Eliminar
-                                </x-jet-danger-button>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-
+                @endforeach
+            </tbody>
+        </table>
+    </div>
     @endif
-
     <x-jet-dialog-modal wire:model="open">
-
         <x-slot name="title">
-            Editar colores
+            Editar Colores
         </x-slot>
-
         <x-slot name="content">
-            <div class="mb-4">
+            <div class=" mb-4">
                 <x-jet-label>
                     Color
                 </x-jet-label>
-
-                <select class="w-full form-control" wire:model="pivot_color_id">
-                    <option value="">Seleccione un color</option>
+                <select class="form-control w-full" wire:model="pivot_color_id">
+                    <option value="" selected disabled>Seleccione Color</option>
                     @foreach ($colors as $color)
-                        <option value="{{ $color->id }}">{{ ucfirst(__($color->name)) }}</option>
+                        <option value="{{ $color->id }}">{{ __($color->name) }}</option>
                     @endforeach
                 </select>
             </div>
-
             <div>
                 <x-jet-label>
                     Cantidad
                 </x-jet-label>
-                <x-jet-input class="w-full" wire:model="pivot_quantity" type="number"
+                <x-jet-input wire:model="pivot_quantity" class="w-full" type="number"
                     placeholder="Ingrese una cantidad" />
             </div>
-        </x-slot>
 
+        </x-slot>
         <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$set('open', false)">
+            <x-jet-secondary-button wire:click="$set('open',false)">
                 Cancelar
             </x-jet-secondary-button>
-
-            <x-jet-button wire:click="update" wire:loading.attr="disabled" wire:target="update">
+            <x-jet-button {{-- class="bg-blue-600 hover:bg-blue-500" --}} wire:click='update' wire:loading.attr='disabled'
+                wire:target='update'>
                 Actualizar
             </x-jet-button>
         </x-slot>
-
     </x-jet-dialog-modal>
 
+    <x-jet-confirmation-modal wire:model="open_confir" maxWidth="md">
+        <x-slot name="title">
+            Eliminar Color
+        </x-slot>
+        <x-slot name="content">
+            <h2 class="text-base">¿Esta seguro de realizar esta accion?</h2>
+            <p class="text-sm text-center">no se puede revertir!!!</p>
+
+        </x-slot>
+        <x-slot name="footer">
+            <x-jet-secondary-button wire:click="$set('open_confir',false)">
+                Cancelar
+            </x-jet-secondary-button>
+            <x-jet-danger-button wire:click='delete' wire:loading.attr='disabled' wire:target='delete'>
+                eliminar
+            </x-jet-danger-button>
+        </x-slot>
+    </x-jet-confirmation-modal>
 </div>

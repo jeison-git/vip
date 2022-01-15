@@ -2,75 +2,74 @@
 
 namespace App\Http\Livewire\Admin;
 
-use Livewire\Component;
 use App\Models\Size;
+use Illuminate\Validation\Rule;
+use Livewire\Component;
 
 class SizeProduct extends Component
 {
-    //Funcion para añadir, actualizar, eliminar las tallas del producto (error no se puede eliminar de la tabla pivot)
-    public $product, $name, $open = false;
+    public $product;
+    public $name;
+    public $open = false;
+    public $name_edit;
+    public $size;
+    public $open_confir;
 
-    public $size, $name_edit;
 
-    protected $listeners = ['delete'];
-
-    protected $rules = [
-        'name' => 'required'
-    ];
-
-    public function save(){
-        $this->validate();
-
-        $size = Size::where('product_id', $this->product->id)
-                    ->where('name', $this->name)
-                    ->first();
-
-        if ($size) {
-
-            $this->emit('errorSize', 'La Talla Se Encuentra Registrada');
-            
-        } else {
-
-            $this->product->sizes()->create([
-                'name' => $this->name
-            ]);
-
-        }
-
-        $this->reset('name');
-
-        $this->product = $this->product->fresh();
+    protected function rules()
+    {
+        return [
+            'name' => ['required', 'max:50', Rule::unique('sizes', 'name')->where(function ($query) {
+                return $query->where('product_id', $this->product->id);
+            })]
+        ];
     }
+    public function update()
+    {
 
-
-    public function edit(Size $size){
-        $this->open = true;
-        $this->size = $size;
-        $this->name_edit = $size->name;
-    }
-
-    public function update(){
         $this->validate([
-            'name_edit' => 'required'
+            'name_edit' => ['required', 'max:50', Rule::unique('sizes', 'name')->where(function ($query) {
+                return $query->where('product_id', $this->product->id);
+            })->ignore($this->size->id, 'id')]
         ]);
-
         $this->size->name = $this->name_edit;
-        $this->size->save();
-
+        $this->size->update();
         $this->product = $this->product->fresh();
-
         $this->open = false;
     }
 
-    public function delete(Size $size){
-        $size->delete();
+    public function save()
+    {
+        $this->validate();
+        $this->product->sizes()->create([
+            'name' => $this->name,
+        ]);
+        $this->reset('name');
         $this->product = $this->product->fresh();
+    }
+
+    public function edit(Size $size)
+    {
+        $this->name_edit = $size->name;
+        $this->size = $size;
+        $this->open = true;
+    }
+
+    public function confirSizeDelete(Size $size)
+    {
+        $this->size = $size;
+        $this->open_confir = true;
+    }
+    public function delete()
+    {
+        $this->size->delete();
+        $this->product = $this->product->fresh();
+        $this->open_confir = false;
     }
 
     public function render()
     {
         $sizes = $this->product->sizes;
-
         return view('livewire.admin.size-product', compact('sizes'));
     }
-}
+} 

@@ -1,44 +1,37 @@
 <div>
+    <header class=" bg-white shadow">
 
-    <header class="bg-white shadow"> {{-- Cabezera --}}
-        <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between">
+        <div class="py-6 max-w-7xl mx-auto">
+            <div class=" flex justify-between items-center">
+                <h1 class=" font-semibold text-xl text-trueGray-800 leading-tight">Productos</h1>
 
-                <h1 class="flex items-center font-semibold leading-tight text-gray-800 md:text-2xl">
-
-                    <a href="{{ route('admin.index') }}" class="mr-2"><img
-                            src="https://img.icons8.com/dusk/25/000000/pancake.png" />
-                        <a href="{{ route('admin.products.create') }}" class="mr-2"><img
-                                src="https://img.icons8.com/dusk/25/000000/plus-2-math.png" /></a>Productos
-                </h1>
-
-                <x-jet-danger-button wire:click="$emit('deleteProduct')">{{-- problemas para eliminar --}}
-                    Eliminar
+                <x-jet-danger-button wire:click="confirProductDelete({{ $product }})" wire:loading.attr='disabled'
+                    wire:target='confirProductDelete({{ $product }})'>
+                    Eliminar Producto
                 </x-jet-danger-button>
-
             </div>
         </div>
     </header>
 
-    <div class="max-w-4xl px-4 py-12 mx-auto text-gray-700 sm:px-6 lg:px-8">
-
-        <h1 class="mb-8 text-3xl font-semibold text-center">Complete esta información para crear un producto</h1>
-
-        <div class="mb-4" wire:ignore>{{-- Script para  subir añadir imagenes --}}
+    <div class=" py-12 max-w-4xl mx-auto">
+        <h1 class="text-xl lg:text-3xl text-center font-semibold mb-8">Complete la información para crear un Producto
+        </h1>
+        <div class="mb-4" wire:ignore>
             <form action="{{ route('admin.products.files', $product) }}" method="POST" class="dropzone"
                 id="my-awesome-dropzone"></form>
         </div>
+        {{-- INICIO IMAGENES PRODUCTO --}}
 
-        @if ($product->images->count()){{-- Imagenes del producto a actualizar --}}
+        @if ($product->images->count())
 
-            <section class="p-6 mb-4 bg-white rounded-lg shadow-xl">
-                <h1 class="mb-2 text-2xl font-semibold text-center">Imagenes del producto</h1>
+            <section class="bg-white shadow-xl rounded-lg p-6 mb-4">
+                <h1 class="text-2xl text-center font-semibold mb-2">Imagenes del producto</h1>
 
                 <ul class="flex flex-wrap">
                     @foreach ($product->images as $image)
 
                         <li class="relative" wire:key="image-{{ $image->id }}">
-                            <img class="object-cover w-32 h-20" src="{{ Storage::url($image->url) }}" alt="">
+                            <img class="w-32 h-20 object-contain" src="{{ Storage::url($image->url) }}" alt="">
                             <x-jet-danger-button class="absolute right-2 top-2"
                                 wire:click="deleteImage({{ $image->id }})" wire:loading.attr="disabled"
                                 wire:target="deleteImage({{ $image->id }})">
@@ -48,161 +41,180 @@
 
                     @endforeach
 
-                </ul> 
+                </ul>
             </section>
 
         @endif
 
-        {{-- Componente Livewire/Status/ Estado del producto Borrador u Publicado --}}
-        @livewire('admin.status-product', ['product' => $product], key('status-product-' . $product->id))
+        {{-- FIN IMAGENES PRODUCTO --}}
 
-        {{-- <div class="p-6 bg-white rounded-lg shadow-xl">
+        {{-- INICIO STATUS PRODUCT --}}
+        @livewire('admin.status-product', ['product' => $product], key('status-product'.$product->id))
+        {{-- FIN STATUS PRODUCT --}}
 
-        </div> --}}
-
-        <div class="p-6 bg-white rounded-lg shadow-xl">
-
-            {{-- Nombre --}}
-            <div class="mb-4">
-                <x-jet-label value="Nombre" />
-                <x-jet-input type="text" class="w-full" wire:model="product.name"
-                    placeholder="Ingrese el nombre del producto" />
-                <x-jet-input-error for="product.name" />
-            </div>
+        <div class=" rounded-lg shadow-xl text-trueGray-700 bg-gray-50 p-6">
 
             <div class="grid grid-cols-2 gap-6 mb-4">
                 {{-- Categoría --}}
                 <div>
-                    <x-jet-label value="Categorías" />
-                    <select class="w-full form-control" wire:model="category_id">
-                        <option value="" selected disabled>Seleccione una categoría</option>
-
+                    <x-jet-label value="{{ __('Categoría') }}" />
+                    <select class="form-control w-full" wire:model.debounce.250ms="category_id">
+                        <option value="" selected disabled>Selecione Categoria</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach
                     </select>
-
                     <x-jet-input-error for="category_id" />
                 </div>
-
-                {{-- Subcategoría --}}
+                {{-- SubCategoría --}}
                 <div>
-                    <x-jet-label value="Subcategorías" />
-                    <select class="w-full form-control" wire:model="product.subcategory_id">
-                        <option value="" selected disabled>Seleccione una subcategoría</option>
-
+                    <x-jet-label value="{{ __('Subcategoría') }}" />
+                    <select class="form-control w-full" wire:model.debounce.250ms="product.subcategory_id">
+                        <option value="" selected disabled>Selecione SubCategoria</option>
                         @foreach ($subcategories as $subcategory)
                             <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
                         @endforeach
                     </select>
-
                     <x-jet-input-error for="product.subcategory_id" />
                 </div>
             </div>
-
-            <div class="grid grid-cols-1 gap-6 mb-4">
-                {{-- Marca --}}
+            {{-- Nombre --}}
+            <div class="mb-4">
+                <x-jet-label value="{{ __('Nombre') }}" />
+                <x-jet-input type="text" class="w-full" wire:model.debounce.500ms='product.name'
+                    placeholder="ingrese el nombre del producto" />
+                <x-jet-input-error for="product.name" />
+            </div>
+            {{-- Slug --}}
+            <div class="mb-4">
+                <x-jet-label value="{{ __('Slug') }}" />
+                <x-jet-input type="text" disabled class="w-full bg-gray-100" wire:model.debounce.500ms="product.slug"
+                    placeholder="Visualice la URL del Producto" />
+                <x-jet-input-error for="product.slug" />
+            </div>
+            {{-- Description --}}
+            <div class="mb-4">
+                <div wire:ignore>
+                    <x-jet-label value="{{ __('Descripción') }}" />
+                    <textarea wire:model='product.description' class="w-full form-control" cols="30" rows="4" x-data
+                        x-init=" ClassicEditor
+            .create( $refs.editor )
+            .then(function(mieditor){
+                mieditor.model.document.on('change:data', () =>{
+                    @this.set('product.description',mieditor.getData())
+                })
+            })
+            .catch( error => {
+                console.error( error );
+            } );" x-ref="editor"></textarea>
+                </div>
+                <x-jet-input-error for="product.description" />
+            </div>
+            <div class="grid md:grid-cols-3 gap-6 mb-4">
+                {{-- Brand --}}
                 <div>
-                    <x-jet-label value="Marca" />
-                    <select class="w-full form-control" wire:model="product.brand_id">
-                        <option value="" selected disabled>Seleccione una marca</option>
+                    <x-jet-label value="{{ __('Marca') }}" />
+                    <select class="form-control w-full" wire:model.debounce.250ms="product.brand_id">
+                        <option value="" selected disabled>Selecione Marca</option>
                         @foreach ($brands as $brand)
                             <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                         @endforeach
                     </select>
-
                     <x-jet-input-error for="product.brand_id" />
                 </div>
-            </div>
-
-            {{-- Slug --}}
-            <div class="mb-4">
-                <x-jet-label value="Slug" />
-                <x-jet-input type="text" disabled wire:model="slug" class="w-full bg-gray-200"
-                    placeholder="Ingrese el slug del producto" />
-
-                <x-jet-input-error for="slug" />
-            </div>
-
-            {{-- Descrición --}}
-            <div class="mb-4">
-                <div wire:ignore>
-                    <x-jet-label value="Descripción" />
-                    <textarea class="w-full form-control" rows="4" wire:model="product.description" x-data x-init="ClassicEditor.create($refs.miEditor)
-                        .then(function(editor){
-                            editor.model.document.on('change:data', () => {
-                                @this.set('product.description', editor.getData())
-                            })
-                        })
-                        .catch( error => {
-                            console.error( error );
-                        } );" x-ref="miEditor">
-                    </textarea>
-                </div>
-                <x-jet-input-error for="product.description" />
-            </div>
-
-            <div class="grid grid-cols-2 gap-6 mb-4">
-                {{-- Precio --}}
+                {{-- Price VIP --}}
                 <div>
-                    <x-jet-label value="Precio Vip" />
-                    <x-jet-input wire:model="product.price" type="number" class="w-full" step=".01" />
+                    <x-jet-label value="{{ __('Precio Vip') }}" />
+                    <x-jet-input type="number" step=".01" class="w-full"
+                        wire:model.debounce.500ms='product.price' placeholder="ingrese el precio vip del producto" />
                     <x-jet-input-error for="product.price" />
                 </div>
-                {{-- Precio vip --}}
+                {{-- REALPrice --}}
                 <div>
-                    <x-jet-label value="Precio Real" />
-                    <x-jet-input wire:model="product.realprice" type="number" class="w-full" step=".01" />
+                    <x-jet-label value="{{ __('Precio Real') }}" />
+                    <x-jet-input type="number" step=".01" class="w-full"
+                        wire:model.debounce.500ms='product.realprice'
+                        placeholder="ingrese el precio real del producto" />
                     <x-jet-input-error for="product.realprice" />
                 </div>
             </div>
-
+            {{-- Cantidad --}}
             @if ($this->subcategory)
-
-
                 @if (!$this->subcategory->color && !$this->subcategory->size)
-
-                    <div>
-                        <x-jet-label value="Cantidad" />
-                        <x-jet-input wire:model="product.quantity" type="number" class="w-full" />
+                    <div class="mb-4">
+                        <x-jet-label value="{{ __('Cantidad') }}" />
+                        <x-jet-input type="number" class="w-full" wire:model.debounce.500ms='product.quantity'
+                            placeholder="ingrese el stock del producto" />
                         <x-jet-input-error for="product.quantity" />
                     </div>
-
                 @endif
-
             @endif
 
-            <div class="flex items-center justify-end mt-4">
+            {{-- modifique para agregar comercio --}}
+            {{-- lugar de retiro, tienda afiliados --}}
 
-                <x-jet-action-message class="mr-3" on="saved">
-                    Actualizado
+            <div class="grid grid-cols-1 gap-6 mb-4">
+                <div>
+                    <x-jet-label value="Aliado comercial vip" />
+                    <select class="w-full form-control" wire:model.debounce.250ms="product.claim_id">
+                        <option value="" selected disabled>Seleccione un aliado comercial vip</option>
+                        @foreach ($claims as $claim)
+                            <option value="{{ $claim->id }}">{{ $claim->name }}</option>
+                        @endforeach
+                    </select>
+
+                    <x-jet-input-error for="product.claim_id" />
+                </div>
+
+            </div>
+
+
+            <div class="flex justify-end items-center">
+                <x-jet-action-message class="mr-3 text-green-500 font-medium" on="saved">
+                    {{ __('Actualizado') }}
                 </x-jet-action-message>
 
-                <x-jet-button wire:loading.attr="disabled" wire:target="save" wire:click="save">
-                    Actualizar producto
+                <x-jet-button {{-- class=" bg-blue-600 hover:bg-blue-500" --}} wire:click='update' wire:loading.attr='disabled'
+                    wire:target='update'>
+                    {{ __('Actualizar Producto') }}
                 </x-jet-button>
             </div>
+
+
+
+
         </div>
 
-        {{-- Si el producto tiene color o talla actualizar detalles --}}
         @if ($this->subcategory)
-
             @if ($this->subcategory->size)
-
                 @livewire('admin.size-product', ['product' => $product], key('size-product-' . $product->id))
-
-            @elseif($this->subcategory->color)
-
+            @elseif ($this->subcategory->color)
                 @livewire('admin.color-product', ['product' => $product], key('color-product-' . $product->id))
-
             @endif
-
         @endif
-
 
     </div>
 
-    {{-- Scripts --}}
+
+    <x-jet-confirmation-modal wire:model="open_confir" maxWidth="md">
+        <x-slot name="title">
+            Eliminar el Producto {{ $product->name }}
+        </x-slot>
+        <x-slot name="content">
+            <h2 class="text-base">¿Esta seguro de realizar esta accion?</h2>
+            <p class="text-sm text-center">no se puede revertir!!!</p>
+
+        </x-slot>
+        <x-slot name="footer">
+            <x-jet-secondary-button wire:click="$set('open_confir',false)">
+                Cancelar
+            </x-jet-secondary-button>
+            <x-jet-danger-button wire:click='delete' wire:loading.attr='disabled' wire:target='delete'>
+                eliminar
+            </x-jet-danger-button>
+        </x-slot>
+    </x-jet-confirmation-modal>
+
     @push('script')
         <script>
             Dropzone.options.myAwesomeDropzone = {
@@ -220,103 +232,6 @@
                     Livewire.emit('refreshProduct');
                 }
             };
-
-
-            Livewire.on('deleteProduct', () => {
-
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-
-                        Livewire.emitTo('admin.edit-product', 'delete');
-
-                        Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
-                            'success'
-                        )
-                    }
-                })
-
-            })
-
-            Livewire.on('deleteSize', sizeId => {
-
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-
-                        Livewire.emitTo('admin.size-product', 'delete', sizeId);
-
-                        Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
-                            'success'
-                        )
-                    }
-                })
-
-            })
-
-            Livewire.on('deletePivot', pivot => {
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-
-                        Livewire.emitTo('admin.color-product', 'delete', pivot);
-
-                        Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
-                            'success'
-                        )
-                    }
-                })
-            })
-
-            Livewire.on('deleteColorSize', pivot => {
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-
-                        Livewire.emitTo('admin.color-size', 'delete', pivot);
-
-                        Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
-                            'success'
-                        )
-                    }
-                })
-            })
         </script>
     @endpush
 

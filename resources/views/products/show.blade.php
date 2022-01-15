@@ -25,10 +25,10 @@
                 <div class="flexslider">
                     <ul class="slides">
                         @foreach ($product->images as $image)
-
-                            <li data-thumb=" {{ Storage::url($image->url) }}">
-                                <img src=" {{ Storage::url($image->url) }}" />
-                            </li>
+                            
+                                <li data-thumb=" {{ Storage::url($image->url) }}">
+                                    <img src=" {{ Storage::url($image->url) }}" />
+                                </li>
 
                         @endforeach
 
@@ -65,8 +65,8 @@
 
                         <div class="ml-4">
                             <p class="text-center text-greenLime-600">Se hace envíos a todo el país</p>
-                            <p class="text-sm font-semibold text-center">Recibelo el
-                                {{ Date::now()->addDay(7)->locale('es')->format('l j F') }}</p>
+                            <p class="text-sm font-semibold text-center">Recibelo antes del
+                                {{ Date::now()->addDay(1)->locale('es')->format('l j F') }}</p>
                         </div>
                     </div>
                 </div>
@@ -111,21 +111,29 @@
                         <a href="{{ route('products.show', $similar) }}">
                             <div
                                 class="p-2 transition-all duration-500 transform bg-white shadow-xl w- rounded-xl hover:shadow-2xl hover:scale-105">
-                                <img class="object-fill object-center w-full h-48 rounded-t-md"
-                                    src="{{ Storage::url($similar->images->first()->url ?? null) }}" alt="similares">
 
-                                    <div class="mt-4">
+                                @if ($similar->images->count())
+                                    <img class="object-fill object-center w-full h-48 rounded-t-md"
+                                        src="{{ Storage::url($similar->images->first()->url ?? null) }}"
+                                        alt="similares">
+                                @else
+                                    <img class="object-contain w-48 h-48 rounded-full"
+                                        src="https://img.icons8.com/fluency/48/000000/nothing-found.png"
+                                        alt="nothing-found">
+                                @endif
 
-                                        <h1 class="text-base text-gray-700 uppercase hover:text-gold">
-                                            {{ Str::limit($similar->name, 20) }}
-                                        </h1>
-                                        <p class="text-sm text-gray-600 hover:text-gold">UD ${{ $similar->price }}</p>
-                                    </div>
+                                <div class="mt-4">
+
+                                    <h1 class="text-base text-gray-700 uppercase hover:text-gold">
+                                        {{ Str::limit($similar->name, 20) }}
+                                    </h1>
+                                    <p class="text-sm text-gray-600 hover:text-gold">UD ${{ $similar->price }}</p>
+                                </div>
                             </div>
-                            
+
                         </a>
                     </div>
-                    
+
                 @endforeach
             </div>
 

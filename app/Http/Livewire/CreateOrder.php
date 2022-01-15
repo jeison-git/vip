@@ -97,8 +97,10 @@ class CreateOrder extends Component
         $order->contact = $this->contact;
         $order->phone = $this->phone;
         $order->envio_type = $this->envio_type;
-        $order->shipping_cost = 0;
-        $order->total = $this->shipping_cost + Cart::subtotal();
+        $order->shipping_cost = 0; 
+       /*  $order->total = $this->shipping_cost + Cart::subtotal(); Error: A non well formed numeric value encountered */
+       /*  $order->total = $this->shipping_cost + floatval(implode(explode(',',Cart::subtotal()))); */
+        $order->total = floatval(implode(explode(',',$this->shipping_cost))) + floatval(implode(explode(',',Cart::subtotal())));
         $order->content = Cart::content();
 
         if ($this->envio_type == 1) {
@@ -129,7 +131,7 @@ class CreateOrder extends Component
             discount($item);
         }
 
-        Cart::destroy();
+        Cart::destroy(); 
 
         $mensaje = "!Usted a Creado un Pedido¡ Puede realizar el pago en efectivo, dirigiéndose a uno 
         de nuestros Aliados Comerciales Vip de su preferencia.No Olvide Su Número de Orden ;) ";

@@ -53,7 +53,7 @@ class EmploymentCurriculum extends Component
         $this->oldjob->save();
         $this->oldjob = new Oldjob();
 
-        $this->employment = Employment::find($this->employment->id);
+        $this->employment = Employment::find($this->employment->id); 
     }
 
     public function destroy(Oldjob $oldjob){

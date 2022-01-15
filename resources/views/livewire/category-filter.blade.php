@@ -99,9 +99,16 @@
                             <div
                                 class="p-2 transition-all duration-500 transform bg-white shadow-xl w- rounded-xl hover:shadow-2xl">
 
-                                <img class="object-cover object-center w-full h-64 rounded-t-md"
-                                    src="{{ Storage::url($product->images->first()->url) }}"
-                                    alt="" />{{-- primera imagen del producto --}}
+                                @if ($product->images->count())
+                                    <img class="{{-- object-fill --}}object-center w-full h-64 rounded-t-md"
+                                        src="{{ Storage::url($product->images->first()->url) }}"
+                                        alt="" />{{-- primera imagen del producto --}}
+
+                                @else
+                                    <img class="object-contain w-64 h-64 rounded-full"
+                                        src="https://img.icons8.com/fluency/64/000000/nothing-found.png"
+                                        alt="nothing-found">
+                                @endif
 
                                 <div class="mt-4">{{-- detalles del producto, nombre, etc --}}
                                     <h1 class="text-base text-gray-700 uppercase">
@@ -149,7 +156,7 @@
                                     <div class="flex justify-between pl-4 pr-2 mt-4 mb-2">{{-- precio real del producto y boton que redirecciona a la vista del producto --}}
 
                                         <button class="block text-xl font-semibold text-gray-700 cursor-auto">
-                                            ${{ $product->pricevip }}{{-- cambiar variable por $realprice --}}
+                                            ${{ $product->realprice }}{{-- cambiar variable por $realprice --}}
                                         </button>
 
                                         <button

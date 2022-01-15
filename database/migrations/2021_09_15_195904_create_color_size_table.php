@@ -16,13 +16,11 @@ class CreateColorSizeTable extends Migration
         Schema::create('color_size', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('color_id')->nullable();
-            $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade');
+            $table->foreignId('color_id')->constrained('colors')->onDelete('cascade');
 
-            $table->unsignedBigInteger('size_id')->nullable();
-            $table->foreign('size_id')->references('id')->on('sizes')->onDelete('cascade');
+            $table->foreignId('size_id')->constrained('sizes')->onDelete('cascade');
 
-            $table->integer('quantity')->nullable();
+            $table->integer('quantity');
 
             $table->timestamps();
         });

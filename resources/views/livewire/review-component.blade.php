@@ -21,7 +21,7 @@
                         </p>
                     @endif
 
-                    @if ($hideForm != true) {{-- una ves guardado ocultar formulario --}}
+                    @if ($hideForm != true) {{-- una ves guardado ocultar formulario --}} 
                         
                         <form wire:submit.prevent="rate()">
 

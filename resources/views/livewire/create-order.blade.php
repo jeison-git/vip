@@ -238,8 +238,9 @@
                         <span class="text-lg">Total</span>
                         @if ($envio_type == 1)
                             US ${{ Cart::subtotal() }}
-                        @else
-                            US ${{ Cart::subtotal() + $shipping_cost }}
+                        @else {{-- floatval(implode(explode(',',$this->shipping_cost))) + floatval(implode(explode(',',Cart::subtotal()))) --}}
+                            {{-- US ${{ Cart::subtotal() + $shipping_cost }} --}}
+                            US ${{ floatval(implode(explode(',',Cart::subtotal()))) + floatval(implode(explode(',',$shipping_cost))) }}
                         @endif
                     </p>
                 </div>

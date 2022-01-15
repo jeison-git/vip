@@ -3,16 +3,27 @@
 
         <div class="glider-contain">
 
-            <ul class="glider-{{ $item->id }}">{{--ojo  item por pruebas--}}
+            <ul class="glider-{{ $item->id }}">{{-- ojo  item por pruebas --}}
 
                 @foreach ($products as $product)
 
-                    <li class="p-2 transition-all duration-500 transform bg-white shadow-xl w- rounded-xl hover:shadow-2xl {{ $loop->last ? '' : 'sm:mr-4' }}">
+                    <li
+                        class="p-2 transition-all duration-500 transform bg-white shadow-xl w- rounded-xl hover:shadow-2xl {{ $loop->last ? '' : 'sm:mr-4' }}">
                         <article>
                             <figure>
-                                <img class="object-cover object-center w-48 h-48 rounded-t-md"
-                                    src="{{ Storage::url($product->images->first()->url) }}" alt="">
-                            </figure> 
+
+                                @if ($product->images->count())                                      
+
+                                <img style="object-fit: fill;"class="object-center w-48 h-48 rounded-t-md"
+                                src="{{ Storage::url($product->images->first()->url) }}" alt="">
+
+                                @else
+                                    <img class="object-contain w-48 h-48 rounded-full"
+                                        src="https://img.icons8.com/fluency/64/000000/nothing-found.png"
+                                        alt="nothing-found">
+                                @endif
+
+                            </figure>
 
                             <div cclass="mt-4">
 
@@ -24,7 +35,7 @@
                                 </h1>
 
                             </div>
-                            
+
                             <div class="justify-start py-4 mx-auto">{{-- precio vip del producto --}}
 
                                 <button class="block text-base font-semibold text-gray-600 cursor-auto">
